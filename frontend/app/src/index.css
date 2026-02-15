@@ -3,7 +3,16 @@
 @tailwind utilities;
 
 #root {
+<<<<<<< HEAD
   font-family: 'Inter', sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
+=======
+    font-family: 'Inter', sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+
+    
+
+>>>>>>> a6a946dd4ecfee59da64cd2c8de22d8f584b5ff5
 }
