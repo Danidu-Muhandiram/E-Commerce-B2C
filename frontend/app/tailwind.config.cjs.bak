@@ -1,0 +1,18 @@
+module.exports = {
+  content: ['./index.html', './src/**/*.{js,jsx}'],
+  darkMode: 'class',
+  theme: {
+    extend: {
+      fontFamily: {
+        playfair: ['"Playfair Display"', 'serif'],
+        poppins: ['"Poppins"', 'sans-serif'],
+      },
+      colors: {
+        'fashion-black': '#1a1a1a',
+        'fashion-red': '#d62828', // Example accent color based on the red in the reference image
+        'fashion-gray': '#f4f4f4',
+      },
+    },
+  },
+  plugins: [],
+}

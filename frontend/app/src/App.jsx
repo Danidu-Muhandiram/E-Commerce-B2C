@@ -1,12 +1,14 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import UserLayout from './components/layout/userLayout';
+import Home from './pages/Home';
 
 const App = () => {
   return (
     <BrowserRouter>
-      {/*add routes components from the react router*/}
       <Routes>
-        <Route>{/*user layout*/}</Route>
-        <Route>{/*admin layout*/}</Route>
+        <Route path="/" element={<UserLayout />}>
+          <Route index element={<Home />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );

@@ -1,9 +1,17 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --font-playfair: "Playfair Display", serif;
+  --font-poppins: "Poppins", sans-serif;
+  --font-inter: "Inter", sans-serif;
+
+  --color-fashion-black: #1a1a1a;
+  --color-fashion-red: #d62828;
+  --color-fashion-gray: #f4f4f4;
+}
 
 #root {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-inter);
   font-optical-sizing: auto;
   font-style: normal;
 }
