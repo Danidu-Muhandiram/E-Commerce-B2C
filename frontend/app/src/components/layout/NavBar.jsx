@@ -60,7 +60,7 @@ const NavBar = () => {
                 {/* Logo (Center) */}
                 <div className="w-full lg:w-1/3 flex justify-center lg:absolute lg:left-1/2 lg:transform lg:-translate-x-1/2">
                     <Link to="/" className="text-3xl font-playfair font-black tracking-tighter text-fashion-black">
-                        RINAD<span className="text-fashion-red">.</span>
+                        Veloura<span className="text-fashion-red">.</span>
                     </Link>
                 </div>
 
