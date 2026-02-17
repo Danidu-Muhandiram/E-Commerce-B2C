@@ -40,7 +40,7 @@ const NavBar = () => {
     return (
         <nav
             className={`fixed left-1/2 transform -translate-x-1/2 z-40 transition-all duration-300 ease-in-out ${isScrolled
-                ? "top-4 w-[90%] md:w-[80%] bg-white/80 backdrop-blur-md shadow-lg rounded-full py-3 px-8"
+                ? "top-4 w-[90%] md:w-[80%] bg-fashion-eggshell/90 backdrop-blur-md shadow-lg rounded-full py-3 px-8"
                 : "top-10 w-full bg-transparent py-4 px-6"
                 }`}
         >
@@ -52,7 +52,7 @@ const NavBar = () => {
                         <Link
                             key={index}
                             to={link.path}
-                            className={`text-xs font-poppins font-bold uppercase tracking-widest transition-colors ${isScrolled ? "text-fashion-black hover:text-fashion-red" : "text-fashion-black hover:text-white"}`}
+                            className={`text-xs font-poppins font-bold uppercase tracking-widest transition-colors ${isScrolled ? "text-fashion-black hover:text-fashion-moss" : "text-fashion-black hover:text-fashion-eggshell"}`}
                         >
                             {link.name}
                         </Link>
@@ -67,33 +67,35 @@ const NavBar = () => {
                         {/* SVG Background Tab */}
                         <div
                             className={`absolute left-1/2 -translate-x-1/2 top-0 
-            w-[460px] h-[90px] 
-            transition-opacity duration-500 
-            pointer-events-none
-            ${isScrolled ? "opacity-0" : "opacity-100"}`}
+                                    w-[420px] h-[75px] 
+                                    transition-opacity duration-500 
+                                    pointer-events-none
+                                    ${isScrolled ? "opacity-0" : "opacity-100"}`}
                         >
                             <svg
-                                viewBox="0 0 460 75"
+                                viewBox="0 0 420 75"
                                 xmlns="http://www.w3.org/2000/svg"
                                 className="w-full h-full"
                             >
                                 <path
-                                    fill="#1a1a1a"
+                                    fill="#F0EAD6"
                                     d="
-            M 0,0 
-            C 80,0 120,2 160,15 
-            C 185,25 200,45 230,45 
-            H 230 
-            C 260,45 275,25 300,15 
-            C 340,2 380,0 460,0 
-            Z
-        "
+                                M0 0
+                                Q130 0 130 50
+                                V55
+                                Q130 75 150 75
+                                H270
+                                Q290 75 290 55
+                                V50
+                                Q290 0 420 0
+                                Z
+                            "
                                 />
                             </svg>
                         </div>
 
 
-                        <Link to="/" className={`relative z-10 text-3xl font-playfair font-black tracking-tighter transition-colors duration-300 py-6 px-10 ${isScrolled ? "text-fashion-black" : "text-white"
+                        <Link to="/" className={`relative z-10 text-4xl font-playfair font-black tracking-tighter transition-colors duration-300 py-6 px-10 ${isScrolled ? "text-fashion-black" : "text-fashion-moss"
                             }`}>
                             Veloura
                         </Link>
@@ -106,21 +108,21 @@ const NavBar = () => {
                         <Link
                             key={index}
                             to={link.path}
-                            className={`text-xs font-poppins font-bold uppercase tracking-widest transition-colors ${isScrolled ? "text-fashion-black hover:text-fashion-red" : "text-fashion-black hover:text-white"}`}
+                            className={`text-xs font-poppins font-bold uppercase tracking-widest transition-colors ${isScrolled ? "text-fashion-black hover:text-fashion-moss" : "text-fashion-black hover:text-fashion-eggshell"}`}
                         >
                             {link.name}
                         </Link>
                     ))}
 
                     {/* Sign Up Button */}
-                    <Link to="/signup" className="text-xs font-poppins font-bold uppercase tracking-widest bg-fashion-black text-white px-6 py-2 rounded-full hover:bg-fashion-red transition-colors shadow-md">
+                    <Link to="/signup" className="text-xs font-poppins font-bold uppercase tracking-widest bg-fashion-black text-fashion-eggshell px-6 py-2 rounded-full hover:bg-fashion-moss transition-colors shadow-md">
                         Sign Up
                     </Link>
 
                     {/* Cart Icon */}
-                    <button className={`relative transition-colors ${isScrolled ? "text-fashion-black hover:text-fashion-red" : "text-fashion-black hover:text-white"}`}>
+                    <button className={`relative transition-colors ${isScrolled ? "text-fashion-black hover:text-fashion-moss" : "text-fashion-black hover:text-fashion-eggshell"}`}>
                         <HiOutlineShoppingBag className="w-6 h-6" />
-                        <span className="absolute -top-1 -right-1 bg-fashion-red text-white text-[9px] w-3 h-3 rounded-full flex items-center justify-center">
+                        <span className="absolute -top-1 -right-1 bg-fashion-moss text-white text-[9px] w-3 h-3 rounded-full flex items-center justify-center">
                             3
                         </span>
                     </button>
@@ -144,7 +146,7 @@ const NavBar = () => {
                     <Link
                         key={index}
                         to={link.path}
-                        className="text-2xl font-playfair font-bold text-fashion-black hover:text-fashion-red transition-colors"
+                        className="text-2xl font-playfair font-bold text-fashion-black hover:text-fashion-moss transition-colors"
                         onClick={toggleMenu}
                     >
                         {link.name}

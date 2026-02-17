@@ -5,11 +5,11 @@ import heroImg from '../../assets/image2.png';
 
 const Hero = () => {
   return (
-    <section className="relative w-full min-h-screen bg-gradient-to-br from-orange-400 to-amber-500 overflow-hidden">
+    <section className="relative w-full min-h-screen bg-fashion-moss overflow-hidden">
 
       {/* 1. Background Typography - Centered & Layered */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <h1 className="text-[20vw] font-black font-playfair text-fashion-red uppercase tracking-tighter opacity-30 select-none z-0 mix-blend-multiply">
+        <h1 className="text-[20vw] font-black font-playfair text-fashion-eggshell uppercase tracking-tighter opacity-10 select-none z-0">
           FASHION
         </h1>
       </div>
@@ -31,15 +31,15 @@ const Hero = () => {
 
           {/* Bottom Left: CTA & Intro */}
           <div className="w-full md:w-1/2 mb-8 md:mb-0 text-left">
-            <h2 className="text-4xl md:text-6xl font-playfair font-bold text-black mb-6 leading-tight">
+            <h2 className="text-4xl md:text-6xl font-playfair font-bold text-fashion-eggshell mb-6 leading-tight">
               Wear the Moment.
             </h2>
-            <p className="text-gray-700 font-poppins text-base mb-8 leading-relaxed max-w-sm font-medium">
+            <p className="text-fashion-eggshell/80 font-poppins text-base mb-8 leading-relaxed max-w-sm font-medium">
               Crafted for the individual who dares to be seen. A curation of bold aesthetics and understated luxury.
             </p>
             <Link
               to="/shop"
-              className="inline-flex items-center justify-center bg-fashion-black text-white px-10 py-4 rounded-full font-poppins font-semibold text-sm uppercase tracking-wide hover:bg-fashion-red transition-all duration-300 shadow-xl group"
+              className="inline-flex items-center justify-center bg-fashion-eggshell text-fashion-moss px-10 py-4 rounded-full font-poppins font-semibold text-sm uppercase tracking-wide hover:bg-white transition-all duration-300 shadow-xl group"
             >
               Explore Collection
               <span className="ml-2 group-hover:translate-x-1 transition-transform">→</span>

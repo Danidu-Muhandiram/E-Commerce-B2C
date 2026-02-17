@@ -6,7 +6,10 @@
   --font-inter: "Inter", sans-serif;
 
   --color-fashion-black: #1a1a1a;
-  --color-fashion-red: #d62828;
+  --color-fashion-red: #576238;
+  /* Mapped to Moss for backward compatibility */
+  --color-fashion-moss: #576238;
+  --color-fashion-eggshell: #F0EAD6;
   --color-fashion-gray: #f4f4f4;
 }
 

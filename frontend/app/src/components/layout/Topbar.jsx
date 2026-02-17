@@ -5,24 +5,24 @@ import { RiTwitterXLine } from 'react-icons/ri';
 
 const TopBar = () => {
   return (
-    <div className="bg-fashion-black text-white py-2 px-6 border-b border-gray-800 z-50 relative">
+    <div className="bg-fashion-eggshell text-fashion-moss py-2 px-6 border-b border-stone-200 z-50 relative">
       <div className="container mx-auto flex justify-between items-center text-xs font-poppins tracking-wide">
         <div className="hidden md:flex items-center space-x-4">
-          <a href="#" className="hover:text-fashion-red transition-colors">
+          <a href="#" className="hover:text-fashion-black transition-colors">
             <TbBrandMeta className="w-4 h-4" />
           </a>
-          <a href="#" className="hover:text-fashion-red transition-colors">
+          <a href="#" className="hover:text-fashion-black transition-colors">
             <IoLogoInstagram className="w-4 h-4" />
           </a>
-          <a href="#" className="hover:text-fashion-red transition-colors">
+          <a href="#" className="hover:text-fashion-black transition-colors">
             <RiTwitterXLine className="w-3 h-3" />
           </a>
         </div>
-        <div className="text-center w-full md:w-auto font-medium">
+        <div className="text-center w-full md:w-auto font-medium text-fashion-black/80">
           <span>COMPLIMENTARY SHIPPING ON ORDERS OVER $200</span>
         </div>
         <div className="hidden md:block">
-          <a href="tel:+1234567890" className="hover:text-fashion-red transition-colors font-medium">
+          <a href="tel:+1234567890" className="hover:text-fashion-black transition-colors font-medium">
             +1 (234) 567-890
           </a>
         </div>
