@@ -39,10 +39,12 @@ const NavBar = () => {
 
     return (
         <nav
-            className={`fixed top-12 left-0 w-full z-40 transition-all duration-300 ${isScrolled ? "bg-white/90 backdrop-blur-md shadow-sm py-2" : "bg-transparent py-4"
+            className={`fixed left-1/2 transform -translate-x-1/2 z-40 transition-all duration-300 ease-in-out ${isScrolled
+                ? "top-4 w-[90%] md:w-[80%] bg-white/80 backdrop-blur-md shadow-lg rounded-full py-3 px-8"
+                : "top-10 w-full bg-transparent py-4 px-6"
                 }`}
         >
-            <div className="container mx-auto px-6 flex justify-between items-center relative">
+            <div className={`flex justify-between items-center relative ${!isScrolled && "container mx-auto"}`}>
 
                 {/* Left Navigation (Desktop) */}
                 <div className="hidden lg:flex space-x-8 items-center w-1/3 justify-start">
@@ -50,7 +52,7 @@ const NavBar = () => {
                         <Link
                             key={index}
                             to={link.path}
-                            className="text-xs font-poppins font-semibold uppercase tracking-widest text-gray-800 hover:text-fashion-red transition-colors"
+                            className={`text-xs font-poppins font-bold uppercase tracking-widest transition-colors ${isScrolled ? "text-fashion-black hover:text-fashion-red" : "text-fashion-black hover:text-white"}`}
                         >
                             {link.name}
                         </Link>
@@ -58,10 +60,44 @@ const NavBar = () => {
                 </div>
 
                 {/* Logo (Center) */}
-                <div className="w-full lg:w-1/3 flex justify-center lg:absolute lg:left-1/2 lg:transform lg:-translate-x-1/2">
-                    <Link to="/" className="text-3xl font-playfair font-black tracking-tighter text-fashion-black">
-                        Veloura<span className="text-fashion-red">.</span>
-                    </Link>
+                {/* Logo (Center) */}
+                <div className="w-full lg:w-1/3 flex justify-center lg:absolute lg:left-1/2 lg:transform lg:-translate-x-1/2 z-50">
+                    <div className="relative flex items-center justify-center -mt-6"> {/* Negative margin to pull up to TopBar */}
+
+                        {/* SVG Background Tab */}
+                        <div
+                            className={`absolute left-1/2 -translate-x-1/2 top-0 
+            w-[460px] h-[90px] 
+            transition-opacity duration-500 
+            pointer-events-none
+            ${isScrolled ? "opacity-0" : "opacity-100"}`}
+                        >
+                            <svg
+                                viewBox="0 0 460 75"
+                                xmlns="http://www.w3.org/2000/svg"
+                                className="w-full h-full"
+                            >
+                                <path
+                                    fill="#1a1a1a"
+                                    d="
+            M 0,0 
+            C 80,0 120,2 160,15 
+            C 185,25 200,45 230,45 
+            H 230 
+            C 260,45 275,25 300,15 
+            C 340,2 380,0 460,0 
+            Z
+        "
+                                />
+                            </svg>
+                        </div>
+
+
+                        <Link to="/" className={`relative z-10 text-3xl font-playfair font-black tracking-tighter transition-colors duration-300 py-6 px-10 ${isScrolled ? "text-fashion-black" : "text-white"
+                            }`}>
+                            Veloura
+                        </Link>
+                    </div>
                 </div>
 
                 {/* Right Navigation & Actions (Desktop) */}
@@ -70,20 +106,20 @@ const NavBar = () => {
                         <Link
                             key={index}
                             to={link.path}
-                            className="text-xs font-poppins font-semibold uppercase tracking-widest text-gray-800 hover:text-fashion-red transition-colors"
+                            className={`text-xs font-poppins font-bold uppercase tracking-widest transition-colors ${isScrolled ? "text-fashion-black hover:text-fashion-red" : "text-fashion-black hover:text-white"}`}
                         >
                             {link.name}
                         </Link>
                     ))}
 
                     {/* Sign Up Button */}
-                    <Link to="/signup" className="text-xs font-poppins font-bold uppercase tracking-widest bg-fashion-black text-white px-5 py-2 rounded-full hover:bg-fashion-red transition-colors">
+                    <Link to="/signup" className="text-xs font-poppins font-bold uppercase tracking-widest bg-fashion-black text-white px-6 py-2 rounded-full hover:bg-fashion-red transition-colors shadow-md">
                         Sign Up
                     </Link>
 
                     {/* Cart Icon */}
-                    <button className="relative text-fashion-black hover:text-fashion-red transition-colors">
-                        <HiOutlineShoppingBag className="w-5 h-5" />
+                    <button className={`relative transition-colors ${isScrolled ? "text-fashion-black hover:text-fashion-red" : "text-fashion-black hover:text-white"}`}>
+                        <HiOutlineShoppingBag className="w-6 h-6" />
                         <span className="absolute -top-1 -right-1 bg-fashion-red text-white text-[9px] w-3 h-3 rounded-full flex items-center justify-center">
                             3
                         </span>
@@ -92,7 +128,7 @@ const NavBar = () => {
 
                 {/* Mobile Menu Button */}
                 <button
-                    className="lg:hidden text-fashion-black z-50 absolute right-6"
+                    className="lg:hidden text-fashion-black z-50 absolute right-0"
                     onClick={toggleMenu}
                 >
                     {isMenuOpen ? <HiX className="w-7 h-7" /> : <HiMenuAlt3 className="w-7 h-7" />}
