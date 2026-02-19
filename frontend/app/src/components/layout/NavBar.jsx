@@ -52,7 +52,7 @@ const NavBar = () => {
                         <Link
                             key={index}
                             to={link.path}
-                            className={`text-xs font-poppins font-bold uppercase tracking-widest transition-colors ${isScrolled ? "text-fashion-black hover:text-fashion-moss" : "text-fashion-black hover:text-fashion-eggshell"}`}
+                            className={`text-xs font-poppins font-bold uppercase tracking-widest transition-colors ${isScrolled ? "text-fashion-black hover:text-fashion-moss" : "text-fashion-eggshell hover:text-white"}`}
                         >
                             {link.name}
                         </Link>
@@ -66,7 +66,7 @@ const NavBar = () => {
 
                         {/* SVG Background Tab */}
                         <div
-                            className={`absolute left-1/2 -translate-x-1/2 top-0 
+                            className={`absolute left-1/2 -translate-x-1/2 -top-1 
                                     w-[420px] h-[75px] 
                                     transition-opacity duration-500 
                                     pointer-events-none
@@ -108,7 +108,7 @@ const NavBar = () => {
                         <Link
                             key={index}
                             to={link.path}
-                            className={`text-xs font-poppins font-bold uppercase tracking-widest transition-colors ${isScrolled ? "text-fashion-black hover:text-fashion-moss" : "text-fashion-black hover:text-fashion-eggshell"}`}
+                            className={`text-xs font-poppins font-bold uppercase tracking-widest transition-colors ${isScrolled ? "text-fashion-black hover:text-fashion-moss" : "text-fashion-eggshell hover:text-white"}`}
                         >
                             {link.name}
                         </Link>
@@ -120,7 +120,7 @@ const NavBar = () => {
                     </Link>
 
                     {/* Cart Icon */}
-                    <button className={`relative transition-colors ${isScrolled ? "text-fashion-black hover:text-fashion-moss" : "text-fashion-black hover:text-fashion-eggshell"}`}>
+                    <button className={`relative transition-colors ${isScrolled ? "text-fashion-black hover:text-fashion-moss" : "text-fashion-eggshell hover:text-white"}`}>
                         <HiOutlineShoppingBag className="w-6 h-6" />
                         <span className="absolute -top-1 -right-1 bg-fashion-moss text-white text-[9px] w-3 h-3 rounded-full flex items-center justify-center">
                             3

@@ -9,8 +9,8 @@ const Hero = () => {
 
       {/* 1. Background Typography - Centered & Layered */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <h1 className="text-[20vw] font-black font-playfair text-fashion-eggshell uppercase tracking-tighter opacity-10 select-none z-0">
-          FASHION
+        <h1 className="text-[20vw] font-black font-playfair text-fashion-eggshell uppercase tracking-tighter opacity-3 select-none z-0">
+          TIMELESS
         </h1>
       </div>
 
@@ -19,7 +19,7 @@ const Hero = () => {
         <img
           src={heroImg}
           alt="Fashion Collection"
-          className="h-[120%] md:h-[130%] object-contain drop-shadow-2xl translate-y-48"
+          className="h-[120%] md:h-[130%] object-contain drop-shadow-2xl translate-y-60"
         />
       </div>
 
@@ -50,6 +50,8 @@ const Hero = () => {
 
         </div>
       </div>
+      {/* Gradient Fade at Bottom */}
+      <div className="absolute bottom-0 left-0 w-full h-28 bg-gradient-to-t from-fashion-moss via-fashion-moss/80 to-transparent z-10 pointer-events-none"></div>
     </section>
   );
 };
