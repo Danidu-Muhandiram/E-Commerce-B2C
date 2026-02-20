@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FaArrowRight, FaArrowLeft } from 'react-icons/fa';
-import heroImg from '../../assets/image2.png';
+import testImg from '../../assets/testimage2.png';
 
 const slides = [
   {
@@ -9,21 +9,21 @@ const slides = [
     bgText: "TIMELESS",
     title: "Wear the Moment.",
     subtitle: "Crafted for the individual who dares to be seen. A curation of bold aesthetics and understated luxury.",
-    image: heroImg
+    image: testImg
   },
   {
     id: 2,
     bgText: "ELEGANCE",
     title: "Elevate Style.",
     subtitle: "Redefining modern luxury with cuts that breathe and fabrics that move with you. The new standard of elegance.",
-    image: heroImg
+    image: testImg
   },
   {
     id: 3,
     bgText: "MODERN",
     title: "Urban Chic.",
     subtitle: "For the bold and the beautiful. Discover the trends that are shaping the future of fashion today.",
-    image: heroImg
+    image: testImg
   }
 ];
 
@@ -49,27 +49,29 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="relative w-full h-[calc(100vh-80px)] md:h-screen flex flex-col md:flex-row bg-fashion-moss overflow-hidden">
+    <section className="relative w-full h-[calc(100vh-80px)] md:h-[calc(100vh-40px)] flex flex-col md:flex-row bg-fashion-moss overflow-hidden">
 
-      {/* LEFT SIDE: Main Content (70%) */}
-      <div className="relative w-full md:w-[70%] h-full flex flex-col justify-between overflow-hidden group">
+      {/* LEFT SIDE: Main Content (66%) */}
+      <div className="relative w-full md:w-2/3 h-full flex flex-col justify-between overflow-hidden group">
 
         {/* Background Typography */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
-          <h1 key={`bg-${current}`} className="text-[15vw] md:text-[18vw] font-black font-playfair text-fashion-eggshell/5 uppercase tracking-tighter select-none animate-pulse-slow transition-all duration-700">
+          <h1 key={`bg-${current}`} className="text-[15vw] md:text-[18vw] font-black font-playfair text-fashion-eggshell/10 uppercase tracking-tighter select-none animate-pulse-slow transition-all duration-700">
             {slides[current].bgText}
           </h1>
         </div>
 
-        {/* Main Image Layer */}
-        <div className="absolute inset-0 flex items-end justify-center z-10 pointer-events-none">
+        {/* Main Image Layer (Background Cover) */}
+        <div className="absolute inset-0 z-10 transition-transform duration-1000 ease-out">
+          <div className="absolute inset-0 bg-black/20 z-10"></div> {/* Dark Overlay for text contrast */}
           <img
             key={`img-${current}`}
             src={slides[current].image}
             alt="Fashion Model"
-            className="h-[85%] md:h-[110%] object-contain drop-shadow-2xl translate-y-10 md:translate-y-20 transition-all duration-1000 animate-slide-up"
+            className="w-full h-full object-cover object-[75%_15%] transition-opacity duration-1000 animate-fade-in"
           />
         </div>
+
 
         {/* Content Layer */}
         <div className="absolute inset-0 z-20 flex flex-col justify-end pb-16 md:pb-12 px-6 md:px-16 pointer-events-none">
@@ -101,17 +103,11 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* RIGHT SIDE: Navigation / Mini Slider (30%) */}
-      <div className="hidden md:flex w-[30%] h-full bg-[#E5DCC5] relative flex-col justify-center px-8 border-l border-fashion-moss/10 z-30">
-
-        {/* Top Decoration */}
-        <div className="absolute top-8 left-8 right-8 flex justify-between items-center text-fashion-moss/60 text-xs font-bold tracking-widest uppercase">
-          <span>Seasonal</span>
-          <span>Accessories</span>
-        </div>
+      {/* RIGHT SIDE: Navigation / Mini Slider (33%) */}
+      <div className="hidden md:flex w-1/3 h-full bg-[#E5DCC5] relative flex-col justify-center px-8 border-l border-fashion-moss/10 z-30">
 
         {/* Carousel Container */}
-        <div className="flex flex-col gap-6 max-h-[80vh]">
+        <div className="flex flex-col gap-6 max-h-[80vh] mt-16">
           {slides.map((slide, index) => {
             const isActive = index === current;
             return (

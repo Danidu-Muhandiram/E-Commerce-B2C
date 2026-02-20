@@ -11,7 +11,7 @@ const UserLayout = () => {
                 <NavBar />
             </header>
             {/*Main Content*/}
-            <main>
+            <main className="pt-10">
                 <Outlet />
             </main>
             {/*Footer*/}

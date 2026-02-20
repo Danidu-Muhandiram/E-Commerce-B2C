@@ -5,8 +5,8 @@ import { RiTwitterXLine } from 'react-icons/ri';
 
 const TopBar = () => {
   return (
-    <div className="bg-fashion-eggshell text-fashion-moss py-2 px-6 border-b border-stone-200 z-50 relative">
-      <div className="container mx-auto flex justify-between items-center text-xs font-poppins tracking-wide">
+    <div className="bg-fashion-eggshell text-fashion-moss h-10 flex items-center px-6 border-b border-stone-200 z-50 relative">
+      <div className="container mx-auto flex justify-between items-center text-xs font-poppins tracking-wide w-full">
         <div className="hidden md:flex items-center space-x-4">
           <a href="#" className="hover:text-fashion-black transition-colors">
             <TbBrandMeta className="w-4 h-4" />
