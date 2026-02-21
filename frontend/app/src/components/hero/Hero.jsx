@@ -63,7 +63,8 @@ const Hero = () => {
 
         {/* Main Image Layer (Background Cover) */}
         <div className="absolute inset-0 z-10 transition-transform duration-1000 ease-out">
-          <div className="absolute inset-0 bg-black/20 z-10"></div> {/* Dark Overlay for text contrast */}
+          <div className="absolute inset-0 bg-black/10 z-10"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/2 to-transparent z-10"></div>
           <img
             key={`img-${current}`}
             src={slides[current].image}
@@ -73,29 +74,52 @@ const Hero = () => {
         </div>
 
 
+        {/* Decorative Vertical Text */}
+        <div className="hidden lg:flex absolute top-[40%] left-6 bottom-0 z-30 pointer-events-none items-center" style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}>
+          <span className="text-fashion-eggshell/40 font-poppins text-[10px] tracking-[0.5em] uppercase whitespace-nowrap">
+            The Veloura Editorial • Volume 01
+          </span>
+        </div>
+
         {/* Content Layer */}
-        <div className="absolute inset-0 z-20 flex flex-col justify-end pb-16 md:pb-12 px-6 md:px-16 pointer-events-none">
-          <div className="max-w-2xl pointer-events-auto">
-            <h2 key={`title-${current}`} className="text-4xl md:text-7xl font-playfair font-bold text-fashion-eggshell mb-4 leading-none animate-slide-in-left">
+        <div className="absolute inset-0 z-20 flex flex-col justify-end pb-16 md:pb-16 px-6 md:px-24 pointer-events-none">
+          <div className="max-w-2xl pointer-events-auto relative">
+
+            {/* Fine Line & Mini Heading */}
+            <div className="flex items-center gap-4 mb-6 animate-fade-in-up">
+              <div className="w-6 h-[1px] bg-fashion-eggshell/60" />
+              <span className="text-fashion-eggshell/80 font-poppins text-[10px] tracking-[0.3em] uppercase">
+                Discover The {slides[current].bgText} Collection
+              </span>
+            </div>
+
+            <h2 key={`title-${current}`} className="text-5xl md:text-7xl font-playfair font-bold text-fashion-eggshell mb-6 leading-[1.1] animate-slide-in-left tracking-tight">
               {slides[current].title}
             </h2>
-            <p key={`sub-${current}`} className="text-fashion-eggshell/80 font-poppins text-sm md:text-lg mb-8 leading-relaxed max-w-lg font-medium animate-fade-in-up">
+            <p key={`sub-${current}`} className="text-fashion-eggshell/70 font-poppins text-sm md:text-base mb-10 leading-relaxed max-w-md font-normal animate-fade-in-up">
               {slides[current].subtitle}
             </p>
-            <div className="flex gap-4">
+
+            <div className="flex gap-4 items-center">
+              {/* Premium Ghost Button */}
               <Link
                 to="/shop"
-                className="inline-flex items-center justify-center bg-fashion-eggshell text-fashion-moss px-8 py-3 rounded-full font-poppins font-semibold text-sm uppercase tracking-wide hover:bg-white hover:scale-105 transition-all duration-300 shadow-xl"
+                className="group relative inline-flex items-center justify-center bg-transparent text-fashion-eggshell px-8 py-3.5 font-poppins font-medium text-[11px] uppercase tracking-[0.2em] overflow-hidden border border-fashion-eggshell/40 transition-colors duration-500 hover:border-fashion-eggshell"
               >
-                Explore Collection
+                <div className="absolute inset-0 bg-fashion-eggshell transform scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-500 ease-out z-0" />
+                <span className="relative z-10 flex items-center gap-3 group-hover:text-fashion-moss transition-colors duration-500">
+                  Explore Collection
+                  <FaArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform duration-300" />
+                </span>
               </Link>
+
               {/* Mobile Navigation Controls (Visible only on mobile) */}
-              <div className="flex md:hidden gap-2">
-                <button onClick={prevSlide} className="w-12 h-12 rounded-full border border-fashion-eggshell/30 flex items-center justify-center text-fashion-eggshell hover:bg-fashion-eggshell hover:text-fashion-moss transition">
-                  <FaArrowLeft />
+              <div className="flex md:hidden gap-2 ml-4">
+                <button onClick={prevSlide} className="w-10 h-10 rounded-full border border-fashion-eggshell/30 flex items-center justify-center text-fashion-eggshell hover:bg-fashion-eggshell hover:text-fashion-moss transition">
+                  <FaArrowLeft size={12} />
                 </button>
-                <button onClick={nextSlide} className="w-12 h-12 rounded-full border border-fashion-eggshell/30 flex items-center justify-center text-fashion-eggshell hover:bg-fashion-eggshell hover:text-fashion-moss transition">
-                  <FaArrowRight />
+                <button onClick={nextSlide} className="w-10 h-10 rounded-full border border-fashion-eggshell/30 flex items-center justify-center text-fashion-eggshell hover:bg-fashion-eggshell hover:text-fashion-moss transition">
+                  <FaArrowRight size={12} />
                 </button>
               </div>
             </div>

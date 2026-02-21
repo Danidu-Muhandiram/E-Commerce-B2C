@@ -115,8 +115,9 @@ const NavBar = () => {
                     ))}
 
                     {/* Sign Up Button */}
-                    <Link to="/signup" className="text-xs font-poppins font-bold uppercase tracking-widest bg-fashion-black text-fashion-eggshell px-6 py-2 rounded-full hover:bg-fashion-moss transition-colors shadow-md">
-                        Sign Up
+                    <Link to="/signup" className={`group relative inline-flex items-center justify-center text-xs font-poppins font-bold uppercase tracking-widest px-6 py-2 overflow-hidden transition-colors border ${isScrolled ? "border-fashion-black text-fashion-black" : "border-fashion-eggshell text-fashion-eggshell"}`}>
+                        <div className={`absolute inset-0 transform scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-500 ease-out z-0 ${isScrolled ? "bg-fashion-black" : "bg-fashion-eggshell"}`} />
+                        <span className={`relative z-10 transition-colors duration-500 ${isScrolled ? "group-hover:text-fashion-eggshell" : "group-hover:text-fashion-moss"}`}>Sign Up</span>
                     </Link>
 
                     {/* Cart Icon */}
