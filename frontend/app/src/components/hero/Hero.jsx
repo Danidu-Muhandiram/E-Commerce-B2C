@@ -75,7 +75,7 @@ const Hero = () => {
 
 
         {/* Decorative Vertical Text */}
-        <div className="hidden lg:flex absolute top-[40%] left-6 bottom-0 z-30 pointer-events-none items-center" style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}>
+        <div className="hidden lg:flex absolute top-[20%] left-6 z-30 pointer-events-none" style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}>
           <span className="text-fashion-eggshell/40 font-poppins text-[10px] tracking-[0.5em] uppercase whitespace-nowrap">
             The Veloura Editorial • Volume 01
           </span>
