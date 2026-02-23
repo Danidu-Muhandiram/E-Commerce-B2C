@@ -73,15 +73,22 @@ const Hero = () => {
 
         {/* Main Image Layer (Background Cover & Overlays) */}
         <div className="absolute inset-0 z-10 transition-transform duration-1000 ease-out">
+
           {/* Subtle 5% overlay */}
           <div className="absolute inset-0 bg-fashion-black/5 z-10"></div>
 
-          {/* Vignette & Soft Gradient overlay */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,rgba(0,0,0,0.1)_100%)] z-10"></div>
-          <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-black/5 to-transparent z-10"></div>
+          {/* Vignette & Soft Moss Gradient overlays */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,rgba(0,0,0,0.1)_100%)] z-10 pointer-events-none"></div>
 
-          {/* Noise/Grain Texture (using CSS backdrop filter or pure CSS styling pattern) */}
-          <div className="absolute inset-0 z-[11] opacity-[0.02] mix-blend-overlay" style={{ backgroundImage: "url('data:image/svg+xml,%3Csvg viewBox=\"0 0 200 200\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cfilter id=\"noiseFilter\"%3E%3CfeTurbulence type=\"fractalNoise\" baseFrequency=\"0.65\" numOctaves=\"3\" stitchTiles=\"stitch\"/%3E%3C/filter%3E%3Crect width=\"100%25\" height=\"100%25\" filter=\"url(%23noiseFilter)\"/%3E%3C/svg%3E')" }}></div>
+          {/* Top Navbar Shadow */}
+          <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-fashion-black/20 to-transparent z-10 pointer-events-none"></div>
+
+          {/* Left/Bottom Content Area Shadow */}
+          <div className="absolute inset-0 bg-gradient-to-r from-fashion-black/30 via-fashion-black/5 to-transparent w-full md:w-[65%] z-10 pointer-events-none"></div>
+          <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-fashion-black/40 via-fashion-black/10 to-transparent z-10 pointer-events-none"></div>
+
+          {/* Noise/Grain Texture */}
+          <div className="absolute inset-0 z-[11] opacity-[0.02] mix-blend-overlay pointer-events-none" style={{ backgroundImage: "url('data:image/svg+xml,%3Csvg viewBox=\"0 0 200 200\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cfilter id=\"noiseFilter\"%3E%3CfeTurbulence type=\"fractalNoise\" baseFrequency=\"0.65\" numOctaves=\"3\" stitchTiles=\"stitch\"/%3E%3C/filter%3E%3Crect width=\"100%25\" height=\"100%25\" filter=\"url(%23noiseFilter)\"/%3E%3C/svg%3E')" }}></div>
 
           <img
             key={`img-${current}`}
@@ -143,23 +150,43 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Elegant Slider Indicators (01 — 02) */}
-      <div className="absolute bottom-12 left-6 md:left-24 lg:left-1/2 lg:-translate-x-1/2 flex items-center gap-6 z-30 pointer-events-auto mix-blend-difference">
-        {slides.map((_, index) => {
-          const isActive = index === current;
-          return (
-            <div
-              key={index}
-              className="flex items-center gap-4 cursor-pointer group"
-              onClick={() => handleSlideChange(index)}
-            >
-              <span className={`font-poppins text-xs font-semibold tracking-widest transition-colors duration-500 ${isActive ? 'text-fashion-eggshell' : 'text-fashion-eggshell/40 group-hover:text-fashion-eggshell/70'}`}>
-                0{index + 1}
-              </span>
-              <div className={`h-[1px] transition-all duration-700 ease-in-out ${isActive ? 'w-12 bg-fashion-eggshell' : 'w-4 bg-fashion-eggshell/30 group-hover:w-8 group-hover:bg-fashion-eggshell/50'}`} />
-            </div>
-          );
-        })}
+      {/* Redesigned Slider Indicators (Bottom Right Wala) */}
+      <div className="absolute bottom-12 right-8 md:right-24 z-30 flex items-center gap-6 pointer-events-auto">
+        <button
+          onClick={prevSlide}
+          className="w-10 h-10 rounded-full border border-fashion-eggshell/30 flex items-center justify-center text-fashion-eggshell hover:bg-fashion-eggshell hover:text-fashion-moss transition-colors duration-300"
+          aria-label="Previous Slide"
+        >
+          <FaArrowLeft size={12} />
+        </button>
+
+        <div className="relative flex items-center justify-center w-24 h-24 rounded-full border border-fashion-eggshell/20 cursor-pointer overflow-hidden backdrop-blur-sm group group-hover:border-fashion-eggshell/50 transition-colors duration-500">
+          <svg className="absolute inset-0 w-full h-full -rotate-90 pointer-events-none" viewBox="0 0 100 100">
+            <circle
+              cx="50"
+              cy="50"
+              r="48"
+              fill="none"
+              stroke="rgba(240, 234, 214, 0.4)"
+              strokeWidth="2"
+              strokeDasharray="301.59"
+              strokeDashoffset={301.59 - (301.59 * (current + 1)) / slides.length}
+              className="transition-all duration-700 ease-out"
+            />
+          </svg>
+          <div className="flex items-baseline text-fashion-eggshell font-playfair pl-2">
+            <span className="text-4xl font-black">{current + 1}</span>
+            <span className="text-fashion-eggshell/50 text-xs ml-1 font-medium">/ {slides.length}</span>
+          </div>
+        </div>
+
+        <button
+          onClick={nextSlide}
+          className="w-10 h-10 rounded-full border border-fashion-eggshell/30 flex items-center justify-center text-fashion-eggshell hover:bg-fashion-eggshell hover:text-fashion-moss transition-colors duration-300"
+          aria-label="Next Slide"
+        >
+          <FaArrowRight size={12} />
+        </button>
       </div>
 
     </section>
