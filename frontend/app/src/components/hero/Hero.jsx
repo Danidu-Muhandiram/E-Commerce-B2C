@@ -64,13 +64,6 @@ const Hero = () => {
       {/* Main Content (100%) */}
       <div className="relative w-full h-full flex flex-col justify-between overflow-hidden group">
 
-        {/* Background Typography */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
-          <h1 key={`bg-${current}`} className="text-[15vw] md:text-[18vw] font-black font-playfair text-fashion-eggshell/5 uppercase tracking-tighter select-none animate-pulse-slow transition-all duration-700">
-            {slides[current].bgText}
-          </h1>
-        </div>
-
         {/* Main Image Layer (Background Cover & Overlays) */}
         <div className="absolute inset-0 z-10 transition-transform duration-1000 ease-out">
 
