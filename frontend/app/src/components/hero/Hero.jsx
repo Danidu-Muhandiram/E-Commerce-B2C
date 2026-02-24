@@ -76,9 +76,11 @@ const Hero = () => {
           {/* Top Navbar Shadow */}
           <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-fashion-black/20 to-transparent z-10 pointer-events-none"></div>
 
-          {/* Left/Bottom Content Area Shadow */}
-          <div className="absolute inset-0 bg-gradient-to-r from-fashion-black/30 via-fashion-black/5 to-transparent w-full md:w-[65%] z-10 pointer-events-none"></div>
-          <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-fashion-black/40 via-fashion-black/10 to-transparent z-10 pointer-events-none"></div>
+          {/* Left/Bottom Content Area Shadow for Text Contrast */}
+          <div className="absolute inset-0 bg-gradient-to-r from-fashion-black/60 via-fashion-black/20 to-transparent w-full md:from-fashion-black/30 md:via-fashion-black/5 md:w-[65%] z-10 pointer-events-none"></div>
+
+          {/* Heavy Bottom Gradient specifically for Mobile Text */}
+          <div className="absolute inset-x-0 bottom-0 h-[65%] md:h-1/2 bg-gradient-to-t from-fashion-black/80 via-fashion-black/40 to-transparent md:from-fashion-black/40 md:via-fashion-black/10 z-10 pointer-events-none"></div>
 
           {/* Noise/Grain Texture */}
           <div className="absolute inset-0 z-[11] opacity-[0.02] mix-blend-overlay pointer-events-none" style={{ backgroundImage: "url('data:image/svg+xml,%3Csvg viewBox=\"0 0 200 200\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cfilter id=\"noiseFilter\"%3E%3CfeTurbulence type=\"fractalNoise\" baseFrequency=\"0.65\" numOctaves=\"3\" stitchTiles=\"stitch\"/%3E%3C/filter%3E%3Crect width=\"100%25\" height=\"100%25\" filter=\"url(%23noiseFilter)\"/%3E%3C/svg%3E')" }}></div>
@@ -99,7 +101,7 @@ const Hero = () => {
         </div>
 
         {/* Content Layer */}
-        <div className="absolute inset-0 z-20 flex flex-col justify-end pb-16 md:pb-16 px-6 md:px-24 pointer-events-none">
+        <div className="absolute inset-0 z-20 flex flex-col justify-end pb-28 md:pb-16 px-6 md:px-24 pointer-events-none">
           <div className="max-w-2xl pointer-events-auto relative">
 
             {/* Fine Line & Mini Heading */}
@@ -128,16 +130,6 @@ const Hero = () => {
                   <FaArrowRight className="w-3 h-3 opacity-70 group-hover:translate-x-2 group-hover:opacity-100 transition-all duration-300" />
                 </span>
               </Link>
-
-              {/* Mobile Navigation Controls (Visible only on mobile) */}
-              <div className="flex md:hidden gap-2 ml-4">
-                <button onClick={prevSlide} className="w-10 h-10 rounded-full border border-fashion-eggshell/30 flex items-center justify-center text-fashion-eggshell hover:bg-fashion-eggshell hover:text-fashion-moss transition">
-                  <FaArrowLeft size={12} />
-                </button>
-                <button onClick={nextSlide} className="w-10 h-10 rounded-full border border-fashion-eggshell/30 flex items-center justify-center text-fashion-eggshell hover:bg-fashion-eggshell hover:text-fashion-moss transition">
-                  <FaArrowRight size={12} />
-                </button>
-              </div>
             </div>
           </div>
         </div>
@@ -173,7 +165,7 @@ const Hero = () => {
       </div>
 
       {/* Redesigned Slider Indicators (Bottom Right Wala) */}
-      <div className="absolute bottom-12 right-8 md:right-24 z-30 flex items-center gap-6 pointer-events-auto">
+      <div className="absolute bottom-8 md:bottom-12 right-6 md:right-24 z-30 flex items-center gap-4 md:gap-6 pointer-events-auto scale-90 md:scale-100 origin-bottom-right">
         <button
           onClick={prevSlide}
           className="w-10 h-10 rounded-full border border-fashion-eggshell/30 flex items-center justify-center text-fashion-eggshell hover:bg-fashion-eggshell hover:text-fashion-moss transition-colors duration-300"

@@ -66,7 +66,7 @@ const NavBar = () => {
                         {/* SVG Background Tab */}
                         <div
                             className={`absolute left-1/2 -translate-x-1/2 -top-1 
-                                    w-[420px] h-[75px] 
+                                    w-[280px] md:w-[420px] h-[55px] md:h-[75px] 
                                     transition-all duration-500 ease-in-out
                                     pointer-events-none origin-top
                                     ${isScrolled ? "opacity-0 -translate-y-4" : "opacity-100 translate-y-0"}`}
@@ -75,6 +75,7 @@ const NavBar = () => {
                                 viewBox="0 0 420 75"
                                 xmlns="http://www.w3.org/2000/svg"
                                 className="w-full h-full"
+                                preserveAspectRatio="none"
                             >
                                 <path
                                     fill="#F0EAD6"
@@ -94,7 +95,7 @@ const NavBar = () => {
                         </div>
 
 
-                        <Link to="/" className={`relative z-10 text-4xl font-playfair font-black tracking-tighter transition-all duration-500 px-10 text-fashion-moss ${isScrolled ? "py-2" : "py-6"
+                        <Link to="/" className={`relative z-10 text-3xl md:text-4xl font-playfair font-black tracking-tighter transition-all duration-500 px-6 md:px-10 text-fashion-moss ${isScrolled ? "py-2" : "py-3 md:py-6"
                             }`}>
                             Veloura
                         </Link>
