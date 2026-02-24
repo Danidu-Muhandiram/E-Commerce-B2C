@@ -150,6 +150,35 @@ const Hero = () => {
         </div>
       </div>
 
+      {/* Next Slide Preview Card (Right Side Middle) */}
+      <div
+        className="absolute top-[40%] -translate-y-1/2 right-8 md:right-24 z-30 hidden lg:flex items-center gap-6 pointer-events-auto cursor-pointer group"
+        onClick={nextSlide}
+      >
+        {/* Text Area (Left of Image) */}
+        <div className="flex flex-col items-end gap-2 transform group-hover:-translate-x-2 transition-transform duration-500">
+          <div className="flex items-center gap-3 w-full justify-end mb-1">
+            <span className="text-fashion-eggshell/60 font-poppins text-[10px] tracking-[0.4em] uppercase group-hover:text-fashion-eggshell transition-colors duration-300">
+              Up Next
+            </span>
+            <div className="h-[1px] w-8 bg-fashion-eggshell/40 group-hover:bg-fashion-eggshell group-hover:w-16 transition-all duration-500" />
+          </div>
+          <h4 className="text-fashion-eggshell font-playfair text-xl md:text-2xl leading-tight tracking-wide text-right drop-shadow-md">
+            {slides[(current + 1) % slides.length].title}
+          </h4>
+        </div>
+
+        {/* Sleek Image Card (No Title) */}
+        <div className="relative w-40 h-56 md:w-56 md:h-80 overflow-hidden border border-fashion-eggshell/20 group-hover:border-fashion-eggshell/60 transition-all duration-500 shadow-xl">
+          <div className="absolute inset-0 bg-fashion-black/20 group-hover:bg-fashion-black/0 transition-colors duration-500 z-10" />
+          <img
+            src={slides[(current + 1) % slides.length].image}
+            alt="Next Slide"
+            className="w-full h-full object-cover object-center transform scale-100 group-hover:scale-110 transition-transform duration-700 ease-out"
+          />
+        </div>
+      </div>
+
       {/* Redesigned Slider Indicators (Bottom Right Wala) */}
       <div className="absolute bottom-12 right-8 md:right-24 z-30 flex items-center gap-6 pointer-events-auto">
         <button
@@ -160,7 +189,7 @@ const Hero = () => {
           <FaArrowLeft size={12} />
         </button>
 
-        <div className="relative flex items-center justify-center w-24 h-24 rounded-full border border-fashion-eggshell/20 cursor-pointer overflow-hidden backdrop-blur-sm group group-hover:border-fashion-eggshell/50 transition-colors duration-500">
+        <div className="relative flex items-center justify-center w-16 h-16 md:w-[72px] md:h-[72px] rounded-full border border-fashion-eggshell/20 cursor-pointer overflow-hidden backdrop-blur-sm group group-hover:border-fashion-eggshell/50 transition-colors duration-500">
           <svg className="absolute inset-0 w-full h-full -rotate-90 pointer-events-none" viewBox="0 0 100 100">
             <circle
               cx="50"
@@ -174,9 +203,9 @@ const Hero = () => {
               className="transition-all duration-700 ease-out"
             />
           </svg>
-          <div className="flex items-baseline text-fashion-eggshell font-playfair pl-2">
-            <span className="text-4xl font-black">{current + 1}</span>
-            <span className="text-fashion-eggshell/50 text-xs ml-1 font-medium">/ {slides.length}</span>
+          <div className="flex items-baseline text-fashion-eggshell font-playfair pl-1 pt-1">
+            <span className="text-2xl md:text-3xl font-black">{current + 1}</span>
+            <span className="text-fashion-eggshell/50 text-[10px] md:text-xs ml-1 font-medium">/ {slides.length}</span>
           </div>
         </div>
 
