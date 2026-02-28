@@ -11,7 +11,7 @@ const collections = [
         tag: 'NEW ARRIVALS',
         image: testImg,
         span: 'md:col-span-8',
-        height: 'h-[500px] md:h-[700px]',
+        height: 'h-[450px] md:h-[650px]',
     },
     {
         id: 2,
@@ -20,7 +20,7 @@ const collections = [
         tag: 'TRENDING',
         image: testImg,
         span: 'md:col-span-4',
-        height: 'h-[400px] md:h-[340px]',
+        height: 'h-[320px] md:h-[313px]',
     },
     {
         id: 3,
@@ -29,17 +29,17 @@ const collections = [
         tag: 'ESSENTIALS',
         image: testImg,
         span: 'md:col-span-4',
-        height: 'h-[400px] md:h-[340px]',
+        height: 'h-[320px] md:h-[313px]',
     },
 ];
 
 const PopularCollections = () => {
     return (
-        <section className="bg-fashion-eggshell py-24 px-6 md:px-16 w-full relative z-10">
+        <section className="bg-fashion-eggshell py-16 md:py-20 px-6 md:px-16 w-full relative z-10">
             <div className="max-w-[1400px] mx-auto">
 
                 {/* Section Header */}
-                <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+                <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-8">
                     <div className="max-w-2xl">
                         {/* Fine Line & Mini Heading */}
                         <div className="flex items-center gap-4 mb-6">
@@ -49,7 +49,7 @@ const PopularCollections = () => {
                             </span>
                         </div>
 
-                        <h2 className="text-5xl md:text-6xl font-playfair font-bold text-fashion-black leading-[1.1] tracking-tight">
+                        <h2 className="text-3xl md:text-4xl font-playfair font-bold text-fashion-black leading-[1.1] tracking-tight">
                             Popular Collections.
                         </h2>
                     </div>
@@ -85,7 +85,7 @@ const PopularCollections = () => {
                             </div>
 
                             <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
-                                <h3 className="text-4xl md:text-5xl font-playfair font-bold text-fashion-eggshell mb-3">
+                                <h3 className="text-3xl md:text-4xl font-playfair font-bold text-fashion-eggshell mb-3">
                                     {collections[0].title}
                                 </h3>
                                 <p className="text-fashion-eggshell/80 font-poppins text-sm max-w-md mb-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
@@ -119,7 +119,7 @@ const PopularCollections = () => {
                                     </div>
 
                                     <div className="transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500 ease-out">
-                                        <h3 className="text-2xl font-playfair font-bold text-fashion-eggshell mb-2">
+                                        <h3 className="text-xl md:text-2xl font-playfair font-bold text-fashion-eggshell mb-2">
                                             {collection.title}
                                         </h3>
                                         <div className="inline-flex items-center gap-2 text-fashion-eggshell/80 group-hover:text-fashion-eggshell font-poppins text-[10px] uppercase tracking-[0.1em] transition-colors duration-300">
