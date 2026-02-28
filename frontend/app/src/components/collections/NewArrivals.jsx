@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaArrowRight } from 'react-icons/fa';
-import new1 from '../../assets/new1.jpg';
-import new2 from '../../assets/new2.jpg';
-import new3 from '../../assets/new3.jpg';
-import new5 from '../../assets/new5.jpg';
+import new1 from '../../assets/new1.webp';
+import new2 from '../../assets/new2.webp';
+import new3 from '../../assets/new3.webp';
+import new5 from '../../assets/new5.webp';
 
 const products = [
     {

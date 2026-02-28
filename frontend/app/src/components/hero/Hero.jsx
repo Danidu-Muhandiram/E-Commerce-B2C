@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FaArrowRight, FaArrowLeft } from 'react-icons/fa';
-import img1 from '../../assets/new1.jpg';
-import img2 from '../../assets/new2.jpg';
-import img3 from '../../assets/new3.jpg';
-import img4 from '../../assets/new5.jpg';
+import img1 from '../../assets/new1.webp';
+import img2 from '../../assets/new2.webp';
+import img3 from '../../assets/new3.webp';
+import img4 from '../../assets/new5.webp';
 
 const slides = [
   {
