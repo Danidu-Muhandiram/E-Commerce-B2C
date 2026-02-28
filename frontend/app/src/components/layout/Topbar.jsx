@@ -18,12 +18,21 @@ const TopBar = () => {
             <RiTwitterXLine className="w-3 h-3" />
           </a>
         </div>
-        <div className="text-center w-full md:w-auto font-medium text-fashion-black/80">
-          <span>COMPLIMENTARY SHIPPING ON ORDERS OVER $200</span>
+        <div className="text-center w-full md:w-[400px] overflow-hidden font-medium text-fashion-black/80 relative flex items-center">
+          <div className="animate-scroll flex gap-6 whitespace-nowrap hover:[animation-play-state:paused] cursor-default">
+            <span>COMPLIMENTARY SHIPPING ON ORDERS OVER $200</span>
+            <span>•</span>
+            <span>FREE RETURNS ON ALL ORDERS</span>
+            <span>•</span>
+            <span>COMPLIMENTARY SHIPPING ON ORDERS OVER $200</span>
+            <span>•</span>
+            <span>FREE RETURNS ON ALL ORDERS</span>
+            <span>•</span>
+          </div>
         </div>
         <div className="hidden md:block">
-          <a href="tel:+1234567890" className="hover:text-fashion-black transition-colors font-medium">
-            +1 (234) 567-890
+          <a href="tel:0112886600" className="hover:text-fashion-black transition-colors font-medium">
+            0112886600
           </a>
         </div>
       </div>

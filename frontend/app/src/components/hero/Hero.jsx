@@ -39,6 +39,9 @@ const slides = [
 
 const Hero = () => {
   const [current, setCurrent] = useState(0);
+  const [loadedImages, setLoadedImages] = useState({});
+
+  const imageLoaded = !!loadedImages[current];
 
   const nextSlide = () => {
     setCurrent((prev) => (prev + 1) % slides.length);
@@ -65,7 +68,7 @@ const Hero = () => {
       <div className="relative w-full h-full flex flex-col justify-between overflow-hidden group">
 
         {/* Main Image Layer (Background Cover & Overlays) */}
-        <div className="absolute inset-0 z-10 transition-transform duration-1000 ease-out">
+        <div className="absolute inset-0 z-10 transition-transform duration-1000 ease-out bg-fashion-eggshell">
 
           {/* Subtle 5% overlay */}
           <div className="absolute inset-0 bg-fashion-black/5 z-10"></div>
@@ -89,19 +92,28 @@ const Hero = () => {
             key={`img-${current}`}
             src={slides[current].image}
             alt="Fashion Model"
-            className="w-full h-full object-cover object-center md:object-[75%_15%] transition-opacity duration-1000 animate-fade-in"
+            onLoad={() => setLoadedImages((prev) => ({ ...prev, [current]: true }))}
+            ref={(node) => {
+              if (node && node.complete) {
+                setLoadedImages((prev) => {
+                  if (prev[current]) return prev;
+                  return { ...prev, [current]: true };
+                });
+              }
+            }}
+            className={`w-full h-full object-cover object-center md:object-[75%_15%] transition-opacity duration-1000 ease-in-out ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
           />
         </div>
 
         {/* Decorative Vertical Text */}
-        <div className="hidden lg:flex absolute top-[20%] left-8 z-30 pointer-events-none" style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}>
+        <div className={`hidden lg:flex absolute top-[20%] left-8 z-30 pointer-events-none transition-opacity duration-1000 ease-in-out ${imageLoaded ? 'opacity-100' : 'opacity-0'}`} style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}>
           <span className="text-fashion-eggshell/50 font-poppins text-[10px] tracking-[0.5em] uppercase whitespace-nowrap">
             The Veloura Editorial • Volume 01
           </span>
         </div>
 
         {/* Content Layer */}
-        <div className="absolute inset-0 z-20 flex flex-col justify-end pb-28 md:pb-16 px-6 md:px-24 pointer-events-none">
+        <div className={`absolute inset-0 z-20 flex flex-col justify-end pb-28 md:pb-16 px-6 md:px-24 pointer-events-none transition-opacity duration-1000 ease-in-out ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}>
           <div className="max-w-2xl pointer-events-auto relative">
 
             {/* Fine Line & Mini Heading */}
@@ -137,7 +149,7 @@ const Hero = () => {
 
       {/* Next Slide Preview Card (Right Side Middle) */}
       <div
-        className="absolute top-[40%] -translate-y-1/2 right-8 md:right-24 z-30 hidden lg:flex items-center gap-6 pointer-events-auto cursor-pointer group"
+        className={`absolute top-[40%] -translate-y-1/2 right-8 md:right-24 z-30 hidden lg:flex items-center gap-6 pointer-events-auto cursor-pointer group transition-opacity duration-1000 ease-in-out ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
         onClick={nextSlide}
       >
         {/* Text Area (Left of Image) */}
@@ -165,7 +177,7 @@ const Hero = () => {
       </div>
 
       {/* Redesigned Slider Indicators (Bottom Right Wala) */}
-      <div className="absolute bottom-8 md:bottom-12 right-6 md:right-24 z-30 flex items-center gap-4 md:gap-6 pointer-events-auto scale-90 md:scale-100 origin-bottom-right">
+      <div className={`absolute bottom-8 md:bottom-12 right-6 md:right-24 z-30 flex items-center gap-4 md:gap-6 pointer-events-auto scale-90 md:scale-100 origin-bottom-right transition-opacity duration-1000 ease-in-out ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}>
         <button
           onClick={prevSlide}
           className="w-10 h-10 rounded-full border border-fashion-eggshell/30 flex items-center justify-center text-fashion-eggshell hover:bg-fashion-eggshell hover:text-fashion-moss transition-colors duration-300"
