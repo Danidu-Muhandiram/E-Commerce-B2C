@@ -5,6 +5,7 @@ import NewArrivals from '../components/collections/NewArrivals';
 import SpecialOffers from '../components/collections/SpecialOffers';
 import BannerSlider from '../components/collections/BannerSlider';
 import Accessories from '../components/collections/Accessories';
+import OurBrands from '../components/collections/OurBrands';
 
 const Home = () => {
     return (
@@ -16,6 +17,7 @@ const Home = () => {
             <BannerSlider />
             <Accessories />
             <ShopByCategory />
+            <OurBrands />
         </div>
     );
 };
