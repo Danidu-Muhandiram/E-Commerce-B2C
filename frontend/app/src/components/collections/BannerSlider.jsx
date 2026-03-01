@@ -21,8 +21,7 @@ const banners = [
 
 const BannerSlider = () => {
     return (
-        <section className="relative w-full h-[40vh] md:h-[60vh] overflow-hidden bg-fashion-black">
-
+        <section className="relative w-full h-[50vh] md:h-[75vh] overflow-hidden bg-fashion-black">
             {/* Infinite Scroll Container */}
             <div className="absolute inset-0 flex w-max animate-scroll">
                 {banners.map((banner) => (
@@ -32,28 +31,28 @@ const BannerSlider = () => {
                         <img
                             src={banner.image}
                             alt={banner.alt}
-                            className="w-full h-full object-cover"
+                            className="w-full h-full object-cover object-center"
                         />
                     </div>
                 ))}
             </div>
 
-            {/* Centered Overlay Content */}
-            <div className="absolute inset-0 z-20 flex flex-col items-center justify-center pointer-events-none">
+            {/* Bottom Overlay Content */}
+            <div className="absolute inset-0 z-20 flex flex-col items-center justify-end pb-12 md:pb-20 pointer-events-none">
                 <div className="pointer-events-auto text-center px-6">
                     <Link
                         to="/shop"
                         className="group relative inline-flex items-center justify-center bg-fashion-black/40 backdrop-blur-sm text-fashion-eggshell px-10 py-4 font-poppins font-medium text-[11px] uppercase tracking-[0.3em] transition-all duration-500 border border-fashion-eggshell/50 hover:border-fashion-eggshell hover:bg-fashion-eggshell hover:text-fashion-black shadow-xl"
                     >
                         <span className="relative z-10 flex items-center gap-4 transition-colors duration-500">
-                            Explore Collections
+                            Discover the Edit
                             <FaArrowRight className="w-3 h-3 group-hover:translate-x-2 transition-all duration-300" />
                         </span>
                     </Link>
                 </div>
             </div>
 
-        </section>
+        </section >
     );
 };
 
