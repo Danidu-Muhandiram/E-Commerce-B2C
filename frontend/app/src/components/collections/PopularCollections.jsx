@@ -1,33 +1,35 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaArrowRight } from 'react-icons/fa';
-import testImg from '../../assets/testimage2.png';
+import imgFemale from '../../assets/popular1.jpg';
+import imgMale from '../../assets/popular2.jpg';
+import imgKids from '../../assets/popular3.jpg';
 
 const collections = [
     {
         id: 1,
-        title: 'The Signature Edit',
-        subtitle: 'Timeless pieces for the modern wardrobe.',
-        tag: 'NEW ARRIVALS',
-        image: testImg,
+        title: "Women's Collection",
+        subtitle: 'Elegance defined. Discover the latest styles.',
+        tag: 'FOR HER',
+        image: imgFemale,
         span: 'md:col-span-8',
         height: 'h-[450px] md:h-[650px]',
     },
     {
         id: 2,
-        title: 'Evening Elegance',
-        subtitle: 'Sophisticated silhouettes.',
-        tag: 'TRENDING',
-        image: testImg,
+        title: "Men's Collection",
+        subtitle: 'Sharp & Sophisticated.',
+        tag: 'FOR HIM',
+        image: imgMale,
         span: 'md:col-span-4',
         height: 'h-[320px] md:h-[313px]',
     },
     {
         id: 3,
-        title: 'Everyday Luxuries',
-        subtitle: 'Premium basics.',
-        tag: 'ESSENTIALS',
-        image: testImg,
+        title: "Kids' Collection",
+        subtitle: 'Playful & Comfortable.',
+        tag: 'FOR KIDS',
+        image: imgKids,
         span: 'md:col-span-4',
         height: 'h-[320px] md:h-[313px]',
     },

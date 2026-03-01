@@ -104,14 +104,14 @@ const NewArrivals = () => {
                 </div>
 
                 {/* Auto-scrolling Carousel Container */}
-                <div className="w-full overflow-hidden relative" style={{ WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)' }}>
+                <div className="w-full overflow-hidden relative">
                     <div className="flex w-max animate-scroll hover:[animation-play-state:paused] gap-6">
                         {products.map((product) => (
                             <Link to={`/product/${product.id}`} key={product.id} className="group flex flex-col cursor-pointer w-[280px] md:w-[320px] flex-shrink-0">
                                 {/* Image Container */}
                                 <div className="relative w-full aspect-[3/4] overflow-hidden bg-gray-100 mb-5">
                                     {product.isNew && (
-                                        <span className="absolute top-0 left-0 bg-white text-fashion-black px-3 py-1.5 text-[10px] sm:text-xs font-poppins tracking-wider z-10">
+                                        <span className="absolute top-0 left-0 bg-fashion-moss text-fashion-eggshell px-3 py-1.5 text-[10px] sm:text-xs font-poppins tracking-wider z-10 font-medium">
                                             New
                                         </span>
                                     )}
