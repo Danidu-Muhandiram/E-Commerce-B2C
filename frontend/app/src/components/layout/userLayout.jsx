@@ -1,13 +1,14 @@
 import { Outlet } from "react-router-dom";
-import TopBar from "./TopBar";
+import Topbar from "./Topbar";
 import NavBar from "./NavBar";
+import Footer from "./Footer";
 
 const UserLayout = () => {
     return (
         <>
             {/*Header*/}
             <header className="fixed top-0 left-0 w-full z-50">
-                <TopBar />
+                <Topbar />
                 <NavBar />
             </header>
             {/*Main Content*/}
@@ -15,6 +16,7 @@ const UserLayout = () => {
                 <Outlet />
             </main>
             {/*Footer*/}
+            <Footer />
         </>
     );
 };
