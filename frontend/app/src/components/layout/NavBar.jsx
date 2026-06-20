@@ -1,14 +1,47 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { HiOutlineShoppingBag, HiMenuAlt3, HiX } from "react-icons/hi";
 
 const NavBar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isVisible, setIsVisible] = useState(true);
+    const [isScrolled, setIsScrolled] = useState(false);
+    const [lastScrollY, setLastScrollY] = useState(0);
 
     // Toggle Mobile Menu
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
+
+    // Handle Smart Scroll (Hide on down, show on up) and Scrolled state
+    useEffect(() => {
+        const handleScroll = () => {
+            const currentScrollY = window.scrollY;
+
+            // Check if user scrolled past Topbar height (40px)
+            if (currentScrollY > 40) {
+                setIsScrolled(true);
+            } else {
+                setIsScrolled(false);
+            }
+
+            // Always show navbar near the top of the page
+            if (currentScrollY <= 50) {
+                setIsVisible(true);
+            } 
+            // Hide on scroll down, show on scroll up
+            else if (currentScrollY > lastScrollY) {
+                setIsVisible(false);
+            } else {
+                setIsVisible(true);
+            }
+
+            setLastScrollY(currentScrollY);
+        };
+
+        window.addEventListener("scroll", handleScroll, { passive: true });
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, [lastScrollY]);
 
     const leftLinks = [
         { name: "Shop", path: "/shop" },
@@ -23,8 +56,12 @@ const NavBar = () => {
     ];
 
     return (
-        <nav className="fixed left-0 top-10 w-full z-40 bg-fashion-eggshell shadow-sm py-3 px-8 border-b border-fashion-moss/10 transition-none">
-            <div className="flex justify-between items-center relative container mx-auto">
+        <nav className={`sticky top-0 left-0 w-full z-40 transition-all duration-300 ease-in-out ${
+            isScrolled 
+                ? "bg-fashion-eggshell/85 backdrop-blur-md py-3 shadow-md border-b border-fashion-moss/5" 
+                : "bg-fashion-eggshell py-5 shadow-sm border-b border-fashion-moss/10"
+        } ${isVisible ? "translate-y-0" : "-translate-y-full"}`}>
+            <div className="flex justify-between items-center relative container mx-auto px-8">
 
                 {/* Left Navigation (Desktop) */}
                 <div className="hidden lg:flex space-x-8 items-center w-1/3 justify-start">
@@ -32,9 +69,10 @@ const NavBar = () => {
                         <Link
                             key={index}
                             to={link.path}
-                            className="text-[11px] font-poppins font-bold uppercase tracking-[0.2em] text-fashion-moss hover:text-fashion-black transition-colors duration-300"
+                            className="relative text-[11px] font-poppins font-bold uppercase tracking-[0.2em] text-fashion-moss hover:text-fashion-black transition-colors duration-300 group py-1"
                         >
                             {link.name}
+                            <span className="absolute bottom-0 left-0 w-full h-[1px] bg-fashion-black scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
                         </Link>
                     ))}
                 </div>
@@ -52,9 +90,10 @@ const NavBar = () => {
                         <Link
                             key={index}
                             to={link.path}
-                            className="text-[11px] font-poppins font-bold uppercase tracking-[0.2em] text-fashion-moss hover:text-fashion-black transition-colors duration-300"
+                            className="relative text-[11px] font-poppins font-bold uppercase tracking-[0.2em] text-fashion-moss hover:text-fashion-black transition-colors duration-300 group py-1"
                         >
                             {link.name}
+                            <span className="absolute bottom-0 left-0 w-full h-[1px] bg-fashion-black scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
                         </Link>
                     ))}
 

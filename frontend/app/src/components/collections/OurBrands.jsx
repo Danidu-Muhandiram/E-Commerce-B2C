@@ -1,17 +1,12 @@
 import React, { useRef, useState } from 'react';
 
-// Reusing popular images as placeholders for brand logos for now
-import brand1 from '../../assets/popular1.jpg';
-import brand2 from '../../assets/popular2.jpg';
-import brand3 from '../../assets/popular3.jpg';
-
 const brands = [
-    { id: 1, image: brand1, name: 'Brand 1' },
-    { id: 2, image: brand2, name: 'Brand 2' },
-    { id: 3, image: brand3, name: 'Brand 3' },
-    { id: 4, image: brand1, name: 'Brand 4' },
-    { id: 5, image: brand2, name: 'Brand 5' },
-    { id: 6, image: brand3, name: 'Brand 6' },
+    { id: 1, name: 'VALENTIN', subtitle: 'HAUTE COUTURE', style: 'font-playfair tracking-[0.3em] text-xl font-bold' },
+    { id: 2, name: 'MAISON D\'OR', subtitle: 'PARIS', style: 'font-playfair tracking-[0.2em] text-lg italic font-medium' },
+    { id: 3, name: 'LUMIÈRE', subtitle: 'STUDIOS', style: 'font-poppins tracking-[0.4em] text-base font-semibold' },
+    { id: 4, name: 'AURA', subtitle: 'MILANO', style: 'font-playfair tracking-[0.5em] text-2xl font-light' },
+    { id: 5, name: 'SARTORIAL', subtitle: 'LONDON', style: 'font-poppins tracking-[0.3em] text-xs font-bold' },
+    { id: 6, name: 'ÉCLAT', subtitle: 'NEW YORK', style: 'font-playfair tracking-[0.4em] text-xl font-medium' },
 ];
 
 const OurBrands = () => {
@@ -19,11 +14,14 @@ const OurBrands = () => {
     const [activeIndex, setActiveIndex] = useState(0);
 
     const scrollToBrand = (index) => {
-        if (scrollContainerRef.current) {
-            // Estimate card width + gap for scrolling
-            const cardWidth = 200 + 32;
+        if (scrollContainerRef.current && scrollContainerRef.current.children[index]) {
+            const targetChild = scrollContainerRef.current.children[index];
+            // Center the brand card in the scroll view
+            const containerWidth = scrollContainerRef.current.offsetWidth;
+            const scrollTarget = targetChild.offsetLeft - (containerWidth - targetChild.offsetWidth) / 2;
+            
             scrollContainerRef.current.scrollTo({
-                left: index * cardWidth,
+                left: scrollTarget,
                 behavior: 'smooth'
             });
             setActiveIndex(index);
@@ -34,9 +32,23 @@ const OurBrands = () => {
     const handleScroll = () => {
         if (scrollContainerRef.current) {
             const scrollPosition = scrollContainerRef.current.scrollLeft;
-            const cardWidth = 200 + 32;
-            const newIndex = Math.round(scrollPosition / cardWidth);
-            setActiveIndex(newIndex);
+            const children = Array.from(scrollContainerRef.current.children);
+            if (children.length === 0) return;
+
+            const containerCenter = scrollPosition + scrollContainerRef.current.offsetWidth / 2;
+            let closestIndex = 0;
+            let minDistance = Infinity;
+
+            children.forEach((child, index) => {
+                const childCenter = child.offsetLeft + child.offsetWidth / 2;
+                const distance = Math.abs(containerCenter - childCenter);
+                if (distance < minDistance) {
+                    minDistance = distance;
+                    closestIndex = index;
+                }
+            });
+
+            setActiveIndex(closestIndex);
         }
     };
 
@@ -71,13 +83,18 @@ const OurBrands = () => {
                         {brands.map((brand) => (
                             <div
                                 key={brand.id}
-                                className="snap-center flex-shrink-0 w-[240px] md:w-[320px] aspect-square bg-gray-50 flex items-center justify-center transition-all duration-500 cursor-pointer overflow-hidden group"
+                                className="snap-center flex-shrink-0 w-[220px] md:w-[280px] aspect-[4/3] bg-fashion-eggshell/20 border border-fashion-moss/5 hover:border-fashion-moss/20 rounded-[2px] flex flex-col items-center justify-center transition-all duration-500 cursor-pointer group shadow-[0_1px_3px_rgba(0,0,0,0.02)] hover:shadow-md hover:bg-fashion-eggshell/45"
                             >
-                                <img
-                                    src={brand.image}
-                                    alt={brand.name}
-                                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                                />
+                                <div className="text-center p-6 select-none">
+                                    <h3 className={`${brand.style} text-fashion-moss group-hover:text-fashion-black group-hover:scale-105 transition-all duration-500`}>
+                                        {brand.name}
+                                    </h3>
+                                    {brand.subtitle && (
+                                        <p className="text-[9px] font-poppins tracking-[0.3em] text-fashion-moss/50 group-hover:text-fashion-moss/70 mt-2 uppercase transition-colors duration-500">
+                                            {brand.subtitle}
+                                        </p>
+                                    )}
+                                </div>
                             </div>
                         ))}
                     </div>

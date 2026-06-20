@@ -76,6 +76,7 @@ const PopularCollections = () => {
                         <img
                             src={collections[0].image}
                             alt={collections[0].title}
+                            loading="lazy"
                             className="w-full h-full object-cover object-[75%_15%] transition-transform duration-1000 group-hover:scale-105"
                         />
 
@@ -110,6 +111,7 @@ const PopularCollections = () => {
                                 <img
                                     src={collection.image}
                                     alt={collection.title}
+                                    loading="lazy"
                                     className="w-full h-full object-cover object-top transition-transform duration-1000 group-hover:scale-105"
                                 />
 

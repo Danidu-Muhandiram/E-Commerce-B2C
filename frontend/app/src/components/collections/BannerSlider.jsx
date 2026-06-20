@@ -2,10 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaArrowRight } from 'react-icons/fa';
 
-import banner1 from '../../assets/banner1.png';
-import banner2 from '../../assets/banner2.png';
-import banner3 from '../../assets/banner3.png';
-import banner4 from '../../assets/banner4.png';
+import banner1 from '../../assets/banner1.jpg';
+import banner2 from '../../assets/banner2.jpg';
+import banner3 from '../../assets/banner3.jpg';
+import banner4 from '../../assets/banner4.jpg';
 
 const banners = [
     { id: 1, image: banner1, alt: 'Banner 1' },
@@ -31,6 +31,7 @@ const BannerSlider = () => {
                         <img
                             src={banner.image}
                             alt={banner.alt}
+                            loading="lazy"
                             className="w-full h-full object-cover object-center"
                         />
                     </div>

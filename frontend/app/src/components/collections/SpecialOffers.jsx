@@ -65,8 +65,8 @@ const SpecialOffers = () => {
                     <div className="max-w-2xl">
                         {/* Fine Line & Mini Heading */}
                         <div className="flex items-center gap-4 mb-6">
-                            <div className="w-8 h-[1px] bg-red-600/60" />
-                            <span className="text-red-700 font-poppins text-[10px] tracking-[0.3em] uppercase font-semibold">
+                            <div className="w-8 h-[1px] bg-fashion-terracotta/60" />
+                            <span className="text-fashion-terracotta font-poppins text-[10px] tracking-[0.3em] uppercase font-semibold">
                                 Limited Time
                             </span>
                         </div>
@@ -79,7 +79,7 @@ const SpecialOffers = () => {
                     <div className="flex items-center gap-6">
                         <Link
                             to="/shop"
-                            className="group hidden md:flex items-center gap-3 text-fashion-black hover:text-red-700 transition-colors duration-300 font-poppins text-[11px] font-bold uppercase tracking-[0.2em] pb-2 border-b border-fashion-black/30 hover:border-red-700"
+                            className="group hidden md:flex items-center gap-3 text-fashion-black hover:text-fashion-terracotta transition-colors duration-300 font-poppins text-[11px] font-bold uppercase tracking-[0.2em] pb-2 border-b border-fashion-black/30 hover:border-fashion-terracotta"
                         >
                             View All Sale
                             <FaArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform duration-300" />
@@ -114,7 +114,7 @@ const SpecialOffers = () => {
                                 {/* Image Container */}
                                 <div className="relative w-full aspect-[3/4] overflow-hidden bg-gray-100 mb-5">
                                     {product.isSale && (
-                                        <span className="absolute top-0 left-0 bg-red-600 text-fashion-eggshell px-4 py-1.5 text-[10px] sm:text-xs font-poppins tracking-wider z-10 font-bold uppercase">
+                                        <span className="absolute top-0 left-0 bg-fashion-terracotta text-fashion-eggshell px-4 py-1.5 text-[10px] sm:text-xs font-poppins tracking-wider z-10 font-bold uppercase">
                                             SALE
                                         </span>
                                     )}
@@ -135,7 +135,7 @@ const SpecialOffers = () => {
                                         <p className="text-gray-400 font-poppins text-xs line-through">
                                             {product.originalPrice}
                                         </p>
-                                        <p className="text-red-600 font-poppins font-bold text-sm">
+                                        <p className="text-fashion-terracotta font-poppins font-bold text-sm">
                                             {product.price}
                                         </p>
                                     </div>

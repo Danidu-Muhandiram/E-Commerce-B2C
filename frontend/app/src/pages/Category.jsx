@@ -2,10 +2,10 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 // Placeholder Images
-import cat1 from '../assets/banner1.png';
-import cat2 from '../assets/banner2.png';
-import cat3 from '../assets/banner3.png';
-import cat4 from '../assets/banner4.png';
+import cat1 from '../assets/banner1.jpg';
+import cat2 from '../assets/banner2.jpg';
+import cat3 from '../assets/banner3.jpg';
+import cat4 from '../assets/banner4.jpg';
 
 const categories = [
     { id: 1, name: "Women's", image: cat1, link: "#" },
@@ -48,6 +48,7 @@ const Category = () => {
                             <img
                                 src={category.image}
                                 alt={category.name}
+                                loading="lazy"
                                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                             />
 

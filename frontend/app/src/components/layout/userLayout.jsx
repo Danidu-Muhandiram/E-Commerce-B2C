@@ -6,19 +6,21 @@ import Footer from "./Footer";
 const UserLayout = () => {
     return (
         <>
-            {/*Header*/}
-            <header className="fixed top-0 left-0 w-full z-50">
-                <Topbar />
-                <NavBar />
-            </header>
-            {/*Main Content*/}
-            <main className="pt-10">
+            {/* Topbar scrolls away naturally */}
+            <Topbar />
+            
+            {/* NavBar is sticky and manages its own transitions */}
+            <NavBar />
+            
+            {/* Main Content flows naturally without artificial top padding */}
+            <main className="relative">
                 <Outlet />
             </main>
+            
             {/*Footer*/}
             <Footer />
         </>
     );
 };
 
-export default UserLayout
+export default UserLayout;
