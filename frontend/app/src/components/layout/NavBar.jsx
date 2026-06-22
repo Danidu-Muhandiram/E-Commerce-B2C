@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { HiOutlineShoppingBag, HiMenuAlt3, HiX } from "react-icons/hi";
+import { HiOutlineShoppingBag, HiMenuAlt3, HiX, HiOutlineUser } from "react-icons/hi";
 
 const NavBar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -97,6 +97,15 @@ const NavBar = () => {
                         </Link>
                     ))}
 
+                    {/* Login Link */}
+                    <Link
+                        to="/login"
+                        className="relative text-[10px] font-poppins font-bold uppercase tracking-[0.2em] text-fashion-moss hover:text-fashion-black transition-colors duration-300 group py-1"
+                    >
+                        Login
+                        <span className="absolute bottom-0 left-0 w-full h-[1px] bg-fashion-black scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                    </Link>
+
                     {/* Sign Up Button */}
                     <Link to="/signup" className="group relative inline-flex items-center justify-center text-[10px] font-poppins font-bold uppercase tracking-[0.2em] px-6 py-2 overflow-hidden transition-colors duration-300 border border-fashion-moss text-fashion-moss">
                         <div className="absolute inset-0 transform scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-500 ease-out z-0 bg-fashion-moss" />
@@ -112,13 +121,31 @@ const NavBar = () => {
                     </button>
                 </div>
 
-                {/* Mobile Menu Button */}
-                <button
-                    className="lg:hidden z-50 absolute right-0 text-fashion-moss hover:text-fashion-black transition-colors duration-300"
-                    onClick={toggleMenu}
-                >
-                    {isMenuOpen ? <HiX className="w-7 h-7" /> : <HiMenuAlt3 className="w-7 h-7" />}
-                </button>
+                {/* Mobile Header Actions */}
+                <div className="absolute right-8 flex items-center space-x-5 lg:hidden z-50">
+                    <Link
+                        to="/login"
+                        className="text-fashion-moss hover:text-fashion-black transition-colors duration-300"
+                        aria-label="Login"
+                    >
+                        <HiOutlineUser className="w-6 h-6" />
+                    </Link>
+
+                    <button className="relative text-fashion-moss hover:text-fashion-black transition-colors duration-300" aria-label="Cart">
+                        <HiOutlineShoppingBag className="w-6 h-6" />
+                        <span className="absolute -top-1 -right-1 text-[9px] w-3 h-3 rounded-full flex items-center justify-center font-bold bg-fashion-moss text-fashion-eggshell">
+                            3
+                        </span>
+                    </button>
+
+                    <button
+                        className="text-fashion-moss hover:text-fashion-black transition-colors duration-300"
+                        onClick={toggleMenu}
+                        aria-label="Toggle Menu"
+                    >
+                        {isMenuOpen ? <HiX className="w-7 h-7" /> : <HiMenuAlt3 className="w-7 h-7" />}
+                    </button>
+                </div>
             </div>
 
             {/* Mobile Menu Overlay */}
@@ -136,6 +163,24 @@ const NavBar = () => {
                         {link.name}
                     </Link>
                 ))}
+
+                {/* Mobile Auth Actions */}
+                <div className="flex flex-col items-center space-y-4 pt-6 w-[250px]">
+                    <Link
+                        to="/login"
+                        className="w-full text-center text-[11px] font-poppins font-bold uppercase tracking-[0.2em] py-3 text-fashion-moss border border-fashion-moss/30 hover:border-fashion-moss transition-colors duration-300"
+                        onClick={toggleMenu}
+                    >
+                        Login
+                    </Link>
+                    <Link
+                        to="/signup"
+                        className="w-full text-center text-[11px] font-poppins font-bold uppercase tracking-[0.2em] py-3 bg-fashion-moss text-fashion-eggshell hover:bg-fashion-moss/90 transition-colors duration-300"
+                        onClick={toggleMenu}
+                    >
+                        Sign Up
+                    </Link>
+                </div>
             </div>
         </nav>
     );
