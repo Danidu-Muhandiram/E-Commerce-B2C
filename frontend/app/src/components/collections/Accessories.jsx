@@ -62,7 +62,7 @@ const Accessories = () => {
                         {/* Fine Line & Mini Heading */}
                         <div className="flex items-center gap-4 mb-6">
                             <div className="w-8 h-[1px] bg-fashion-moss/60" />
-                            <span className="text-fashion-moss font-poppins text-[10px] tracking-[0.3em] uppercase font-semibold">
+                            <span className="text-fashion-moss font-inter text-[10px] tracking-[0.3em] uppercase font-semibold">
                                 Finishing Touches
                             </span>
                         </div>
@@ -75,7 +75,7 @@ const Accessories = () => {
                     <div className="flex items-center gap-6">
                         <Link
                             to="/shop"
-                            className="group hidden md:flex items-center gap-3 text-fashion-moss hover:text-fashion-black transition-colors duration-300 font-poppins text-[11px] font-bold uppercase tracking-[0.2em] pb-2 border-b border-fashion-moss/30 hover:border-fashion-black"
+                            className="group hidden md:flex items-center gap-3 text-fashion-moss hover:text-fashion-black transition-colors duration-300 font-inter text-[11px] font-bold uppercase tracking-[0.2em] pb-2 border-b border-fashion-moss/30 hover:border-fashion-black"
                         >
                             View All
                             <FaArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform duration-300" />
@@ -110,7 +110,7 @@ const Accessories = () => {
                                 {/* Image Container */}
                                 <div className="relative w-full aspect-[3/4] overflow-hidden bg-gray-100 mb-5">
                                     {product.isNew && (
-                                        <span className="absolute top-0 left-0 bg-fashion-moss text-fashion-eggshell px-3 py-1.5 text-[10px] sm:text-xs font-poppins tracking-wider z-10 font-medium uppercase">
+                                        <span className="absolute top-0 left-0 bg-fashion-moss text-fashion-eggshell px-3 py-1.5 text-[10px] sm:text-xs font-inter tracking-wider z-10 font-medium uppercase">
                                             Accessory
                                         </span>
                                     )}
@@ -124,13 +124,13 @@ const Accessories = () => {
 
                                 {/* Product Info */}
                                 <div className="flex flex-col items-center text-center px-2">
-                                    <h3 className="text-fashion-black font-poppins text-xs font-medium tracking-[0.08em] mb-2 uppercase line-clamp-1 w-full">
+                                    <h3 className="text-fashion-black font-inter text-xs font-medium tracking-[0.08em] mb-2 uppercase line-clamp-1 w-full">
                                         {product.title}
                                     </h3>
-                                    <p className="text-fashion-black font-poppins font-bold text-sm mb-1">
+                                    <p className="text-fashion-black font-inter font-bold text-sm mb-1">
                                         {product.price}
                                     </p>
-                                    <p className="text-fashion-black/60 font-poppins text-[10px] sm:text-xs tracking-wide">
+                                    <p className="text-fashion-black/60 font-inter text-[10px] sm:text-xs tracking-wide">
                                         {product.installments}
                                     </p>
                                 </div>

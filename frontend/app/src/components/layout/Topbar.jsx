@@ -6,7 +6,7 @@ import { RiTwitterXLine } from 'react-icons/ri';
 const TopBar = () => {
   return (
     <div className="bg-fashion-moss text-fashion-eggshell h-10 flex items-center px-6 border-b border-fashion-eggshell/10 z-50 relative">
-      <div className="container mx-auto flex justify-between items-center text-xs font-poppins tracking-wide w-full">
+      <div className="container mx-auto flex justify-between items-center text-xs font-inter tracking-wide w-full">
         <div className="hidden md:flex items-center space-x-4">
           <a href="#" className="hover:text-fashion-black transition-colors">
             <TbBrandMeta className="w-4 h-4" />
@@ -20,11 +20,11 @@ const TopBar = () => {
         </div>
         <div className="text-center w-full md:w-[400px] overflow-hidden font-medium relative flex items-center">
           <div className="animate-scroll flex gap-6 whitespace-nowrap hover:[animation-play-state:paused] cursor-default">
-            <span>COMPLIMENTARY SHIPPING ON ORDERS OVER $200</span>
+            <span>COMPLIMENTARY SHIPPING ON ORDERS OVER Rs 15,000</span>
             <span>•</span>
             <span>FREE RETURNS ON ALL ORDERS</span>
             <span>•</span>
-            <span>COMPLIMENTARY SHIPPING ON ORDERS OVER $200</span>
+            <span>COMPLIMENTARY SHIPPING ON ORDERS OVER Rs 15,000</span>
             <span>•</span>
             <span>FREE RETURNS ON ALL ORDERS</span>
             <span>•</span>

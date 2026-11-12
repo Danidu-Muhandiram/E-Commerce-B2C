@@ -1,220 +1,178 @@
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FaArrowRight, FaArrowLeft } from 'react-icons/fa';
-import img1 from '../../assets/new1.webp';
-import img2 from '../../assets/new2.webp';
-import img3 from '../../assets/new3.webp';
-import img4 from '../../assets/new5.webp';
+import { FiArrowUpRight } from 'react-icons/fi';
+import look1 from '../../assets/new5.webp';
+import look2 from '../../assets/new1.webp';
+import look3 from '../../assets/new2.webp';
+import look4 from '../../assets/new3.webp';
 
-const slides = [
+// Each look is a real outfit with shoppable pieces — swap for API data later.
+const looks = [
   {
-    id: 1,
-    bgText: "TIMELESS",
-    title: "Wear the Moment.",
-    subtitle: "Crafted for the individual who dares to be seen. A curation of bold aesthetics and understated luxury.",
-    image: img1
+    name: 'Straw & citrus',
+    image: look1,
+    alt: 'Model in a straw boater, printed cami and orange midi skirt, holding a woven tote',
+    focus: '46% 30%',
+    items: [
+      { name: 'Straw boater hat', price: 2190 },
+      { name: 'Pineapple print cami', price: 3490 },
+      { name: 'Tiered cotton midi skirt', price: 4990 },
+      { name: 'Woven basket tote', price: 3890 },
+    ],
   },
   {
-    id: 2,
-    bgText: "ELEGANCE",
-    title: "Elevate Style.",
-    subtitle: "Redefining modern luxury with cuts that breathe and fabrics that move with you. The new standard of elegance.",
-    image: img2
+    name: 'Off-duty linen',
+    image: look2,
+    alt: 'Model in a panama hat, unstructured beige blazer and band-collar shirt',
+    focus: '50% 25%',
+    items: [
+      { name: 'Unstructured linen blazer', price: 12490 },
+      { name: 'Band-collar striped shirt', price: 4790 },
+      { name: 'Panama hat', price: 2990 },
+    ],
   },
   {
-    id: 3,
-    bgText: "MODERN",
-    title: "Urban Chic.",
-    subtitle: "For the bold and the beautiful. Discover the trends that are shaping the future of fashion today.",
-    image: img3
+    name: 'Print, loud',
+    image: look3,
+    alt: 'Model in yellow cat-eye sunglasses and a botanical print shirt',
+    focus: '50% 30%',
+    items: [
+      { name: 'Botanical print shirt', price: 5290 },
+      { name: 'Cat-eye sunglasses', price: 2490 },
+      { name: 'High-rise black shorts', price: 3290 },
+    ],
   },
   {
-    id: 4,
-    bgText: "VIBRANT",
-    title: "Stand Out.",
-    subtitle: "Express yourself with bold designs and striking silhouettes that turn heads everywhere you go.",
-    image: img4
-  }
+    name: 'City neutral',
+    image: look4,
+    alt: 'Model in a black wide-brim hat, taupe leather trench and white saddle bag',
+    focus: '52% 25%',
+    items: [
+      { name: 'Vegan leather trench', price: 14900 },
+      { name: 'Wool wide-brim hat', price: 3990 },
+      { name: 'Croc-effect saddle bag', price: 6490 },
+    ],
+  },
 ];
 
+const formatPrice = (n) => `Rs ${n.toLocaleString('en-US')}`;
+const pad = (n) => String(n).padStart(2, '0');
+
 const Hero = () => {
-  const [current, setCurrent] = useState(0);
-  const [loadedImages, setLoadedImages] = useState({});
-
-  const imageLoaded = !!loadedImages[current];
-
-  const nextSlide = () => {
-    setCurrent((prev) => (prev + 1) % slides.length);
-  };
-
-  const prevSlide = () => {
-    setCurrent((prev) => (prev - 1 + slides.length) % slides.length);
-  };
-
-  const handleSlideChange = (index) => {
-    setCurrent(index);
-  };
-
-  // Auto-play for main slider if desired, or just let users control it
-  useEffect(() => {
-    const interval = setInterval(nextSlide, 6000);
-    return () => clearInterval(interval);
-  }, []);
+  const [active, setActive] = useState(0);
+  const look = looks[active];
+  const total = look.items.reduce((sum, item) => sum + item.price, 0);
 
   return (
-    <section className="relative w-full h-[calc(100vh-80px)] md:h-[calc(100vh-0px)] flex flex-col md:flex-row bg-fashion-black overflow-hidden">
+    <section className="bg-fashion-eggshell border-t border-fashion-moss/10">
+      <div className="mx-auto max-w-[1400px] px-4 md:px-10 lg:px-16 pt-8 pb-12 lg:py-10 grid gap-8 lg:gap-x-16 lg:gap-y-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:grid-rows-[1fr_auto] lg:h-[calc(100svh-128px)] lg:min-h-[620px] lg:max-h-[860px]">
 
-      {/* Main Content (100%) */}
-      <div className="relative w-full h-full flex flex-col justify-between overflow-hidden group">
-
-        {/* Main Image Layer (Background Cover & Overlays) */}
-        <div className="absolute inset-0 z-10 transition-transform duration-1000 ease-out bg-fashion-eggshell">
-
-          {/* Subtle 5% overlay */}
-          <div className="absolute inset-0 bg-fashion-black/5 z-10"></div>
-
-          {/* Vignette & Soft Moss Gradient overlays */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_30%,rgba(0,0,0,0.1)_100%)] z-10 pointer-events-none"></div>
-
-          {/* Top Navbar Shadow */}
-          <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-fashion-black/20 to-transparent z-10 pointer-events-none"></div>
-
-          {/* Left/Bottom Content Area Shadow for Text Contrast */}
-          <div className="absolute inset-0 bg-gradient-to-r from-fashion-black/60 via-fashion-black/20 to-transparent w-full md:from-fashion-black/30 md:via-fashion-black/5 md:w-[65%] z-10 pointer-events-none"></div>
-
-          {/* Heavy Bottom Gradient specifically for Mobile Text */}
-          <div className="absolute inset-x-0 bottom-0 h-[65%] md:h-1/2 bg-gradient-to-t from-fashion-black/80 via-fashion-black/40 to-transparent md:from-fashion-black/40 md:via-fashion-black/10 z-10 pointer-events-none"></div>
-
-          {/* Noise/Grain Texture */}
-          <div className="absolute inset-0 z-[11] opacity-[0.02] mix-blend-overlay pointer-events-none" style={{ backgroundImage: "url('data:image/svg+xml,%3Csvg viewBox=\"0 0 200 200\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cfilter id=\"noiseFilter\"%3E%3CfeTurbulence type=\"fractalNoise\" baseFrequency=\"0.65\" numOctaves=\"3\" stitchTiles=\"stitch\"/%3E%3C/filter%3E%3Crect width=\"100%25\" height=\"100%25\" filter=\"url(%23noiseFilter)\"/%3E%3C/svg%3E')" }}></div>
-
-          <img
-            key={`img-${current}`}
-            src={slides[current].image}
-            alt="Fashion Model"
-            onLoad={() => setLoadedImages((prev) => ({ ...prev, [current]: true }))}
-            ref={(node) => {
-              if (node && node.complete) {
-                setLoadedImages((prev) => {
-                  if (prev[current]) return prev;
-                  return { ...prev, [current]: true };
-                });
-              }
-            }}
-            className={`w-full h-full object-cover object-center md:object-[75%_15%] transition-opacity duration-1000 ease-in-out ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
-          />
+        {/* Intro */}
+        <div className="lg:col-start-1 lg:row-start-1 lg:self-center">
+          <p className="text-sm font-medium text-fashion-moss">
+            Resort 2027 - in store and online now
+          </p>
+          <h1 className="mt-4 font-playfair text-[44px] leading-[0.98] sm:text-6xl xl:text-[84px] tracking-tight text-fashion-black">
+            Summer,
+            <br />
+            <em className="italic font-normal text-fashion-moss">unhurried.</em>
+          </h1>
+          <p className="mt-6 max-w-md text-[15px] leading-relaxed text-fashion-black/70">
+            Linen, straw and sun-faded colour. Sixty-four new pieces, cut loose
+            for long days and island heat.
+          </p>
+          <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4">
+            <Link
+              to="/women"
+              className="inline-flex items-center gap-2 bg-fashion-moss px-7 py-3.5 text-sm font-medium text-fashion-eggshell transition-colors hover:bg-fashion-black"
+            >
+              Shop women
+            </Link>
+            <Link
+              to="/men"
+              className="text-sm font-medium text-fashion-black underline decoration-fashion-black/30 underline-offset-[6px] transition-colors hover:decoration-fashion-black"
+            >
+              Shop men
+            </Link>
+          </div>
         </div>
 
-        {/* Decorative Vertical Text */}
-        <div className={`hidden lg:flex absolute top-[20%] left-8 z-30 pointer-events-none transition-opacity duration-1000 ease-in-out ${imageLoaded ? 'opacity-100' : 'opacity-0'}`} style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}>
-          <span className="text-fashion-eggshell/50 font-poppins text-[10px] tracking-[0.5em] uppercase whitespace-nowrap">
-            The Veloura Editorial • Volume 01
-          </span>
-        </div>
-
-        {/* Content Layer */}
-        <div className={`absolute inset-0 z-20 flex flex-col justify-end pb-28 md:pb-16 px-6 md:px-24 pointer-events-none transition-opacity duration-1000 ease-in-out ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}>
-          <div className="max-w-2xl pointer-events-auto relative">
-
-            {/* Fine Line & Mini Heading */}
-            <div className="flex items-center gap-4 mb-6 animate-fade-in-up">
-              <div className="w-6 h-[1px] bg-fashion-eggshell/60" />
-              <span className="text-fashion-eggshell/80 font-poppins text-[10px] tracking-[0.3em] uppercase">
-                Discover The {slides[current].bgText} Collection
-              </span>
-            </div>
-
-            <h2 key={`title-${current}`} className="text-5xl md:text-7xl font-playfair font-bold text-fashion-eggshell mb-6 leading-[1.1] animate-slide-in-left tracking-tight">
-              {slides[current].title}
-            </h2>
-            <p key={`sub-${current}`} className="text-fashion-eggshell/70 font-poppins text-sm md:text-base mb-10 leading-relaxed max-w-md font-normal animate-fade-in-up">
-              {slides[current].subtitle}
-            </p>
-
-            {/* Premium Ghost Button */}
-            <div className="flex gap-4 items-center">
-              <Link
-                to="/shop"
-                className="group relative inline-flex items-center justify-center bg-transparent text-fashion-eggshell px-10 py-4 font-poppins font-medium text-[11px] uppercase tracking-[0.3em] transition-all duration-500 border border-fashion-eggshell/30 hover:border-fashion-eggshell hover:bg-fashion-eggshell/5"
+        {/* Look strip — the active look opens up, the rest stay as colour bands */}
+        <div
+          className="flex gap-2 h-[62svh] min-h-[420px] max-h-[640px] lg:max-h-none lg:h-auto lg:min-h-0 lg:col-start-2 lg:row-start-1 lg:row-span-2"
+          role="group"
+          aria-label="Resort 2027 looks"
+        >
+          {looks.map((item, i) => {
+            const isActive = i === active;
+            return (
+              <button
+                key={item.name}
+                type="button"
+                onClick={() => setActive(i)}
+                aria-pressed={isActive}
+                aria-label={`Look ${pad(i + 1)}: ${item.name}`}
+                style={{ flexGrow: isActive ? 8 : 1 }}
+                className={`group relative min-w-0 basis-0 overflow-hidden bg-fashion-gray transition-[flex-grow] duration-700 ease-[cubic-bezier(0.2,0.7,0.2,1)] motion-reduce:transition-none ${isActive ? 'cursor-default' : 'cursor-pointer'}`}
               >
-                <span className="relative z-10 flex items-center gap-4 transition-colors duration-500">
-                  Explore Collection
-                  <FaArrowRight className="w-3 h-3 opacity-70 group-hover:translate-x-2 group-hover:opacity-100 transition-all duration-300" />
+                <img
+                  src={item.image}
+                  alt={isActive ? item.alt : ''}
+                  fetchPriority={i === 0 ? 'high' : 'auto'}
+                  decoding="async"
+                  style={{ objectPosition: item.focus }}
+                  className={`absolute inset-0 h-full w-full object-cover transition-transform duration-700 motion-reduce:transition-none ${isActive ? '' : 'group-hover:scale-105'}`}
+                />
+
+                {/* Look number, always visible */}
+                <span className="absolute left-2 top-2 bg-fashion-eggshell px-1.5 py-0.5 text-[11px] font-medium tabular-nums text-fashion-black">
+                  {pad(i + 1)}
                 </span>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      {/* Next Slide Preview Card (Right Side Middle) */}
-      <div
-        className={`absolute top-[40%] -translate-y-1/2 right-8 md:right-24 z-30 hidden lg:flex items-center gap-6 pointer-events-auto cursor-pointer group transition-opacity duration-1000 ease-in-out ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
-        onClick={nextSlide}
-      >
-        {/* Text Area (Left of Image) */}
-        <div className="flex flex-col items-end gap-2 transform group-hover:-translate-x-2 transition-transform duration-500">
-          <div className="flex items-center gap-3 w-full justify-end mb-1">
-            <span className="text-fashion-eggshell/60 font-poppins text-[10px] tracking-[0.4em] uppercase group-hover:text-fashion-eggshell transition-colors duration-300">
-              Up Next
+                {/* Caption on the open look */}
+                <span
+                  className={`absolute bottom-3 left-3 bg-fashion-eggshell px-3 py-1.5 text-left text-sm text-fashion-black whitespace-nowrap transition-opacity duration-300 ${isActive ? 'opacity-100 delay-500' : 'opacity-0'}`}
+                >
+                  <span className="font-playfair italic">{item.name}</span>
+                </span>
+              </button>
+            );
+          })}
+        </div>
+
+        {/* What's in the open look */}
+        <div className="lg:col-start-1 lg:row-start-2 border-t border-fashion-black/15 pt-5">
+          <div className="flex items-baseline justify-between">
+            <p className="font-playfair italic text-lg text-fashion-black">In this look</p>
+            <span className="text-xs tabular-nums text-fashion-black/50">
+              {pad(active + 1)} of {pad(looks.length)}
             </span>
-            <div className="h-[1px] w-8 bg-fashion-eggshell/40 group-hover:bg-fashion-eggshell group-hover:w-16 transition-all duration-500" />
           </div>
-          <h4 className="text-fashion-eggshell font-playfair text-xl md:text-2xl leading-tight tracking-wide text-right drop-shadow-md">
-            {slides[(current + 1) % slides.length].title}
-          </h4>
-        </div>
 
-        {/* Sleek Image Card (No Title) */}
-        <div className="relative w-40 h-56 md:w-56 md:h-80 overflow-hidden border border-fashion-eggshell/20 group-hover:border-fashion-eggshell/60 transition-all duration-500 shadow-xl">
-          <div className="absolute inset-0 bg-fashion-black/20 group-hover:bg-fashion-black/0 transition-colors duration-500 z-10" />
-          <img
-            src={slides[(current + 1) % slides.length].image}
-            alt="Next Slide"
-            className="w-full h-full object-cover object-center transform scale-100 group-hover:scale-110 transition-transform duration-700 ease-out"
-          />
+          <ul key={active} className="mt-2 animate-rise motion-reduce:animate-none">
+            {look.items.map((item) => (
+              <li key={item.name}>
+                <Link
+                  to="/shop"
+                  className="group flex items-baseline gap-3 py-1.5 text-sm text-fashion-black"
+                >
+                  <span className="group-hover:underline underline-offset-4">{item.name}</span>
+                  <span aria-hidden="true" className="flex-1 -translate-y-1 border-b border-dotted border-fashion-black/25" />
+                  <span className="tabular-nums text-fashion-black/70">{formatPrice(item.price)}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+
+          <Link
+            to="/shop"
+            className="group mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-fashion-moss hover:text-fashion-black transition-colors"
+          >
+            Shop the full look &middot; <span className="tabular-nums">{formatPrice(total)}</span>
+            <FiArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+          </Link>
         </div>
       </div>
-
-      {/* Redesigned Slider Indicators (Bottom Right Wala) */}
-      <div className={`absolute bottom-8 md:bottom-12 right-6 md:right-24 z-30 flex items-center gap-4 md:gap-6 pointer-events-auto scale-90 md:scale-100 origin-bottom-right transition-opacity duration-1000 ease-in-out ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}>
-        <button
-          onClick={prevSlide}
-          className="w-10 h-10 rounded-full border border-fashion-eggshell/30 flex items-center justify-center text-fashion-eggshell hover:bg-fashion-eggshell hover:text-fashion-moss transition-colors duration-300"
-          aria-label="Previous Slide"
-        >
-          <FaArrowLeft size={12} />
-        </button>
-
-        <div className="relative flex items-center justify-center w-16 h-16 md:w-[72px] md:h-[72px] rounded-full border border-fashion-eggshell/20 cursor-pointer overflow-hidden backdrop-blur-sm group group-hover:border-fashion-eggshell/50 transition-colors duration-500">
-          <svg className="absolute inset-0 w-full h-full -rotate-90 pointer-events-none" viewBox="0 0 100 100">
-            <circle
-              cx="50"
-              cy="50"
-              r="48"
-              fill="none"
-              stroke="rgba(240, 234, 214, 0.4)"
-              strokeWidth="2"
-              strokeDasharray="301.59"
-              strokeDashoffset={301.59 - (301.59 * (current + 1)) / slides.length}
-              className="transition-all duration-700 ease-out"
-            />
-          </svg>
-          <div className="flex items-baseline text-fashion-eggshell font-playfair pl-1 pt-1">
-            <span className="text-2xl md:text-3xl font-black">{current + 1}</span>
-            <span className="text-fashion-eggshell/50 text-[10px] md:text-xs ml-1 font-medium">/ {slides.length}</span>
-          </div>
-        </div>
-
-        <button
-          onClick={nextSlide}
-          className="w-10 h-10 rounded-full border border-fashion-eggshell/30 flex items-center justify-center text-fashion-eggshell hover:bg-fashion-eggshell hover:text-fashion-moss transition-colors duration-300"
-          aria-label="Next Slide"
-        >
-          <FaArrowRight size={12} />
-        </button>
-      </div>
-
     </section>
   );
 };

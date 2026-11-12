@@ -27,7 +27,7 @@ const ShopByCategory = () => {
                         {/* Fine Line & Mini Heading */}
                         <div className="flex items-center gap-4 mb-6">
                             <div className="w-8 h-[1px] bg-fashion-moss/60" />
-                            <span className="text-fashion-moss font-poppins text-[10px] tracking-[0.3em] uppercase font-semibold">
+                            <span className="text-fashion-moss font-inter text-[10px] tracking-[0.3em] uppercase font-semibold">
                                 Explore
                             </span>
                         </div>
@@ -56,7 +56,7 @@ const ShopByCategory = () => {
                             />
 
                             <div className="absolute inset-0 z-20 flex flex-col justify-end p-8 md:p-12 items-center">
-                                <h3 className="text-white text-4xl md:text-6xl font-poppins font-semibold uppercase tracking-widest translate-y-2 group-hover:translate-y-0 transition-transform duration-500 drop-shadow-md">
+                                <h3 className="text-white text-4xl md:text-6xl font-inter font-semibold uppercase tracking-widest translate-y-2 group-hover:translate-y-0 transition-transform duration-500 drop-shadow-md">
                                     {category.title}
                                 </h3>
                             </div>

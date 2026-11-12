@@ -31,7 +31,7 @@ const Category = () => {
                 <div className="flex flex-col items-center justify-center text-center mb-16">
                     <div className="flex items-center gap-4 mb-4">
                         <div className="w-12 h-[1px] bg-fashion-moss/60" />
-                        <span className="text-fashion-moss font-poppins text-xs tracking-[0.3em] uppercase font-semibold">
+                        <span className="text-fashion-moss font-inter text-xs tracking-[0.3em] uppercase font-semibold">
                             Explore Collections
                         </span>
                         <div className="w-12 h-[1px] bg-fashion-moss/60" />
@@ -62,7 +62,7 @@ const Category = () => {
                                 </h3>
                                 <Link
                                     to={category.link}
-                                    className="opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 delay-75 bg-white text-fashion-black px-8 py-3 font-poppins text-xs tracking-[0.2em] uppercase font-semibold hover:bg-fashion-eggshell"
+                                    className="opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 delay-75 bg-white text-fashion-black px-8 py-3 font-inter text-xs tracking-[0.2em] uppercase font-semibold hover:bg-fashion-eggshell"
                                 >
                                     Explore
                                 </Link>

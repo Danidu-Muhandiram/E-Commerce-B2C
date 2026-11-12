@@ -61,7 +61,7 @@ const NavBar = () => {
                 ? "bg-fashion-eggshell/85 backdrop-blur-md py-3 shadow-md border-b border-fashion-moss/5" 
                 : "bg-fashion-eggshell py-5 shadow-sm border-b border-fashion-moss/10"
         } ${isVisible ? "translate-y-0" : "-translate-y-full"}`}>
-            <div className="flex justify-between items-center relative container mx-auto px-8">
+            <div className="flex justify-between items-center relative container mx-auto px-4 md:px-8">
 
                 {/* Left Navigation (Desktop) */}
                 <div className="hidden lg:flex space-x-8 items-center w-1/3 justify-start">
@@ -69,7 +69,7 @@ const NavBar = () => {
                         <Link
                             key={index}
                             to={link.path}
-                            className="relative text-[11px] font-poppins font-bold uppercase tracking-[0.2em] text-fashion-moss hover:text-fashion-black transition-colors duration-300 group py-1"
+                            className="relative text-sm font-medium text-fashion-moss hover:text-fashion-black transition-colors duration-300 group py-1"
                         >
                             {link.name}
                             <span className="absolute bottom-0 left-0 w-full h-[1px] bg-fashion-black scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
@@ -78,7 +78,7 @@ const NavBar = () => {
                 </div>
 
                 {/* Logo (Center) */}
-                <div className="w-full lg:w-1/3 flex justify-center lg:absolute lg:left-1/2 lg:transform lg:-translate-x-1/2 z-50">
+                <div className="w-full lg:w-1/3 flex justify-start lg:justify-center lg:absolute lg:left-1/2 lg:transform lg:-translate-x-1/2 z-50">
                     <Link to="/" className="text-3xl md:text-4xl font-playfair font-black tracking-tighter text-fashion-moss py-1">
                         Veloura
                     </Link>
@@ -90,7 +90,7 @@ const NavBar = () => {
                         <Link
                             key={index}
                             to={link.path}
-                            className="relative text-[11px] font-poppins font-bold uppercase tracking-[0.2em] text-fashion-moss hover:text-fashion-black transition-colors duration-300 group py-1"
+                            className="relative text-sm font-medium text-fashion-moss hover:text-fashion-black transition-colors duration-300 group py-1"
                         >
                             {link.name}
                             <span className="absolute bottom-0 left-0 w-full h-[1px] bg-fashion-black scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
@@ -100,14 +100,14 @@ const NavBar = () => {
                     {/* Login Link */}
                     <Link
                         to="/login"
-                        className="relative text-[10px] font-poppins font-bold uppercase tracking-[0.2em] text-fashion-moss hover:text-fashion-black transition-colors duration-300 group py-1"
+                        className="relative text-sm font-medium text-fashion-moss hover:text-fashion-black transition-colors duration-300 group py-1"
                     >
                         Login
                         <span className="absolute bottom-0 left-0 w-full h-[1px] bg-fashion-black scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
                     </Link>
 
                     {/* Sign Up Button */}
-                    <Link to="/signup" className="group relative inline-flex items-center justify-center text-[10px] font-poppins font-bold uppercase tracking-[0.2em] px-6 py-2 overflow-hidden transition-colors duration-300 border border-fashion-moss text-fashion-moss">
+                    <Link to="/signup" className="group relative inline-flex items-center justify-center whitespace-nowrap text-sm font-medium px-5 py-2 overflow-hidden transition-colors duration-300 border border-fashion-moss text-fashion-moss">
                         <div className="absolute inset-0 transform scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-500 ease-out z-0 bg-fashion-moss" />
                         <span className="relative z-10 transition-colors duration-500 group-hover:text-fashion-eggshell">Sign Up</span>
                     </Link>
@@ -122,7 +122,7 @@ const NavBar = () => {
                 </div>
 
                 {/* Mobile Header Actions */}
-                <div className="absolute right-8 flex items-center space-x-5 lg:hidden z-50">
+                <div className="absolute right-4 md:right-8 flex items-center space-x-5 lg:hidden z-50">
                     <Link
                         to="/login"
                         className="text-fashion-moss hover:text-fashion-black transition-colors duration-300"
@@ -168,14 +168,14 @@ const NavBar = () => {
                 <div className="flex flex-col items-center space-y-4 pt-6 w-[250px]">
                     <Link
                         to="/login"
-                        className="w-full text-center text-[11px] font-poppins font-bold uppercase tracking-[0.2em] py-3 text-fashion-moss border border-fashion-moss/30 hover:border-fashion-moss transition-colors duration-300"
+                        className="w-full text-center text-sm font-medium py-3 text-fashion-moss border border-fashion-moss/30 hover:border-fashion-moss transition-colors duration-300"
                         onClick={toggleMenu}
                     >
                         Login
                     </Link>
                     <Link
                         to="/signup"
-                        className="w-full text-center text-[11px] font-poppins font-bold uppercase tracking-[0.2em] py-3 bg-fashion-moss text-fashion-eggshell hover:bg-fashion-moss/90 transition-colors duration-300"
+                        className="w-full text-center text-sm font-medium py-3 bg-fashion-moss text-fashion-eggshell hover:bg-fashion-moss/90 transition-colors duration-300"
                         onClick={toggleMenu}
                     >
                         Sign Up

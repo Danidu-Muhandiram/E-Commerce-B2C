@@ -43,7 +43,7 @@ const BannerSlider = () => {
                 <div className="pointer-events-auto text-center px-6">
                     <Link
                         to="/shop"
-                        className="group relative inline-flex items-center justify-center bg-fashion-black/40 backdrop-blur-sm text-fashion-eggshell px-10 py-4 font-poppins font-medium text-[11px] uppercase tracking-[0.3em] transition-all duration-500 border border-fashion-eggshell/50 hover:border-fashion-eggshell hover:bg-fashion-eggshell hover:text-fashion-black shadow-xl"
+                        className="group relative inline-flex items-center justify-center bg-fashion-black/40 backdrop-blur-sm text-fashion-eggshell px-10 py-4 font-inter font-medium text-[11px] uppercase tracking-[0.3em] transition-all duration-500 border border-fashion-eggshell/50 hover:border-fashion-eggshell hover:bg-fashion-eggshell hover:text-fashion-black shadow-xl"
                     >
                         <span className="relative z-10 flex items-center gap-4 transition-colors duration-500">
                             Discover the Edit

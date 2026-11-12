@@ -3,9 +3,9 @@ import React, { useRef, useState } from 'react';
 const brands = [
     { id: 1, name: 'VALENTIN', subtitle: 'HAUTE COUTURE', style: 'font-playfair tracking-[0.3em] text-xl font-bold' },
     { id: 2, name: 'MAISON D\'OR', subtitle: 'PARIS', style: 'font-playfair tracking-[0.2em] text-lg italic font-medium' },
-    { id: 3, name: 'LUMIÈRE', subtitle: 'STUDIOS', style: 'font-poppins tracking-[0.4em] text-base font-semibold' },
+    { id: 3, name: 'LUMIÈRE', subtitle: 'STUDIOS', style: 'font-inter tracking-[0.4em] text-base font-semibold' },
     { id: 4, name: 'AURA', subtitle: 'MILANO', style: 'font-playfair tracking-[0.5em] text-2xl font-light' },
-    { id: 5, name: 'SARTORIAL', subtitle: 'LONDON', style: 'font-poppins tracking-[0.3em] text-xs font-bold' },
+    { id: 5, name: 'SARTORIAL', subtitle: 'LONDON', style: 'font-inter tracking-[0.3em] text-xs font-bold' },
     { id: 6, name: 'ÉCLAT', subtitle: 'NEW YORK', style: 'font-playfair tracking-[0.4em] text-xl font-medium' },
 ];
 
@@ -60,7 +60,7 @@ const OurBrands = () => {
                     {/* Fine Line & Mini Heading */}
                     <div className="flex justify-center md:justify-start items-center gap-4 mb-6">
                         <div className="w-8 h-[1px] bg-fashion-moss/60" />
-                        <span className="text-fashion-moss font-poppins text-[10px] tracking-[0.3em] uppercase font-semibold">
+                        <span className="text-fashion-moss font-inter text-[10px] tracking-[0.3em] uppercase font-semibold">
                             Explore
                         </span>
                     </div>
@@ -68,7 +68,7 @@ const OurBrands = () => {
                     <h2 className="text-3xl md:text-4xl font-playfair font-bold text-fashion-black tracking-tight mb-4 uppercase text-center md:text-left">
                         Our Brands.
                     </h2>
-                    <p className="text-fashion-black/70 font-poppins text-sm md:text-base max-w-2xl text-center md:text-left">
+                    <p className="text-fashion-black/70 font-inter text-sm md:text-base max-w-2xl text-center md:text-left">
                         Discover our carefully curated selection of partner labels. Each brand is chosen for its exceptional craftsmanship, modern aesthetic, and commitment to accessible luxury.
                     </p>
                 </div>
@@ -90,7 +90,7 @@ const OurBrands = () => {
                                         {brand.name}
                                     </h3>
                                     {brand.subtitle && (
-                                        <p className="text-[9px] font-poppins tracking-[0.3em] text-fashion-moss/50 group-hover:text-fashion-moss/70 mt-2 uppercase transition-colors duration-500">
+                                        <p className="text-[9px] font-inter tracking-[0.3em] text-fashion-moss/50 group-hover:text-fashion-moss/70 mt-2 uppercase transition-colors duration-500">
                                             {brand.subtitle}
                                         </p>
                                     )}

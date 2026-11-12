@@ -68,7 +68,7 @@ const Login = () => {
                         </Link>
                         
                         <div className="space-y-4">
-                            <span className="text-[10px] font-poppins font-bold tracking-[0.3em] uppercase opacity-75">
+                            <span className="text-[10px] font-inter font-bold tracking-[0.3em] uppercase opacity-75">
                                 Autumn / Winter '26
                             </span>
                             <h2 className="text-4xl md:text-5xl font-playfair font-bold leading-tight">
@@ -79,7 +79,7 @@ const Login = () => {
                             </p>
                         </div>
 
-                        <div className="text-[10px] font-poppins tracking-widest opacity-50">
+                        <div className="text-[10px] font-inter tracking-widest opacity-50">
                             © 2026 VELOURA. ALL RIGHTS RESERVED.
                         </div>
                     </div>
@@ -93,7 +93,7 @@ const Login = () => {
                         <Link to="/" className="text-3xl font-playfair font-black tracking-tighter text-fashion-moss inline-block mb-2">
                             Veloura
                         </Link>
-                        <p className="text-[10px] font-poppins font-bold tracking-widest uppercase text-fashion-moss/60">
+                        <p className="text-[10px] font-inter font-bold tracking-widest uppercase text-fashion-moss/60">
                             Timeless Fashion
                         </p>
                     </div>
@@ -120,7 +120,7 @@ const Login = () => {
                             </p>
                             <button 
                                 onClick={() => setSubmitSuccess(false)}
-                                className="inline-block text-[11px] font-poppins font-bold uppercase tracking-wider text-fashion-moss hover:text-fashion-black transition-colors"
+                                className="inline-block text-[11px] font-inter font-bold uppercase tracking-wider text-fashion-moss hover:text-fashion-black transition-colors"
                             >
                                 Try Login Page Again
                             </button>
@@ -129,7 +129,7 @@ const Login = () => {
                         <form onSubmit={handleSubmit} className="space-y-6">
                             {/* Email Address */}
                             <div className="relative">
-                                <label className="block text-[10px] font-poppins font-bold uppercase tracking-widest text-fashion-moss mb-1">
+                                <label className="block text-[10px] font-inter font-bold uppercase tracking-widest text-fashion-moss mb-1">
                                     Email Address
                                 </label>
                                 <input
@@ -152,10 +152,10 @@ const Login = () => {
                             {/* Password */}
                             <div className="relative">
                                 <div className="flex justify-between items-center mb-1">
-                                    <label className="text-[10px] font-poppins font-bold uppercase tracking-widest text-fashion-moss">
+                                    <label className="text-[10px] font-inter font-bold uppercase tracking-widest text-fashion-moss">
                                         Password
                                     </label>
-                                    <a href="#" className="text-[10px] font-poppins font-bold uppercase tracking-wider text-fashion-moss/60 hover:text-fashion-black transition-colors">
+                                    <a href="#" className="text-[10px] font-inter font-bold uppercase tracking-wider text-fashion-moss/60 hover:text-fashion-black transition-colors">
                                         Forgot Password?
                                     </a>
                                 </div>
@@ -203,7 +203,7 @@ const Login = () => {
                             <button
                                 type="submit"
                                 disabled={isSubmitting}
-                                className="group relative w-full inline-flex items-center justify-center text-[11px] font-poppins font-bold uppercase tracking-[0.2em] py-4 bg-fashion-moss text-fashion-eggshell overflow-hidden transition-all duration-300 hover:bg-fashion-moss/90 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed rounded"
+                                className="group relative w-full inline-flex items-center justify-center text-[11px] font-inter font-bold uppercase tracking-[0.2em] py-4 bg-fashion-moss text-fashion-eggshell overflow-hidden transition-all duration-300 hover:bg-fashion-moss/90 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed rounded"
                             >
                                 {isSubmitting ? (
                                     <div className="flex items-center space-x-2">
@@ -221,7 +221,7 @@ const Login = () => {
                     <div className="mt-8 text-center">
                         <p className="text-xs font-inter text-fashion-moss/80">
                             Don't have an account?{' '}
-                            <Link to="/signup" className="font-poppins font-bold uppercase tracking-wider text-fashion-moss hover:text-fashion-black transition-colors ml-1 text-[11px]">
+                            <Link to="/signup" className="font-inter font-bold uppercase tracking-wider text-fashion-moss hover:text-fashion-black transition-colors ml-1 text-[11px]">
                                 Create Account
                             </Link>
                         </p>
