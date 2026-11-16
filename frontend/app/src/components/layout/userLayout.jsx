@@ -2,10 +2,13 @@ import { Outlet } from "react-router-dom";
 import Topbar from "./Topbar";
 import NavBar from "./NavBar";
 import Footer from "./Footer";
+import ScrollToTop from "./ScrollToTop";
+import CartDrawer from "../cart/CartDrawer";
 
 const UserLayout = () => {
     return (
         <>
+            <ScrollToTop />
             {/* Topbar scrolls away naturally */}
             <Topbar />
             
@@ -19,6 +22,8 @@ const UserLayout = () => {
             
             {/*Footer*/}
             <Footer />
+
+            <CartDrawer />
         </>
     );
 };

@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { HiOutlineShoppingBag, HiMenuAlt3, HiX, HiOutlineUser } from "react-icons/hi";
+import { useStore } from "../../context/store";
 
 const NavBar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [isVisible, setIsVisible] = useState(true);
     const [isScrolled, setIsScrolled] = useState(false);
     const [lastScrollY, setLastScrollY] = useState(0);
+    const { cartCount, openCart } = useStore();
 
     // Toggle Mobile Menu
     const toggleMenu = () => {
@@ -113,11 +115,13 @@ const NavBar = () => {
                     </Link>
 
                     {/* Cart Icon */}
-                    <button className="relative transition-colors duration-300 text-fashion-moss hover:text-fashion-black">
+                    <button type="button" onClick={openCart} className="relative transition-colors duration-300 text-fashion-moss hover:text-fashion-black" aria-label={`Bag, ${cartCount} items`}>
                         <HiOutlineShoppingBag className="w-6 h-6" />
-                        <span className="absolute -top-1 -right-1 text-[9px] w-3 h-3 rounded-full flex items-center justify-center font-bold bg-fashion-moss text-fashion-eggshell">
-                            3
-                        </span>
+                        {cartCount > 0 && (
+                            <span className="absolute -top-1.5 -right-1.5 text-[9px] min-w-4 h-4 px-1 rounded-full flex items-center justify-center font-bold tabular-nums bg-fashion-moss text-fashion-eggshell">
+                                {cartCount > 9 ? "9+" : cartCount}
+                            </span>
+                        )}
                     </button>
                 </div>
 
@@ -131,11 +135,13 @@ const NavBar = () => {
                         <HiOutlineUser className="w-6 h-6" />
                     </Link>
 
-                    <button className="relative text-fashion-moss hover:text-fashion-black transition-colors duration-300" aria-label="Cart">
+                    <button type="button" onClick={openCart} className="relative text-fashion-moss hover:text-fashion-black transition-colors duration-300" aria-label={`Bag, ${cartCount} items`}>
                         <HiOutlineShoppingBag className="w-6 h-6" />
-                        <span className="absolute -top-1 -right-1 text-[9px] w-3 h-3 rounded-full flex items-center justify-center font-bold bg-fashion-moss text-fashion-eggshell">
-                            3
-                        </span>
+                        {cartCount > 0 && (
+                            <span className="absolute -top-1.5 -right-1.5 text-[9px] min-w-4 h-4 px-1 rounded-full flex items-center justify-center font-bold tabular-nums bg-fashion-moss text-fashion-eggshell">
+                                {cartCount > 9 ? "9+" : cartCount}
+                            </span>
+                        )}
                     </button>
 
                     <button
