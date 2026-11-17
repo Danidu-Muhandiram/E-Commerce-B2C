@@ -13,7 +13,7 @@ const Footer = () => {
                     <div className="flex flex-wrap md:flex-row gap-10 md:gap-16 lg:gap-24">
                         {/* Newsletter */}
                         <div className="max-w-sm">
-                            <h4 className="font-playfair text-xl md:text-2xl font-bold text-fashion-black mb-4">
+                            <h4 className="font-playfair text-xl md:text-2xl text-fashion-black mb-4">
                                 Stay a step ahead.
                             </h4>
                             <p className="font-inter text-xs text-fashion-black/70 mb-4">
@@ -34,35 +34,35 @@ const Footer = () => {
 
                         {/* Shop Links */}
                         <div>
-                            <h4 className="font-inter text-[10px] tracking-[0.2em] font-semibold text-fashion-black uppercase mb-4">
+                            <h4 className="text-xs font-medium tracking-wider text-fashion-black/50 uppercase mb-4">
                                 Shop
                             </h4>
                             <ul className="flex flex-col gap-3">
-                                <li><Link to="#" className="font-inter text-xs text-fashion-black/70 hover:text-fashion-black transition-colors">Women's Collection</Link></li>
-                                <li><Link to="#" className="font-inter text-xs text-fashion-black/70 hover:text-fashion-black transition-colors">Men's Collection</Link></li>
-                                <li><Link to="#" className="font-inter text-xs text-fashion-black/70 hover:text-fashion-black transition-colors">Kids' Collection</Link></li>
+                                <li><Link to="#" className="font-inter text-xs text-fashion-black/70 hover:text-fashion-black transition-colors">Women</Link></li>
+                                <li><Link to="#" className="font-inter text-xs text-fashion-black/70 hover:text-fashion-black transition-colors">Men</Link></li>
+                                <li><Link to="#" className="font-inter text-xs text-fashion-black/70 hover:text-fashion-black transition-colors">Kids</Link></li>
                                 <li><Link to="#" className="font-inter text-xs text-fashion-black/70 hover:text-fashion-black transition-colors">Accessories</Link></li>
                             </ul>
                         </div>
 
                         {/* Support Links */}
                         <div>
-                            <h4 className="font-inter text-[10px] tracking-[0.2em] font-semibold text-fashion-black uppercase mb-4">
+                            <h4 className="text-xs font-medium tracking-wider text-fashion-black/50 uppercase mb-4">
                                 Assistance
                             </h4>
                             <ul className="flex flex-col gap-3">
-                                <li><Link to="#" className="font-inter text-xs text-fashion-black/70 hover:text-fashion-black transition-colors">Customer Care</Link></li>
-                                <li><Link to="#" className="font-inter text-xs text-fashion-black/70 hover:text-fashion-black transition-colors">Shipping & Returns</Link></li>
-                                <li><Link to="#" className="font-inter text-xs text-fashion-black/70 hover:text-fashion-black transition-colors">Size Guide</Link></li>
-                                <li><Link to="#" className="font-inter text-xs text-fashion-black/70 hover:text-fashion-black transition-colors">Contact Us</Link></li>
+                                <li><Link to="#" className="font-inter text-xs text-fashion-black/70 hover:text-fashion-black transition-colors">Customer care</Link></li>
+                                <li><Link to="#" className="font-inter text-xs text-fashion-black/70 hover:text-fashion-black transition-colors">Shipping and returns</Link></li>
+                                <li><Link to="#" className="font-inter text-xs text-fashion-black/70 hover:text-fashion-black transition-colors">Size guide</Link></li>
+                                <li><Link to="#" className="font-inter text-xs text-fashion-black/70 hover:text-fashion-black transition-colors">Contact us</Link></li>
                             </ul>
                         </div>
                     </div>
 
                     {/* Right Side: Social Media */}
                     <div className="flex flex-col lg:items-end">
-                        <h4 className="font-inter text-[10px] tracking-[0.2em] font-semibold text-fashion-black uppercase mb-4">
-                            Join Our Community
+                        <h4 className="text-xs font-medium tracking-wider text-fashion-black/50 uppercase mb-4">
+                            Join our community
                         </h4>
                         <div className="flex gap-5">
                             <a href="#" className="text-fashion-black hover:text-fashion-moss transition-colors duration-300">
@@ -88,7 +88,7 @@ const Footer = () => {
             {/* Bottom Bar: Logo & Copyright */}
             <div className="border-t border-fashion-moss/20 py-4">
                 <div className="max-w-[1400px] mx-auto px-6 md:px-16 flex flex-col md:flex-row justify-between items-center gap-4">
-                    <Link to="/" className="text-xl md:text-2xl font-playfair font-bold text-fashion-black italic tracking-tighter">
+                    <Link to="/" className="text-xl md:text-2xl font-playfair font-black text-fashion-moss tracking-tighter">
                         Veloura.
                     </Link>
 

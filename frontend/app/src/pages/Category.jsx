@@ -31,13 +31,13 @@ const Category = () => {
                 <div className="flex flex-col items-center justify-center text-center mb-16">
                     <div className="flex items-center gap-4 mb-4">
                         <div className="w-12 h-[1px] bg-fashion-moss/60" />
-                        <span className="text-fashion-moss font-inter text-xs tracking-[0.3em] uppercase font-semibold">
-                            Explore Collections
+                        <span className="text-fashion-moss text-sm font-medium">
+                            Explore collections
                         </span>
                         <div className="w-12 h-[1px] bg-fashion-moss/60" />
                     </div>
-                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-playfair font-bold text-fashion-black tracking-tight uppercase">
-                        All Categories.
+                    <h1 className="text-4xl md:text-5xl lg:text-6xl font-playfair text-fashion-black tracking-tight">
+                        All categories
                     </h1>
                 </div>
 
@@ -57,12 +57,12 @@ const Category = () => {
 
                             {/* Content */}
                             <div className="absolute inset-0 p-8 flex flex-col justify-end items-center text-center">
-                                <h3 className="text-white font-playfair text-2xl md:text-3xl font-bold tracking-wide mb-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                                <h3 className="text-white font-playfair text-2xl md:text-3xl mb-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                                     {category.name}
                                 </h3>
                                 <Link
                                     to={category.link}
-                                    className="opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 delay-75 bg-white text-fashion-black px-8 py-3 font-inter text-xs tracking-[0.2em] uppercase font-semibold hover:bg-fashion-eggshell"
+                                    className="opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500 delay-75 bg-white text-fashion-black px-8 py-3 text-sm font-medium hover:bg-fashion-eggshell"
                                 >
                                     Explore
                                 </Link>

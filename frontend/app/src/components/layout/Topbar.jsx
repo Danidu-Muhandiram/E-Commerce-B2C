@@ -20,13 +20,13 @@ const TopBar = () => {
         </div>
         <div className="text-center w-full md:w-[400px] overflow-hidden font-medium relative flex items-center">
           <div className="animate-scroll flex gap-6 whitespace-nowrap hover:[animation-play-state:paused] cursor-default">
-            <span>COMPLIMENTARY SHIPPING ON ORDERS OVER Rs 15,000</span>
+            <span>Free shipping on orders over Rs 15,000</span>
             <span>•</span>
-            <span>FREE RETURNS ON ALL ORDERS</span>
+            <span>Free returns on all orders</span>
             <span>•</span>
-            <span>COMPLIMENTARY SHIPPING ON ORDERS OVER Rs 15,000</span>
+            <span>Free shipping on orders over Rs 15,000</span>
             <span>•</span>
-            <span>FREE RETURNS ON ALL ORDERS</span>
+            <span>Free returns on all orders</span>
             <span>•</span>
           </div>
         </div>

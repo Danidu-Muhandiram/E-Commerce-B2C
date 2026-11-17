@@ -68,19 +68,19 @@ const Login = () => {
                         </Link>
                         
                         <div className="space-y-4">
-                            <span className="text-[10px] font-inter font-bold tracking-[0.3em] uppercase opacity-75">
+                            <span className="text-sm font-medium opacity-75">
                                 Autumn / Winter '26
                             </span>
-                            <h2 className="text-4xl md:text-5xl font-playfair font-bold leading-tight">
+                            <h2 className="text-4xl md:text-5xl font-playfair leading-tight">
                                 Curating timeless<br />individual style.
                             </h2>
-                            <p className="font-inter text-xs tracking-wide font-light max-w-md opacity-85 leading-relaxed">
+                            <p className="text-sm max-w-md opacity-85 leading-relaxed">
                                 Join our community of designers, trendsetters, and curators to access members-only releases, custom tailoring services, and invitations to local trunk shows.
                             </p>
                         </div>
 
-                        <div className="text-[10px] font-inter tracking-widest opacity-50">
-                            © 2026 VELOURA. ALL RIGHTS RESERVED.
+                        <div className="text-xs opacity-50">
+                            © 2026 Veloura. All rights reserved.
                         </div>
                     </div>
                 </div>
@@ -93,14 +93,14 @@ const Login = () => {
                         <Link to="/" className="text-3xl font-playfair font-black tracking-tighter text-fashion-moss inline-block mb-2">
                             Veloura
                         </Link>
-                        <p className="text-[10px] font-inter font-bold tracking-widest uppercase text-fashion-moss/60">
-                            Timeless Fashion
+                        <p className="text-sm font-medium text-fashion-moss">
+                            Timeless fashion
                         </p>
                     </div>
 
                     <div className="mb-8">
-                        <h1 className="text-3xl md:text-4xl font-playfair font-bold text-fashion-black mb-2">
-                            Welcome Back
+                        <h1 className="text-3xl md:text-4xl font-playfair text-fashion-black mb-2">
+                            Welcome back
                         </h1>
                         <p className="text-sm font-inter text-fashion-moss/80 font-light">
                             Enter your credentials to access your personal collection.
@@ -112,25 +112,25 @@ const Login = () => {
                             <div className="w-12 h-12 bg-fashion-moss text-fashion-eggshell rounded-full flex items-center justify-center mx-auto text-xl font-bold">
                                 ✓
                             </div>
-                            <h3 className="text-xl font-playfair font-bold text-fashion-black">
-                                Login Successful
+                            <h3 className="text-xl font-playfair text-fashion-black">
+                                Login successful
                             </h3>
                             <p className="text-xs font-inter text-fashion-moss/80">
                                 Welcome back to Veloura! Redirection is currently mocked for this frontend-only demonstration.
                             </p>
                             <button 
                                 onClick={() => setSubmitSuccess(false)}
-                                className="inline-block text-[11px] font-inter font-bold uppercase tracking-wider text-fashion-moss hover:text-fashion-black transition-colors"
+                                className="inline-block text-sm font-medium text-fashion-moss hover:text-fashion-black transition-colors"
                             >
-                                Try Login Page Again
+                                Back to login
                             </button>
                         </div>
                     ) : (
                         <form onSubmit={handleSubmit} className="space-y-6">
                             {/* Email Address */}
                             <div className="relative">
-                                <label className="block text-[10px] font-inter font-bold uppercase tracking-widest text-fashion-moss mb-1">
-                                    Email Address
+                                <label className="block text-xs font-medium text-fashion-black/70 mb-1">
+                                    Email address
                                 </label>
                                 <input
                                     type="email"
@@ -152,11 +152,11 @@ const Login = () => {
                             {/* Password */}
                             <div className="relative">
                                 <div className="flex justify-between items-center mb-1">
-                                    <label className="text-[10px] font-inter font-bold uppercase tracking-widest text-fashion-moss">
+                                    <label className="text-xs font-medium text-fashion-black/70">
                                         Password
                                     </label>
-                                    <a href="#" className="text-[10px] font-inter font-bold uppercase tracking-wider text-fashion-moss/60 hover:text-fashion-black transition-colors">
-                                        Forgot Password?
+                                    <a href="#" className="text-xs font-medium text-fashion-moss/60 hover:text-fashion-black transition-colors">
+                                        Forgot password?
                                     </a>
                                 </div>
                                 <div className="relative">
@@ -203,7 +203,7 @@ const Login = () => {
                             <button
                                 type="submit"
                                 disabled={isSubmitting}
-                                className="group relative w-full inline-flex items-center justify-center text-[11px] font-inter font-bold uppercase tracking-[0.2em] py-4 bg-fashion-moss text-fashion-eggshell overflow-hidden transition-all duration-300 hover:bg-fashion-moss/90 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed rounded"
+                                className="group relative w-full inline-flex items-center justify-center text-sm font-medium py-4 bg-fashion-moss text-fashion-eggshell overflow-hidden transition-all duration-300 hover:bg-fashion-moss/90 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed rounded"
                             >
                                 {isSubmitting ? (
                                     <div className="flex items-center space-x-2">
@@ -211,7 +211,7 @@ const Login = () => {
                                         <span>Authenticating...</span>
                                     </div>
                                 ) : (
-                                    <span>Sign In</span>
+                                    <span>Sign in</span>
                                 )}
                             </button>
                         </form>
@@ -221,8 +221,8 @@ const Login = () => {
                     <div className="mt-8 text-center">
                         <p className="text-xs font-inter text-fashion-moss/80">
                             Don't have an account?{' '}
-                            <Link to="/signup" className="font-inter font-bold uppercase tracking-wider text-fashion-moss hover:text-fashion-black transition-colors ml-1 text-[11px]">
-                                Create Account
+                            <Link to="/signup" className="font-medium text-fashion-moss hover:text-fashion-black transition-colors ml-1">
+                                Create account
                             </Link>
                         </p>
                     </div>

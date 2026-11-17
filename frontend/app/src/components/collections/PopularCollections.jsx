@@ -8,27 +8,27 @@ import imgKids from '../../assets/popular3.jpg';
 const collections = [
     {
         id: 1,
-        title: "Women's Collection",
+        title: "Women's collection",
         subtitle: 'Elegance defined. Discover the latest styles.',
-        tag: 'FOR HER',
+        tag: 'For her',
         image: imgFemale,
         span: 'md:col-span-8',
         height: 'h-[450px] md:h-[650px]',
     },
     {
         id: 2,
-        title: "Men's Collection",
-        subtitle: 'Sharp & Sophisticated.',
-        tag: 'FOR HIM',
+        title: "Men's collection",
+        subtitle: 'Sharp and sophisticated.',
+        tag: 'For him',
         image: imgMale,
         span: 'md:col-span-4',
         height: 'h-[320px] md:h-[313px]',
     },
     {
         id: 3,
-        title: "Kids' Collection",
-        subtitle: 'Playful & Comfortable.',
-        tag: 'FOR KIDS',
+        title: "Kids' collection",
+        subtitle: 'Playful and comfortable.',
+        tag: 'For kids',
         image: imgKids,
         span: 'md:col-span-4',
         height: 'h-[320px] md:h-[313px]',
@@ -46,21 +46,21 @@ const PopularCollections = () => {
                         {/* Fine Line & Mini Heading */}
                         <div className="flex items-center gap-4 mb-6">
                             <div className="w-8 h-[1px] bg-fashion-moss/60" />
-                            <span className="text-fashion-moss font-inter text-[10px] tracking-[0.3em] uppercase font-semibold">
-                                Curated Styles
+                            <span className="text-fashion-moss text-sm font-medium">
+                                Curated styles
                             </span>
                         </div>
 
-                        <h2 className="text-3xl md:text-4xl font-playfair font-bold text-fashion-black leading-[1.1] tracking-tight">
-                            Popular Collections.
+                        <h2 className="text-3xl md:text-4xl font-playfair text-fashion-black leading-[1.1] tracking-tight">
+                            Popular collections
                         </h2>
                     </div>
 
                     <Link
                         to="/shop"
-                        className="group flex items-center gap-3 text-fashion-moss hover:text-fashion-black transition-colors duration-300 font-inter text-[11px] font-bold uppercase tracking-[0.2em] pb-2 border-b border-fashion-moss/30 hover:border-fashion-black"
+                        className="group flex items-center gap-3 text-fashion-moss hover:text-fashion-black transition-colors duration-300 text-sm font-medium pb-2 border-b border-fashion-moss/30 hover:border-fashion-black"
                     >
-                        View All Collections
+                        View all collections
                         <FaArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform duration-300" />
                     </Link>
                 </div>
@@ -82,19 +82,19 @@ const PopularCollections = () => {
 
                         <div className="absolute inset-0 z-20 flex flex-col justify-between p-8 md:p-12">
                             <div className="flex justify-between items-start">
-                                <span className="bg-fashion-eggshell text-fashion-black px-4 py-1.5 font-inter text-[9px] font-bold uppercase tracking-[0.2em]">
+                                <span className="bg-fashion-eggshell text-fashion-black px-4 py-1.5 text-[11px] font-medium">
                                     {collections[0].tag}
                                 </span>
                             </div>
 
                             <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
-                                <h3 className="text-3xl md:text-4xl font-playfair font-bold text-fashion-eggshell mb-3">
+                                <h3 className="text-3xl md:text-4xl font-playfair text-fashion-eggshell mb-3">
                                     {collections[0].title}
                                 </h3>
                                 <p className="text-fashion-eggshell/80 font-inter text-sm max-w-md mb-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
                                     {collections[0].subtitle}
                                 </p>
-                                <div className="inline-flex items-center gap-3 text-fashion-eggshell font-inter text-[10px] font-bold uppercase tracking-[0.2em] group/btn">
+                                <div className="inline-flex items-center gap-3 text-fashion-eggshell text-sm font-medium group/btn">
                                     Explore <FaArrowRight className="w-3 h-3 group-hover/btn:translate-x-1 transition-transform" />
                                 </div>
                             </div>
@@ -117,17 +117,17 @@ const PopularCollections = () => {
 
                                 <div className="absolute inset-0 z-20 flex flex-col justify-between p-8">
                                     <div>
-                                        <span className="text-fashion-eggshell font-inter text-[9px] font-semibold uppercase tracking-[0.2em] border border-fashion-eggshell/30 px-3 py-1 backdrop-blur-sm">
+                                        <span className="text-fashion-eggshell text-[11px] font-medium border border-fashion-eggshell/30 px-3 py-1 backdrop-blur-sm">
                                             {collection.tag}
                                         </span>
                                     </div>
 
                                     <div className="transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500 ease-out">
-                                        <h3 className="text-xl md:text-2xl font-playfair font-bold text-fashion-eggshell mb-2">
+                                        <h3 className="text-xl md:text-2xl font-playfair text-fashion-eggshell mb-2">
                                             {collection.title}
                                         </h3>
-                                        <div className="inline-flex items-center gap-2 text-fashion-eggshell/80 group-hover:text-fashion-eggshell font-inter text-[10px] uppercase tracking-[0.1em] transition-colors duration-300">
-                                            Shop Now <FaArrowRight className="w-2 h-2 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
+                                        <div className="inline-flex items-center gap-2 text-fashion-eggshell/80 group-hover:text-fashion-eggshell text-sm transition-colors duration-300">
+                                            Shop now <FaArrowRight className="w-2 h-2 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
                                         </div>
                                     </div>
                                 </div>

@@ -92,19 +92,19 @@ const Signup = () => {
                         </Link>
                         
                         <div className="space-y-4">
-                            <span className="text-[10px] font-inter font-bold tracking-[0.3em] uppercase opacity-75">
-                                Limited Run Collections
+                            <span className="text-sm font-medium opacity-75">
+                                Limited-run collections
                             </span>
-                            <h2 className="text-4xl md:text-5xl font-playfair font-bold leading-tight">
+                            <h2 className="text-4xl md:text-5xl font-playfair leading-tight">
                                 Join the circle of<br />conscious style.
                             </h2>
-                            <p className="font-inter text-xs tracking-wide font-light max-w-md opacity-85 leading-relaxed">
+                            <p className="text-sm max-w-md opacity-85 leading-relaxed">
                                 Create an account to register your preferences, save items to your wishlist, and enjoy complimentary express delivery on your first order.
                             </p>
                         </div>
 
-                        <div className="text-[10px] font-inter tracking-widest opacity-50">
-                            © 2026 VELOURA. ALL RIGHTS RESERVED.
+                        <div className="text-xs opacity-50">
+                            © 2026 Veloura. All rights reserved.
                         </div>
                     </div>
                 </div>
@@ -117,14 +117,14 @@ const Signup = () => {
                         <Link to="/" className="text-3xl font-playfair font-black tracking-tighter text-fashion-moss inline-block mb-2">
                             Veloura
                         </Link>
-                        <p className="text-[10px] font-inter font-bold tracking-widest uppercase text-fashion-moss/60">
-                            Timeless Fashion
+                        <p className="text-sm font-medium text-fashion-moss">
+                            Timeless fashion
                         </p>
                     </div>
 
                     <div className="mb-8">
-                        <h1 className="text-3xl md:text-4xl font-playfair font-bold text-fashion-black mb-2">
-                            Create Account
+                        <h1 className="text-3xl md:text-4xl font-playfair text-fashion-black mb-2">
+                            Create account
                         </h1>
                         <p className="text-sm font-inter text-fashion-moss/80 font-light">
                             Sign up to experience customized style recommendation.
@@ -136,25 +136,25 @@ const Signup = () => {
                             <div className="w-12 h-12 bg-fashion-moss text-fashion-eggshell rounded-full flex items-center justify-center mx-auto text-xl font-bold">
                                 ✓
                             </div>
-                            <h3 className="text-xl font-playfair font-bold text-fashion-black">
-                                Registration Successful
+                            <h3 className="text-xl font-playfair text-fashion-black">
+                                Registration successful
                             </h3>
                             <p className="text-xs font-inter text-fashion-moss/80">
                                 Your Veloura account has been successfully created. We have sent a welcome confirmation email. Redirect is currently mocked.
                             </p>
                             <button 
                                 onClick={() => setSubmitSuccess(false)}
-                                className="inline-block text-[11px] font-inter font-bold uppercase tracking-wider text-fashion-moss hover:text-fashion-black transition-colors"
+                                className="inline-block text-sm font-medium text-fashion-moss hover:text-fashion-black transition-colors"
                             >
-                                Register Another Account
+                                Register another account
                             </button>
                         </div>
                     ) : (
                         <form onSubmit={handleSubmit} className="space-y-5">
                             {/* Full Name */}
                             <div className="relative">
-                                <label className="block text-[10px] font-inter font-bold uppercase tracking-widest text-fashion-moss mb-1">
-                                    Full Name
+                                <label className="block text-xs font-medium text-fashion-black/70 mb-1">
+                                    Full name
                                 </label>
                                 <input
                                     type="text"
@@ -175,8 +175,8 @@ const Signup = () => {
 
                             {/* Email Address */}
                             <div className="relative">
-                                <label className="block text-[10px] font-inter font-bold uppercase tracking-widest text-fashion-moss mb-1">
-                                    Email Address
+                                <label className="block text-xs font-medium text-fashion-black/70 mb-1">
+                                    Email address
                                 </label>
                                 <input
                                     type="email"
@@ -197,7 +197,7 @@ const Signup = () => {
 
                             {/* Password */}
                             <div className="relative">
-                                <label className="block text-[10px] font-inter font-bold uppercase tracking-widest text-fashion-moss mb-1">
+                                <label className="block text-xs font-medium text-fashion-black/70 mb-1">
                                     Password
                                 </label>
                                 <div className="relative">
@@ -231,8 +231,8 @@ const Signup = () => {
 
                             {/* Confirm Password */}
                             <div className="relative">
-                                <label className="block text-[10px] font-inter font-bold uppercase tracking-widest text-fashion-moss mb-1">
-                                    Confirm Password
+                                <label className="block text-xs font-medium text-fashion-black/70 mb-1">
+                                    Confirm password
                                 </label>
                                 <div className="relative">
                                     <input
@@ -301,15 +301,15 @@ const Signup = () => {
                             <button
                                 type="submit"
                                 disabled={isSubmitting}
-                                className="group relative w-full inline-flex items-center justify-center text-[11px] font-inter font-bold uppercase tracking-[0.2em] py-4 bg-fashion-moss text-fashion-eggshell overflow-hidden transition-all duration-300 hover:bg-fashion-moss/90 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed rounded"
+                                className="group relative w-full inline-flex items-center justify-center text-sm font-medium py-4 bg-fashion-moss text-fashion-eggshell overflow-hidden transition-all duration-300 hover:bg-fashion-moss/90 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed rounded"
                             >
                                 {isSubmitting ? (
                                     <div className="flex items-center space-x-2">
                                         <div className="w-4 h-4 border-2 border-fashion-eggshell border-t-transparent rounded-full animate-spin" />
-                                        <span>Creating Account...</span>
+                                        <span>Creating account...</span>
                                     </div>
                                 ) : (
-                                    <span>Register Account</span>
+                                    <span>Create account</span>
                                 )}
                             </button>
                         </form>
@@ -319,8 +319,8 @@ const Signup = () => {
                     <div className="mt-6 text-center">
                         <p className="text-xs font-inter text-fashion-moss/80">
                             Already have an account?{' '}
-                            <Link to="/login" className="font-inter font-bold uppercase tracking-wider text-fashion-moss hover:text-fashion-black transition-colors ml-1 text-[11px]">
-                                Sign In
+                            <Link to="/login" className="font-medium text-fashion-moss hover:text-fashion-black transition-colors ml-1">
+                                Sign in
                             </Link>
                         </p>
                     </div>

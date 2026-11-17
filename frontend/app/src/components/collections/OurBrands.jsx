@@ -60,13 +60,13 @@ const OurBrands = () => {
                     {/* Fine Line & Mini Heading */}
                     <div className="flex justify-center md:justify-start items-center gap-4 mb-6">
                         <div className="w-8 h-[1px] bg-fashion-moss/60" />
-                        <span className="text-fashion-moss font-inter text-[10px] tracking-[0.3em] uppercase font-semibold">
+                        <span className="text-fashion-moss text-sm font-medium">
                             Explore
                         </span>
                     </div>
 
-                    <h2 className="text-3xl md:text-4xl font-playfair font-bold text-fashion-black tracking-tight mb-4 uppercase text-center md:text-left">
-                        Our Brands.
+                    <h2 className="text-3xl md:text-4xl font-playfair text-fashion-black tracking-tight mb-4 text-center md:text-left">
+                        Our brands
                     </h2>
                     <p className="text-fashion-black/70 font-inter text-sm md:text-base max-w-2xl text-center md:text-left">
                         Discover our carefully curated selection of partner labels. Each brand is chosen for its exceptional craftsmanship, modern aesthetic, and commitment to accessible luxury.
