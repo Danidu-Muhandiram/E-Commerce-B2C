@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { FiHeart } from 'react-icons/fi';
 import { cldSrcSet, cldUrl } from '../../lib/cloudinary';
-import { formatPrice } from '../../lib/format';
+import { finalPrice, formatInstalment, formatPrice } from '../../lib/format';
 import { useStore } from '../../context/store';
 
 const SIZES = '(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 50vw';
@@ -65,6 +65,9 @@ const ProductCard = ({ product }) => {
                         ) : (
                             <span className="text-fashion-black">{formatPrice(product.price)}</span>
                         )}
+                    </p>
+                    <p className="text-xs tabular-nums text-fashion-black/50">
+                        or 3 &times; {formatInstalment(finalPrice(product) / 3)} with KOKO
                     </p>
                 </div>
             </Link>

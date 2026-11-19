@@ -18,6 +18,13 @@ const SORTS = {
     'price-desc': { label: 'Price: high to low', fn: (a, b) => finalPrice(b) - finalPrice(a) },
 };
 
+// Curated subsets used by the home rails' "View all" links and /trending.
+const SHOWS = {
+    new: { title: 'New arrivals', test: (p) => p.isNew },
+    trending: { title: 'Trending', test: (p) => p.isTrending },
+    sale: { title: 'Sale', test: (p) => p.discountPrice != null },
+};
+
 const SIZE_ORDER = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
 const sizeRank = (s) => (SIZE_ORDER.includes(s) ? SIZE_ORDER.indexOf(s) : SIZE_ORDER.length);
 
@@ -34,10 +41,13 @@ const Chip = ({ active, onClick, children }) => (
     </button>
 );
 
-// `gender` is set by the /men and /women routes; /shop lets the visitor choose.
-const Shop = ({ gender: fixedGender }) => {
+// `gender` / `show` are set by routes like /men and /trending; /shop reads them
+// from the query string instead.
+const Shop = ({ gender: fixedGender, show: fixedShow }) => {
     const [params, setParams] = useSearchParams();
     const gender = fixedGender ?? params.get('gender') ?? '';
+    const showParam = fixedShow ?? params.get('show');
+    const show = SHOWS[showParam] ? showParam : '';
     const category = params.get('category') ?? '';
     const size = params.get('size') ?? '';
     const sort = SORTS[params.get('sort')] ? params.get('sort') : 'featured';
@@ -50,8 +60,11 @@ const Shop = ({ gender: fixedGender }) => {
     };
 
     const inGender = useMemo(
-        () => products.filter((p) => !gender || p.gender === gender || p.gender === 'unisex'),
-        [gender],
+        () =>
+            products
+                .filter((p) => !gender || p.gender === gender || p.gender === 'unisex')
+                .filter((p) => !show || SHOWS[show].test(p)),
+        [gender, show],
     );
     const categories = useMemo(() => [...new Set(inGender.map((p) => p.category))].sort(), [inGender]);
     const sizes = useMemo(
@@ -68,8 +81,8 @@ const Shop = ({ gender: fixedGender }) => {
         [inGender, category, size, sort],
     );
 
-    const hasFilters = Boolean(category || size || (!fixedGender && gender));
-    const heading = fixedGender ? titleCase(fixedGender) : 'Shop all';
+    const hasFilters = Boolean(category || size || (!fixedGender && gender) || (!fixedShow && show));
+    const heading = show ? SHOWS[show].title : fixedGender ? titleCase(fixedGender) : 'Shop all';
 
     return (
         <section className="bg-white px-4 md:px-10 lg:px-16 pt-10 pb-20">
