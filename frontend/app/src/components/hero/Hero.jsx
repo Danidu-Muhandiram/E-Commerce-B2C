@@ -65,7 +65,7 @@ const Hero = () => {
 
   return (
     <section className="bg-fashion-eggshell border-t border-fashion-moss/10">
-      <div className="mx-auto max-w-[1400px] px-4 md:px-10 lg:px-16 pt-8 pb-12 lg:py-10 grid gap-8 lg:gap-x-16 lg:gap-y-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:grid-rows-[1fr_auto] lg:h-[calc(100svh-128px)] lg:min-h-[620px] lg:max-h-[860px]">
+      <div className="mx-auto max-w-[1400px] px-4 md:px-10 lg:px-16 pt-8 pb-12 lg:py-10 grid gap-8 lg:gap-x-16 lg:gap-y-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:grid-rows-[1fr_auto] lg:h-[calc(100svh-120px)] lg:min-h-[620px] lg:max-h-[860px]">
 
         {/* Intro */}
         <div className="lg:col-start-1 lg:row-start-1 lg:self-center">

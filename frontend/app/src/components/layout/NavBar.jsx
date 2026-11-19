@@ -1,49 +1,63 @@
-import React, { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { HiOutlineShoppingBag, HiMenuAlt3, HiX, HiOutlineUser } from "react-icons/hi";
 import { useStore } from "../../context/store";
 
+const TOPBAR_HEIGHT = 40;
+const HIDE_AFTER = 160; // never hide while the hero's top is still in view
+const SCROLL_DELTA = 8; // ignore tiny scroll movements so the bar doesn't flicker
+
 const NavBar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [isVisible, setIsVisible] = useState(true);
+    const [isHidden, setIsHidden] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
-    const [lastScrollY, setLastScrollY] = useState(0);
     const { cartCount, openCart } = useStore();
 
-    // Toggle Mobile Menu
-    const toggleMenu = () => {
-        setIsMenuOpen(!isMenuOpen);
-    };
+    const toggleMenu = () => setIsMenuOpen((open) => !open);
+    const closeMenu = () => setIsMenuOpen(false);
 
-    // Handle Smart Scroll (Hide on down, show on up) and Scrolled state
+    // Hide on scroll down, show on scroll up. Read scroll position once per frame
+    // and keep the last position in a local variable, so the listener is attached
+    // once and the component only re-renders when the state actually flips.
     useEffect(() => {
-        const handleScroll = () => {
-            const currentScrollY = window.scrollY;
+        let lastY = window.scrollY;
+        let frame = 0;
 
-            // Check if user scrolled past Topbar height (40px)
-            if (currentScrollY > 40) {
-                setIsScrolled(true);
-            } else {
-                setIsScrolled(false);
+        const update = () => {
+            frame = 0;
+            const y = Math.max(window.scrollY, 0);
+            setIsScrolled(y > TOPBAR_HEIGHT);
+
+            if (y < HIDE_AFTER) {
+                setIsHidden(false);
+                lastY = y;
+            } else if (Math.abs(y - lastY) >= SCROLL_DELTA) {
+                setIsHidden(y > lastY);
+                lastY = y;
             }
-
-            // Always show navbar near the top of the page
-            if (currentScrollY <= 50) {
-                setIsVisible(true);
-            } 
-            // Hide on scroll down, show on scroll up
-            else if (currentScrollY > lastScrollY) {
-                setIsVisible(false);
-            } else {
-                setIsVisible(true);
-            }
-
-            setLastScrollY(currentScrollY);
         };
 
-        window.addEventListener("scroll", handleScroll, { passive: true });
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, [lastScrollY]);
+        const onScroll = () => {
+            if (!frame) frame = requestAnimationFrame(update);
+        };
+
+        update();
+        window.addEventListener("scroll", onScroll, { passive: true });
+        return () => {
+            window.removeEventListener("scroll", onScroll);
+            cancelAnimationFrame(frame);
+        };
+    }, []);
+
+    // Stop the page behind the mobile menu from scrolling.
+    useEffect(() => {
+        if (!isMenuOpen) return;
+        const overflow = document.body.style.overflow;
+        document.body.style.overflow = "hidden";
+        return () => {
+            document.body.style.overflow = overflow;
+        };
+    }, [isMenuOpen]);
 
     const leftLinks = [
         { name: "Shop", path: "/shop" },
@@ -58,12 +72,15 @@ const NavBar = () => {
     ];
 
     return (
-        <nav className={`sticky top-0 left-0 w-full z-40 transition-all duration-300 ease-in-out ${
-            isScrolled 
-                ? "bg-fashion-eggshell/85 backdrop-blur-md py-3 shadow-md border-b border-fashion-moss/5" 
-                : "bg-fashion-eggshell py-5 shadow-sm border-b border-fashion-moss/10"
-        } ${isVisible ? "translate-y-0" : "-translate-y-full"}`}>
-            <div className="flex justify-between items-center relative container mx-auto px-4 md:px-8">
+        <>
+        {/* Fixed height in both states: only colour, shadow and position animate,
+            so the page below never shifts while scrolling. */}
+        <nav className={`sticky top-0 left-0 w-full z-40 h-16 md:h-20 flex items-center border-b transition-[translate,background-color,box-shadow,border-color] duration-300 ease-out motion-reduce:transition-none ${
+            isScrolled
+                ? "bg-fashion-eggshell/90 backdrop-blur-md shadow-md border-fashion-moss/5"
+                : "bg-fashion-eggshell shadow-sm border-fashion-moss/10"
+        } ${isHidden && !isMenuOpen ? "-translate-y-full" : "translate-y-0"}`}>
+            <div className="flex w-full justify-between items-center relative container mx-auto px-4 md:px-8">
 
                 {/* Left Navigation (Desktop) */}
                 <div className="hidden lg:flex space-x-8 items-center w-1/3 justify-start">
@@ -147,16 +164,20 @@ const NavBar = () => {
                     <button
                         className="text-fashion-moss hover:text-fashion-black transition-colors duration-300"
                         onClick={toggleMenu}
-                        aria-label="Toggle Menu"
+                        aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+                        aria-expanded={isMenuOpen}
                     >
                         {isMenuOpen ? <HiX className="w-7 h-7" /> : <HiMenuAlt3 className="w-7 h-7" />}
                     </button>
                 </div>
             </div>
 
-            {/* Mobile Menu Overlay */}
+        </nav>
+
+        {/* Mobile menu: outside <nav> so the nav's slide transform doesn't move it */}
             <div
-                className={`fixed top-0 right-0 h-screen w-full bg-fashion-eggshell z-40 transform transition-transform duration-500 ease-in-out ${isMenuOpen ? "translate-x-0" : "translate-x-full"
+                inert={!isMenuOpen}
+                className={`fixed inset-0 z-30 bg-fashion-eggshell pt-16 transition-transform duration-500 ease-in-out motion-reduce:transition-none ${isMenuOpen ? "translate-x-0" : "translate-x-full"
                     } lg:hidden flex flex-col items-center justify-center space-y-8`}
             >
                 {[...leftLinks, ...rightLinks].map((link, index) => (
@@ -164,7 +185,7 @@ const NavBar = () => {
                         key={index}
                         to={link.path}
                         className="text-2xl font-playfair text-fashion-black hover:text-fashion-moss transition-colors"
-                        onClick={toggleMenu}
+                        onClick={closeMenu}
                     >
                         {link.name}
                     </Link>
@@ -175,20 +196,20 @@ const NavBar = () => {
                     <Link
                         to="/login"
                         className="w-full text-center text-sm font-medium py-3 text-fashion-moss border border-fashion-moss/30 hover:border-fashion-moss transition-colors duration-300"
-                        onClick={toggleMenu}
+                        onClick={closeMenu}
                     >
                         Login
                     </Link>
                     <Link
                         to="/signup"
                         className="w-full text-center text-sm font-medium py-3 bg-fashion-moss text-fashion-eggshell hover:bg-fashion-moss/90 transition-colors duration-300"
-                        onClick={toggleMenu}
+                        onClick={closeMenu}
                     >
                         Sign up
                     </Link>
                 </div>
             </div>
-        </nav>
+        </>
     );
 };
 

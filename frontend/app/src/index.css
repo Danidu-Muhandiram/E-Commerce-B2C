@@ -11,6 +11,13 @@
   --color-fashion-terracotta: #8C2D19;
 }
 
+/* Anything not covered by a section (slide-in gaps, overscroll) shows the brand
+   background instead of browser white. */
+html,
+body {
+  background-color: var(--color-fashion-eggshell);
+}
+
 #root {
   font-family: var(--font-inter);
   font-optical-sizing: auto;
