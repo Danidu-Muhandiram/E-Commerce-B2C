@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { HiEye, HiEyeOff } from 'react-icons/hi';
-import authImage from '../assets/new5.webp';
+import { editorialImg } from '../lib/cloudinary';
+
+const authImage = 'veloura/editorial/new5';
 
 const Signup = () => {
     const [name, setName] = useState('');
@@ -80,7 +82,7 @@ const Signup = () => {
                 <div className="hidden lg:flex lg:w-1/2 relative bg-fashion-moss text-fashion-eggshell">
                     <div className="absolute inset-0 z-10 bg-fashion-moss/20 backdrop-brightness-[0.85]" />
                     <img 
-                        src={authImage} 
+                        {...editorialImg(authImage, '(min-width: 1024px) 512px, 0px')}
                         alt="Veloura Runway Model" 
                         className="absolute inset-0 w-full h-full object-cover transition-transform duration-[8000ms] hover:scale-105"
                     />

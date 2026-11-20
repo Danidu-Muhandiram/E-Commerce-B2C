@@ -2,13 +2,15 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FiArrowUpRight } from 'react-icons/fi';
 
-import women from '../../assets/popular1.jpg';
-import men from '../../assets/popular2.jpg';
-import kids from '../../assets/popular3.jpg';
-import coat from '../../assets/new3.webp';
-import basket from '../../assets/new5.webp';
-import panama from '../../assets/new1.webp';
-import sunnies from '../../assets/new2.webp';
+import { editorialImg } from '../../lib/cloudinary';
+
+const women = 'veloura/editorial/popular1';
+const men = 'veloura/editorial/popular2';
+const kids = 'veloura/editorial/popular3';
+const coat = 'veloura/editorial/new3';
+const basket = 'veloura/editorial/new5';
+const panama = 'veloura/editorial/new1';
+const sunnies = 'veloura/editorial/new2';
 
 // `focus` is the point of interest in the photo (x% y%); `zoom` crops in on it,
 // so accessory categories show the actual item rather than the whole model.
@@ -25,7 +27,11 @@ const categories = [
 
 const Crop = ({ category, className = '', ...rest }) => (
     <img
-        src={category.image}
+        // Zoomed crops need proportionally more pixels to stay sharp.
+        {...editorialImg(
+            category.image,
+            `(min-width: 1024px) ${Math.min(100, Math.round(40 * category.zoom))}vw, ${Math.round(56 * category.zoom)}px`,
+        )}
         alt=""
         loading="lazy"
         decoding="async"

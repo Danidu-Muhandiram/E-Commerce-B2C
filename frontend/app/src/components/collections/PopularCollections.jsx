@@ -1,9 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaArrowRight } from 'react-icons/fa';
-import imgFemale from '../../assets/popular1.jpg';
-import imgMale from '../../assets/popular2.jpg';
-import imgKids from '../../assets/popular3.jpg';
+import { editorialImg } from '../../lib/cloudinary';
+
+const imgFemale = 'veloura/editorial/popular1';
+const imgMale = 'veloura/editorial/popular2';
+const imgKids = 'veloura/editorial/popular3';
 
 const collections = [
     {
@@ -74,7 +76,7 @@ const PopularCollections = () => {
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10 opacity-70 group-hover:opacity-90 transition-opacity duration-700" />
 
                         <img
-                            src={collections[0].image}
+                            {...editorialImg(collections[0].image, '(min-width: 768px) 66vw, 100vw')}
                             alt={collections[0].title}
                             loading="lazy"
                             className="w-full h-full object-cover object-[75%_15%] transition-transform duration-1000 group-hover:scale-105"
@@ -109,7 +111,7 @@ const PopularCollections = () => {
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10 opacity-60 group-hover:opacity-80 transition-opacity duration-700" />
 
                                 <img
-                                    src={collection.image}
+                                    {...editorialImg(collection.image, '(min-width: 768px) 33vw, 100vw')}
                                     alt={collection.title}
                                     loading="lazy"
                                     className="w-full h-full object-cover object-top transition-transform duration-1000 group-hover:scale-105"

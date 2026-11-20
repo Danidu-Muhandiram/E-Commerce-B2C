@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FiArrowUpRight } from 'react-icons/fi';
-import look1 from '../../assets/new5.webp';
-import look2 from '../../assets/new1.webp';
-import look3 from '../../assets/new2.webp';
-import look4 from '../../assets/new3.webp';
+import { editorialImg } from '../../lib/cloudinary';
+
+const look1 = 'veloura/editorial/new5';
+const look2 = 'veloura/editorial/new1';
+const look3 = 'veloura/editorial/new2';
+const look4 = 'veloura/editorial/new3';
 
 // Each look is a real outfit with shoppable pieces — swap for API data later.
 const looks = [
@@ -116,7 +118,7 @@ const Hero = () => {
                 className={`group relative min-w-0 basis-0 overflow-hidden bg-fashion-gray transition-[flex-grow] duration-700 ease-[cubic-bezier(0.2,0.7,0.2,1)] motion-reduce:transition-none ${isActive ? 'cursor-default' : 'cursor-pointer'}`}
               >
                 <img
-                  src={item.image}
+                  {...editorialImg(item.image, '(min-width: 1024px) 50vw, 100vw')}
                   alt={isActive ? item.alt : ''}
                   fetchPriority={i === 0 ? 'high' : 'auto'}
                   decoding="async"
