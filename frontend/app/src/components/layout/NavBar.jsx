@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { HiOutlineShoppingBag, HiMenuAlt3, HiX, HiOutlineUser } from "react-icons/hi";
+import { HiOutlineShoppingBag, HiMenuAlt3, HiX, HiOutlineUser, HiOutlineSearch } from "react-icons/hi";
 import { useStore } from "../../context/store";
+import SearchPanel from "./SearchPanel";
 
 const TOPBAR_HEIGHT = 40;
 const HIDE_AFTER = 160; // never hide while the hero's top is still in view
@@ -9,6 +10,8 @@ const SCROLL_DELTA = 8; // ignore tiny scroll movements so the bar doesn't flick
 
 const NavBar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [isSearchOpen, setIsSearchOpen] = useState(false);
+    const closeSearch = useCallback(() => setIsSearchOpen(false), []);
     const [isHidden, setIsHidden] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
     const { cartCount, openCart } = useStore();
@@ -104,7 +107,7 @@ const NavBar = () => {
                 </div>
 
                 {/* Right Navigation & Actions (Desktop) */}
-                <div className="hidden lg:flex space-x-8 items-center w-1/3 justify-end relative">
+                <div className="hidden lg:flex space-x-5 xl:space-x-7 items-center w-1/3 justify-end relative">
                     {rightLinks.map((link, index) => (
                         <Link
                             key={index}
@@ -116,20 +119,33 @@ const NavBar = () => {
                         </Link>
                     ))}
 
+                    {/* account icon on smaller laptops, login + sign up from xl */}
+                    <Link
+                        to="/login"
+                        className="xl:hidden text-fashion-moss hover:text-fashion-black transition-colors duration-300"
+                        aria-label="Login"
+                    >
+                        <HiOutlineUser className="w-6 h-6" />
+                    </Link>
+
                     {/* Login Link */}
                     <Link
                         to="/login"
-                        className="relative text-sm font-medium text-fashion-moss hover:text-fashion-black transition-colors duration-300 group py-1"
+                        className="hidden xl:inline relative text-sm font-medium text-fashion-moss hover:text-fashion-black transition-colors duration-300 group py-1"
                     >
                         Login
                         <span className="absolute bottom-0 left-0 w-full h-[1px] bg-fashion-black scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
                     </Link>
 
                     {/* Sign Up Button */}
-                    <Link to="/signup" className="group relative inline-flex items-center justify-center whitespace-nowrap text-sm font-medium px-5 py-2 overflow-hidden transition-colors duration-300 border border-fashion-moss text-fashion-moss">
+                    <Link to="/signup" className="group relative shrink-0 hidden xl:inline-flex items-center justify-center whitespace-nowrap text-sm font-medium px-5 py-2 overflow-hidden transition-colors duration-300 border border-fashion-moss text-fashion-moss">
                         <div className="absolute inset-0 transform scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-500 ease-out z-0 bg-fashion-moss" />
                         <span className="relative z-10 transition-colors duration-500 group-hover:text-fashion-eggshell">Sign up</span>
                     </Link>
+
+                    <button type="button" onClick={() => setIsSearchOpen(true)} className="text-fashion-moss hover:text-fashion-black transition-colors duration-300" aria-label="Search">
+                        <HiOutlineSearch className="w-6 h-6" />
+                    </button>
 
                     {/* Cart Icon */}
                     <button type="button" onClick={openCart} className="relative transition-colors duration-300 text-fashion-moss hover:text-fashion-black" aria-label={`Bag, ${cartCount} items`}>
@@ -144,6 +160,9 @@ const NavBar = () => {
 
                 {/* Mobile Header Actions */}
                 <div className="absolute right-4 md:right-8 flex items-center space-x-5 lg:hidden z-50">
+                    <button type="button" onClick={() => setIsSearchOpen(true)} className="text-fashion-moss hover:text-fashion-black transition-colors duration-300" aria-label="Search">
+                        <HiOutlineSearch className="w-6 h-6" />
+                    </button>
                     <Link
                         to="/login"
                         className="text-fashion-moss hover:text-fashion-black transition-colors duration-300"
@@ -173,6 +192,8 @@ const NavBar = () => {
             </div>
 
         </nav>
+
+        <SearchPanel open={isSearchOpen} onClose={closeSearch} />
 
         {/* Mobile menu: outside <nav> so the nav's slide transform doesn't move it */}
             <div

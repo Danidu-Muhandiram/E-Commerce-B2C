@@ -3,6 +3,8 @@ import { Link, useSearchParams } from 'react-router-dom';
 import products, { ACCESSORY_CATEGORIES } from '../data/products';
 import ProductCard from '../components/products/ProductCard';
 import { finalPrice } from '../lib/format';
+import { matchesSearch } from '../lib/search';
+import { HiOutlineSearch } from 'react-icons/hi';
 
 const GENDERS = [
     { value: '', label: 'All' },
@@ -51,6 +53,7 @@ const Shop = ({ gender: fixedGender, show: fixedShow }) => {
     const show = SHOWS[showParam] ? showParam : '';
     const category = params.get('category') ?? '';
     const size = params.get('size') ?? '';
+    const q = params.get('q') ?? '';
     const sort = SORTS[params.get('sort')] ? params.get('sort') : 'featured';
 
     const setParam = (key, value) => {
@@ -64,8 +67,9 @@ const Shop = ({ gender: fixedGender, show: fixedShow }) => {
         () =>
             products
                 .filter((p) => !gender || p.gender === gender || p.gender === 'unisex')
-                .filter((p) => !show || SHOWS[show].test(p)),
-        [gender, show],
+                .filter((p) => !show || SHOWS[show].test(p))
+                .filter((p) => matchesSearch(p, q)),
+        [gender, show, q],
     );
     const categories = useMemo(() => [...new Set(inGender.map((p) => p.category))].sort(), [inGender]);
     const sizes = useMemo(
@@ -82,8 +86,8 @@ const Shop = ({ gender: fixedGender, show: fixedShow }) => {
         [inGender, category, size, sort],
     );
 
-    const hasFilters = Boolean(category || size || (!fixedGender && gender) || (!fixedShow && show));
-    const heading = show ? SHOWS[show].title : fixedGender ? titleCase(fixedGender) : 'Shop all';
+    const hasFilters = Boolean(q || category || size || (!fixedGender && gender) || (!fixedShow && show));
+    const heading = q ? `Results for "${q}"` : show ? SHOWS[show].title : fixedGender ? titleCase(fixedGender) : 'Shop all';
 
     return (
         <section className="bg-white px-4 md:px-10 lg:px-16 pt-10 pb-20">
@@ -104,6 +108,18 @@ const Shop = ({ gender: fixedGender, show: fixedShow }) => {
                 {/* Filters */}
                 <div className="mt-8 flex flex-col gap-4 border-y border-fashion-black/15 py-4 lg:flex-row lg:items-center lg:justify-between">
                     <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
+                        <label className="flex w-full items-center gap-2 border-b border-fashion-black/20 pb-1.5 focus-within:border-fashion-black sm:w-56">
+                            <HiOutlineSearch className="h-4 w-4 shrink-0 text-fashion-black/50" />
+                            <input
+                                type="search"
+                                value={q}
+                                onChange={(e) => setParam('q', e.target.value)}
+                                placeholder="Search"
+                                aria-label="Search products"
+                                className="min-w-0 flex-1 bg-transparent text-sm text-fashion-black outline-none placeholder:text-fashion-black/40"
+                            />
+                        </label>
+
                         {!fixedGender && (
                             <div className="flex flex-wrap gap-2" role="group" aria-label="Gender">
                                 {GENDERS.map((g) => (
