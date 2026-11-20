@@ -18,13 +18,15 @@ const encodeId = (publicId) => publicId.split('/').map(encodeURIComponent).join(
  * @param {string} [opts.ratio='4:5'] aspect ratio, or null to keep the original
  * @param {boolean} [opts.trim=true]  remove the corner mark
  */
-export const cldUrl = (publicId, { width = 800, ratio = '4:5', trim = true } = {}) => {
+export const cldUrl = (publicId, { width = 800, ratio = '4:5', trim = true, version } = {}) => {
     // With a ratio: crop to it, keeping the subject in frame. Without: just scale
     // down (never up), keeping the photo's own framing.
     const crop = ratio ? ['c_fill', `ar_${ratio}`, 'g_auto'] : ['c_limit'];
     const resize = [...crop, `w_${width}`, 'f_auto', 'q_auto'].join(',');
     const steps = [trim && TRIM_MARK, resize].filter(Boolean).join('/');
-    return `${BASE}/${steps}/${encodeId(publicId)}`;
+    // version busts the browser cache when an image is replaced
+    const v = version ? `v${version}/` : '';
+    return `${BASE}/${steps}/${v}${encodeId(publicId)}`;
 };
 
 const WIDTHS = [400, 600, 800, 1200, 1600];
@@ -36,7 +38,7 @@ export const cldSrcSet = (publicId, opts = {}) =>
  * src/srcSet/sizes for an editorial photo (hero, category, campaign images):
  * original framing, no corner trim. Spread onto an <img>.
  */
-export const editorialImg = (publicId, sizes = '100vw') => {
-    const opts = { ratio: null, trim: false };
+export const editorialImg = (publicId, sizes = '100vw', version) => {
+    const opts = { ratio: null, trim: false, version };
     return { src: cldUrl(publicId, { ...opts, width: 1200 }), srcSet: cldSrcSet(publicId, opts), sizes };
 };

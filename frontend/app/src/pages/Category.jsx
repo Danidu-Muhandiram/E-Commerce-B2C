@@ -2,10 +2,13 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 // Placeholder Images
-import cat1 from '../assets/banner1.jpg';
-import cat2 from '../assets/banner2.jpg';
-import cat3 from '../assets/banner3.jpg';
-import cat4 from '../assets/banner4.jpg';
+import { editorialImg } from '../lib/cloudinary';
+
+const cat1 = 'veloura/banners/banner1';
+const cat2 = 'veloura/banners/banner2';
+const cat3 = 'veloura/banners/banner3';
+const cat4 = 'veloura/banners/banner4';
+const versions = { [cat1]: 1795156256, [cat2]: 1795156335, [cat3]: 1795156336, [cat4]: 1795156260 };
 
 const categories = [
     { id: 1, name: "Women's", image: cat1, link: "#" },
@@ -46,7 +49,7 @@ const Category = () => {
                     {categories.map((category) => (
                         <div key={category.id} className="group relative w-full aspect-[3/4] overflow-hidden bg-gray-100 cursor-pointer shadow-sm hover:shadow-xl transition-shadow duration-500">
                             <img
-                                src={category.image}
+                                {...editorialImg(category.image, '(min-width: 1024px) 25vw, 50vw', versions[category.image])}
                                 alt={category.name}
                                 loading="lazy"
                                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"

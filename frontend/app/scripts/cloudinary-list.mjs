@@ -32,7 +32,7 @@ const folders = {};
 for (const r of resources) {
     const i = r.public_id.lastIndexOf('/');
     const folder = r.public_id.slice(0, i);
-    (folders[folder] ??= []).push({ name: r.public_id.slice(i + 1), width: r.width, height: r.height });
+    (folders[folder] ??= []).push({ name: r.public_id.slice(i + 1), width: r.width, height: r.height, version: r.version });
 }
 
 console.log(JSON.stringify(folders, null, 2));
