@@ -7,6 +7,8 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Shop from './pages/Shop';
 import Product from './pages/Product';
+import Seasonal from './pages/Seasonal';
+import Wishlist from './pages/Wishlist';
 import NotFound from './pages/NotFound';
 
 const App = () => {
@@ -21,6 +23,8 @@ const App = () => {
             <Route path="women" element={<Shop key="women" gender="women" />} />
             <Route path="trending" element={<Shop key="trending" show="trending" />} />
             <Route path="accessories" element={<Shop key="accessories" show="accessories" />} />
+            <Route path="seasonal" element={<Seasonal />} />
+            <Route path="wishlist" element={<Wishlist />} />
             <Route path="product/:slug" element={<Product />} />
             <Route path="category" element={<Category />} />
             <Route path="login" element={<Login />} />

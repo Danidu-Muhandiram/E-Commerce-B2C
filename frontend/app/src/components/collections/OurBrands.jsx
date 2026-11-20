@@ -1,5 +1,13 @@
 import React, { useRef, useState } from 'react';
 
+// card colours, cycled through the brands
+const TONES = [
+    { card: 'bg-fashion-moss', name: 'text-fashion-eggshell', sub: 'text-fashion-eggshell/60' },
+    { card: 'bg-fashion-black', name: 'text-fashion-eggshell', sub: 'text-fashion-eggshell/50' },
+    { card: 'bg-fashion-terracotta', name: 'text-fashion-eggshell', sub: 'text-fashion-eggshell/60' },
+    { card: 'bg-fashion-eggshell', name: 'text-fashion-moss', sub: 'text-fashion-moss/60' },
+];
+
 const brands = [
     { id: 1, name: 'VALENTIN', subtitle: 'HAUTE COUTURE', style: 'font-playfair tracking-[0.3em] text-xl font-bold' },
     { id: 2, name: 'MAISON D\'OR', subtitle: 'PARIS', style: 'font-playfair tracking-[0.2em] text-lg italic font-medium' },
@@ -80,23 +88,24 @@ const OurBrands = () => {
                         onScroll={handleScroll}
                         className="flex w-full overflow-x-auto snap-x snap-mandatory gap-8 pb-8 scroll-smooth [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden items-center"
                     >
-                        {brands.map((brand) => (
-                            <div
-                                key={brand.id}
-                                className="snap-center flex-shrink-0 w-[220px] md:w-[280px] aspect-[4/3] bg-fashion-eggshell/20 border border-fashion-moss/5 hover:border-fashion-moss/20 rounded-[2px] flex flex-col items-center justify-center transition-all duration-500 cursor-pointer group shadow-[0_1px_3px_rgba(0,0,0,0.02)] hover:shadow-md hover:bg-fashion-eggshell/45"
-                            >
-                                <div className="text-center p-6 select-none">
-                                    <h3 className={`${brand.style} text-fashion-moss group-hover:text-fashion-black group-hover:scale-105 transition-all duration-500`}>
-                                        {brand.name}
-                                    </h3>
-                                    {brand.subtitle && (
-                                        <p className="text-[9px] font-inter tracking-[0.3em] text-fashion-moss/50 group-hover:text-fashion-moss/70 mt-2 uppercase transition-colors duration-500">
-                                            {brand.subtitle}
-                                        </p>
-                                    )}
+                        {brands.map((brand, i) => {
+                            const tone = TONES[i % TONES.length];
+                            return (
+                                <div
+                                    key={brand.id}
+                                    className={`${tone.card} group snap-center flex-shrink-0 w-[220px] md:w-[280px] aspect-[4/3] flex flex-col items-center justify-center overflow-hidden`}
+                                >
+                                    <div className="text-center p-6 select-none transition-transform duration-500 group-hover:scale-105 motion-reduce:transition-none">
+                                        <h3 className={`${brand.style} ${tone.name}`}>{brand.name}</h3>
+                                        {brand.subtitle && (
+                                            <p className={`text-[10px] font-inter tracking-[0.3em] mt-3 uppercase ${tone.sub}`}>
+                                                {brand.subtitle}
+                                            </p>
+                                        )}
+                                    </div>
                                 </div>
-                            </div>
-                        ))}
+                            );
+                        })}
                     </div>
 
                     {/* Navigation Dots */}

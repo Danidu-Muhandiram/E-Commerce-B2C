@@ -13,6 +13,7 @@ const collections = [
         title: "Women's collection",
         subtitle: 'Elegance defined. Discover the latest styles.',
         tag: 'For her',
+        link: '/women',
         image: imgFemale,
         span: 'md:col-span-8',
         height: 'h-[450px] md:h-[650px]',
@@ -22,6 +23,7 @@ const collections = [
         title: "Men's collection",
         subtitle: 'Sharp and sophisticated.',
         tag: 'For him',
+        link: '/men',
         image: imgMale,
         span: 'md:col-span-4',
         height: 'h-[320px] md:h-[313px]',
@@ -31,6 +33,7 @@ const collections = [
         title: "Kids' collection",
         subtitle: 'Playful and comfortable.',
         tag: 'For kids',
+        link: '/shop?gender=kids',
         image: imgKids,
         span: 'md:col-span-4',
         height: 'h-[320px] md:h-[313px]',
@@ -71,7 +74,7 @@ const PopularCollections = () => {
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
 
                     {/* Main Feature Banner */}
-                    <div className={`relative group overflow-hidden ${collections[0].span} ${collections[0].height} cursor-pointer`}>
+                    <Link to={collections[0].link} className={`relative block group overflow-hidden ${collections[0].span} ${collections[0].height}`}>
                         <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors duration-700 z-10" />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10 opacity-70 group-hover:opacity-90 transition-opacity duration-700" />
 
@@ -101,12 +104,12 @@ const PopularCollections = () => {
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </Link>
 
                     {/* Right Column Stack */}
                     <div className="md:col-span-4 flex flex-col gap-6">
                         {collections.slice(1).map((collection) => (
-                            <div key={collection.id} className={`relative group overflow-hidden w-full ${collection.height} cursor-pointer`}>
+                            <Link key={collection.id} to={collection.link} className={`relative block group overflow-hidden w-full ${collection.height}`}>
                                 <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-colors duration-700 z-10" />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-10 opacity-60 group-hover:opacity-80 transition-opacity duration-700" />
 
@@ -133,7 +136,7 @@ const PopularCollections = () => {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </Link>
                         ))}
                     </div>
 

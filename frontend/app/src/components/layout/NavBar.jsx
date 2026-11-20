@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { FiHeart } from "react-icons/fi";
 import { HiOutlineShoppingBag, HiMenuAlt3, HiX, HiOutlineUser, HiOutlineSearch } from "react-icons/hi";
 import { useStore } from "../../context/store";
 import SearchPanel from "./SearchPanel";
@@ -14,7 +15,7 @@ const NavBar = () => {
     const closeSearch = useCallback(() => setIsSearchOpen(false), []);
     const [isHidden, setIsHidden] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
-    const { cartCount, openCart } = useStore();
+    const { cartCount, openCart, wishlist } = useStore();
 
     const toggleMenu = () => setIsMenuOpen((open) => !open);
     const closeMenu = () => setIsMenuOpen(false);
@@ -100,7 +101,7 @@ const NavBar = () => {
                 </div>
 
                 {/* Logo (Center) */}
-                <div className="w-full lg:w-1/3 flex justify-start lg:justify-center lg:absolute lg:left-1/2 lg:transform lg:-translate-x-1/2 z-50">
+                <div className="w-full lg:w-auto flex justify-start lg:justify-center lg:absolute lg:left-1/2 lg:transform lg:-translate-x-1/2 z-50">
                     <Link to="/" className="text-3xl md:text-4xl font-playfair font-black tracking-tighter text-fashion-moss py-1">
                         Veloura
                     </Link>
@@ -147,6 +148,15 @@ const NavBar = () => {
                         <HiOutlineSearch className="w-6 h-6" />
                     </button>
 
+                    <Link to="/wishlist" className="relative text-fashion-moss hover:text-fashion-black transition-colors duration-300" aria-label={`Wishlist, ${wishlist.length} saved`}>
+                        <FiHeart className="w-[22px] h-[22px]" />
+                        {wishlist.length > 0 && (
+                            <span className="absolute -top-1.5 -right-1.5 text-[9px] min-w-4 h-4 px-1 rounded-full flex items-center justify-center font-bold tabular-nums bg-fashion-moss text-fashion-eggshell">
+                                {wishlist.length > 9 ? "9+" : wishlist.length}
+                            </span>
+                        )}
+                    </Link>
+
                     {/* Cart Icon */}
                     <button type="button" onClick={openCart} className="relative transition-colors duration-300 text-fashion-moss hover:text-fashion-black" aria-label={`Bag, ${cartCount} items`}>
                         <HiOutlineShoppingBag className="w-6 h-6" />
@@ -163,12 +173,14 @@ const NavBar = () => {
                     <button type="button" onClick={() => setIsSearchOpen(true)} className="text-fashion-moss hover:text-fashion-black transition-colors duration-300" aria-label="Search">
                         <HiOutlineSearch className="w-6 h-6" />
                     </button>
-                    <Link
-                        to="/login"
-                        className="text-fashion-moss hover:text-fashion-black transition-colors duration-300"
-                        aria-label="Login"
-                    >
-                        <HiOutlineUser className="w-6 h-6" />
+                    {/* account lives in the menu on phones */}
+                    <Link to="/wishlist" className="relative text-fashion-moss hover:text-fashion-black transition-colors duration-300" aria-label={`Wishlist, ${wishlist.length} saved`}>
+                        <FiHeart className="w-[22px] h-[22px]" />
+                        {wishlist.length > 0 && (
+                            <span className="absolute -top-1.5 -right-1.5 text-[9px] min-w-4 h-4 px-1 rounded-full flex items-center justify-center font-bold tabular-nums bg-fashion-moss text-fashion-eggshell">
+                                {wishlist.length > 9 ? "9+" : wishlist.length}
+                            </span>
+                        )}
                     </Link>
 
                     <button type="button" onClick={openCart} className="relative text-fashion-moss hover:text-fashion-black transition-colors duration-300" aria-label={`Bag, ${cartCount} items`}>
@@ -211,6 +223,14 @@ const NavBar = () => {
                         {link.name}
                     </Link>
                 ))}
+
+                <Link
+                    to="/wishlist"
+                    className="text-2xl font-playfair text-fashion-black hover:text-fashion-moss transition-colors"
+                    onClick={closeMenu}
+                >
+                    Wishlist
+                </Link>
 
                 {/* Mobile Auth Actions */}
                 <div className="flex flex-col items-center space-y-4 pt-6 w-[250px]">

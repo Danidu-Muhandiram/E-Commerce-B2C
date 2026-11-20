@@ -66,7 +66,7 @@ const Shop = ({ gender: fixedGender, show: fixedShow }) => {
     const inGender = useMemo(
         () =>
             products
-                .filter((p) => !gender || p.gender === gender || p.gender === 'unisex')
+                .filter((p) => !gender || p.gender === gender || (p.gender === 'unisex' && gender !== 'kids'))
                 .filter((p) => !show || SHOWS[show].test(p))
                 .filter((p) => matchesSearch(p, q)),
         [gender, show, q],

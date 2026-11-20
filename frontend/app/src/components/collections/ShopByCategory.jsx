@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { FiArrowUpRight } from 'react-icons/fi';
 
 import { editorialImg } from '../../lib/cloudinary';
+import products from '../../data/products';
 
 const women = 'veloura/editorial/popular1';
 const men = 'veloura/editorial/popular2';
@@ -14,16 +15,22 @@ const sunnies = 'veloura/editorial/new2';
 
 // `focus` is the point of interest in the photo (x% y%); `zoom` crops in on it,
 // so accessory categories show the actual item rather than the whole model.
-// Piece counts are placeholders until the products API provides them.
+// counts come from the product list, same rules as the shop filters
+// unisex counts for men and women, not kids
+const inGender = (g) => (p) => p.gender === g || (p.gender === 'unisex' && g !== 'kids');
+const inCategory = (c) => (p) => p.category === c;
+
 const categories = [
-    { name: 'Women', count: 214, image: women, focus: '47% 40%', zoom: 1 },
-    { name: 'Men', count: 168, image: men, focus: '50% 30%', zoom: 1 },
-    { name: 'Kids', count: 92, image: kids, focus: '50% 45%', zoom: 1 },
-    { name: 'Outerwear', count: 41, image: coat, focus: '52% 55%', zoom: 1.1 },
-    { name: 'Bags', count: 57, image: basket, focus: '54% 70%', zoom: 2.4 },
-    { name: 'Hats', count: 23, image: panama, focus: '49% 14%', zoom: 2.6 },
-    { name: 'Eyewear', count: 36, image: sunnies, focus: '45% 19%', zoom: 3 },
-];
+    { name: 'Women', link: '/women', test: inGender('women'), image: women, focus: '47% 40%', zoom: 1 },
+    { name: 'Men', link: '/men', test: inGender('men'), image: men, focus: '50% 30%', zoom: 1 },
+    { name: 'Kids', link: '/shop?gender=kids', test: inGender('kids'), image: kids, focus: '50% 45%', zoom: 1 },
+    { name: 'Outerwear', link: '/shop?category=outerwear', test: inCategory('outerwear'), image: coat, focus: '52% 55%', zoom: 1.1 },
+    { name: 'Bags', link: '/shop?category=bags', test: inCategory('bags'), image: basket, focus: '54% 70%', zoom: 2.4 },
+    { name: 'Hats', link: '/shop?category=hats', test: inCategory('hats'), image: panama, focus: '49% 14%', zoom: 2.6 },
+    { name: 'Eyewear', link: '/shop?category=sunglasses', test: inCategory('sunglasses'), image: sunnies, focus: '45% 19%', zoom: 3 },
+].map((c) => ({ ...c, count: products.filter(c.test).length }));
+
+const countLabel = (n) => (n === 0 ? 'Coming soon' : `${n} ${n === 1 ? 'piece' : 'pieces'}`);
 
 const Crop = ({ category, className = '', ...rest }) => (
     <img
@@ -72,7 +79,7 @@ const ShopByCategory = () => {
                             return (
                                 <li key={category.name} className="border-t border-fashion-black/15">
                                     <Link
-                                        to="/shop"
+                                        to={category.link}
                                         onMouseEnter={() => setActive(i)}
                                         onFocus={() => setActive(i)}
                                         className="group flex items-center gap-4 lg:gap-6 py-3 lg:py-5"
@@ -93,7 +100,7 @@ const ShopByCategory = () => {
                                         </span>
 
                                         <span className="text-sm tabular-nums text-fashion-black/50 whitespace-nowrap">
-                                            {category.count} pieces
+                                            {countLabel(category.count)}
                                         </span>
 
                                         <FiArrowUpRight
@@ -119,7 +126,7 @@ const ShopByCategory = () => {
                             ))}
                             <span className="absolute bottom-3 left-3 bg-fashion-eggshell px-3 py-1.5 text-sm text-fashion-black">
                                 <span className="font-playfair italic">{categories[active].name}</span>
-                                <span className="text-fashion-black/50"> &middot; {categories[active].count} pieces</span>
+                                <span className="text-fashion-black/50"> &middot; {countLabel(categories[active].count)}</span>
                             </span>
                         </div>
                     </div>

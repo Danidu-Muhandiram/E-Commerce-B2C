@@ -3,45 +3,8 @@ import { Link } from 'react-router-dom';
 import { FiArrowUpRight } from 'react-icons/fi';
 import { editorialImg } from '../../lib/cloudinary';
 import { getProductBySlug } from '../../data/products';
+import looks from '../../data/looks';
 import { finalPrice, formatPrice } from '../../lib/format';
-
-const look1 = 'veloura/editorial/new5';
-const look2 = 'veloura/editorial/new1';
-const look3 = 'veloura/editorial/new2';
-const look4 = 'veloura/editorial/new3';
-
-// Each look is a real outfit with shoppable pieces — swap for API data later.
-const looks = [
-  {
-    name: 'Straw & citrus',
-    image: look1,
-    alt: 'Model in a straw boater, printed cami and orange midi skirt, holding a woven tote',
-    focus: '46% 30%',
-    items: ['straw-boater-hat', 'pineapple-print-cami', 'tiered-cotton-midi-skirt', 'woven-basket-tote'],
-  },
-  {
-    name: 'Off-duty linen',
-    image: look2,
-    alt: 'Model in a panama hat, unstructured beige blazer and band-collar shirt',
-    focus: '50% 25%',
-    items: ['unstructured-linen-blazer', 'band-collar-striped-shirt', 'panama-hat'],
-  },
-  {
-    name: 'Print, loud',
-    image: look3,
-    alt: 'Model in yellow cat-eye sunglasses and a botanical print shirt',
-    focus: '50% 30%',
-    // shorts and wide-brim hat show up once they're added to products
-    items: ['botanical-print-shirt', 'cat-eye-sunglasses', 'high-rise-black-shorts'],
-  },
-  {
-    name: 'City neutral',
-    image: look4,
-    alt: 'Model in a black wide-brim hat, taupe leather trench and white saddle bag',
-    focus: '52% 25%',
-    items: ['vegan-leather-trench', 'wool-wide-brim-hat', 'croc-effect-saddle-bag'],
-  },
-];
 
 const pad = (n) => String(n).padStart(2, '0');
 
@@ -167,7 +130,7 @@ const Hero = () => {
           </ul>
 
           <Link
-            to="/shop"
+            to={`/seasonal#look-${pad(active + 1)}`}
             className="group mt-4 inline-flex items-center gap-1.5 text-sm font-medium text-fashion-moss hover:text-fashion-black transition-colors"
           >
             Shop the full look &middot; <span className="tabular-nums">{formatPrice(total)}</span>
