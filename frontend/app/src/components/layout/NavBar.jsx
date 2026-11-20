@@ -210,9 +210,11 @@ const NavBar = () => {
         {/* Mobile menu: outside <nav> so the nav's slide transform doesn't move it */}
             <div
                 inert={!isMenuOpen}
-                className={`fixed inset-0 z-30 bg-fashion-eggshell pt-16 transition-transform duration-500 ease-in-out motion-reduce:transition-none ${isMenuOpen ? "translate-x-0" : "translate-x-full"
-                    } lg:hidden flex flex-col items-center justify-center space-y-8`}
+                className={`fixed inset-0 z-30 overflow-y-auto overscroll-contain bg-fashion-eggshell transition-transform duration-500 ease-in-out motion-reduce:transition-none ${isMenuOpen ? "translate-x-0" : "translate-x-full"
+                    } lg:hidden`}
             >
+            {/* top padding clears the topbar + navbar, scrolls on short screens */}
+            <div className="min-h-full flex flex-col items-center justify-center gap-6 pt-[120px] pb-10">
                 {[...leftLinks, ...rightLinks].map((link, index) => (
                     <Link
                         key={index}
@@ -233,7 +235,7 @@ const NavBar = () => {
                 </Link>
 
                 {/* Mobile Auth Actions */}
-                <div className="flex flex-col items-center space-y-4 pt-6 w-[250px]">
+                <div className="flex flex-col items-center space-y-4 pt-4 w-[250px]">
                     <Link
                         to="/login"
                         className="w-full text-center text-sm font-medium py-3 text-fashion-moss border border-fashion-moss/30 hover:border-fashion-moss transition-colors duration-300"
@@ -249,6 +251,7 @@ const NavBar = () => {
                         Sign up
                     </Link>
                 </div>
+            </div>
             </div>
         </>
     );
