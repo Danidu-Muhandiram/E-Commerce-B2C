@@ -5,6 +5,12 @@ A B2C fashion e-commerce store for the Sri Lankan market, built with the MERN st
 > **Project status: work in progress, not a working store yet.**
 > The frontend is under active development and runs entirely on mock product data. The backend (Express + MongoDB) is still in the planning and early development stage. There are no real accounts, payments or orders. Login, sign up and checkout are UI only for now.
 
+## 🌐 Live Preview
+
+<a href="https://velourafashion.vercel.app/">
+  <img src="https://img.shields.io/badge/Live_Preview-Visit_Store-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Live Preview" />
+</a>
+
 
 ## 📸 Preview
 
