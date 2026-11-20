@@ -20,6 +20,7 @@ const App = () => {
             <Route path="men" element={<Shop key="men" gender="men" />} />
             <Route path="women" element={<Shop key="women" gender="women" />} />
             <Route path="trending" element={<Shop key="trending" show="trending" />} />
+            <Route path="accessories" element={<Shop key="accessories" show="accessories" />} />
             <Route path="product/:slug" element={<Product />} />
             <Route path="category" element={<Category />} />
             <Route path="login" element={<Login />} />

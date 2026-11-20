@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FiArrowUpRight } from 'react-icons/fi';
 import { editorialImg } from '../../lib/cloudinary';
+import { getProductBySlug } from '../../data/products';
+import { finalPrice, formatPrice } from '../../lib/format';
 
 const look1 = 'veloura/editorial/new5';
 const look2 = 'veloura/editorial/new1';
@@ -15,55 +17,39 @@ const looks = [
     image: look1,
     alt: 'Model in a straw boater, printed cami and orange midi skirt, holding a woven tote',
     focus: '46% 30%',
-    items: [
-      { name: 'Straw boater hat', price: 2190 },
-      { name: 'Pineapple print cami', price: 3490 },
-      { name: 'Tiered cotton midi skirt', price: 4990 },
-      { name: 'Woven basket tote', price: 3890 },
-    ],
+    items: ['straw-boater-hat', 'pineapple-print-cami', 'tiered-cotton-midi-skirt', 'woven-basket-tote'],
   },
   {
     name: 'Off-duty linen',
     image: look2,
     alt: 'Model in a panama hat, unstructured beige blazer and band-collar shirt',
     focus: '50% 25%',
-    items: [
-      { name: 'Unstructured linen blazer', price: 12490 },
-      { name: 'Band-collar striped shirt', price: 4790 },
-      { name: 'Panama hat', price: 2990 },
-    ],
+    items: ['unstructured-linen-blazer', 'band-collar-striped-shirt', 'panama-hat'],
   },
   {
     name: 'Print, loud',
     image: look3,
     alt: 'Model in yellow cat-eye sunglasses and a botanical print shirt',
     focus: '50% 30%',
-    items: [
-      { name: 'Botanical print shirt', price: 5290 },
-      { name: 'Cat-eye sunglasses', price: 2490 },
-      { name: 'High-rise black shorts', price: 3290 },
-    ],
+    // shorts and wide-brim hat show up once they're added to products
+    items: ['botanical-print-shirt', 'cat-eye-sunglasses', 'high-rise-black-shorts'],
   },
   {
     name: 'City neutral',
     image: look4,
     alt: 'Model in a black wide-brim hat, taupe leather trench and white saddle bag',
     focus: '52% 25%',
-    items: [
-      { name: 'Vegan leather trench', price: 14900 },
-      { name: 'Wool wide-brim hat', price: 3990 },
-      { name: 'Croc-effect saddle bag', price: 6490 },
-    ],
+    items: ['vegan-leather-trench', 'wool-wide-brim-hat', 'croc-effect-saddle-bag'],
   },
 ];
 
-const formatPrice = (n) => `Rs ${n.toLocaleString('en-US')}`;
 const pad = (n) => String(n).padStart(2, '0');
 
 const Hero = () => {
   const [active, setActive] = useState(0);
   const look = looks[active];
-  const total = look.items.reduce((sum, item) => sum + item.price, 0);
+  const items = look.items.map(getProductBySlug).filter(Boolean);
+  const total = items.reduce((sum, item) => sum + finalPrice(item), 0);
 
   return (
     <section className="bg-fashion-eggshell border-t border-fashion-moss/10">
@@ -152,15 +138,15 @@ const Hero = () => {
           </div>
 
           <ul key={active} className="mt-2 animate-rise motion-reduce:animate-none">
-            {look.items.map((item) => (
-              <li key={item.name}>
+            {items.map((item) => (
+              <li key={item.slug}>
                 <Link
-                  to="/shop"
+                  to={`/product/${item.slug}`}
                   className="group flex items-baseline gap-3 py-1.5 text-sm text-fashion-black"
                 >
                   <span className="group-hover:underline underline-offset-4">{item.name}</span>
                   <span aria-hidden="true" className="flex-1 -translate-y-1 border-b border-dotted border-fashion-black/25" />
-                  <span className="tabular-nums text-fashion-black/70">{formatPrice(item.price)}</span>
+                  <span className="tabular-nums text-fashion-black/70">{formatPrice(finalPrice(item))}</span>
                 </Link>
               </li>
             ))}

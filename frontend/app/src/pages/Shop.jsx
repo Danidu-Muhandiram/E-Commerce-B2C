@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
-import products from '../data/products';
+import products, { ACCESSORY_CATEGORIES } from '../data/products';
 import ProductCard from '../components/products/ProductCard';
 import { finalPrice } from '../lib/format';
 
@@ -23,6 +23,7 @@ const SHOWS = {
     new: { title: 'New arrivals', test: (p) => p.isNew },
     trending: { title: 'Trending', test: (p) => p.isTrending },
     sale: { title: 'Sale', test: (p) => p.discountPrice != null },
+    accessories: { title: 'Accessories', test: (p) => ACCESSORY_CATEGORIES.includes(p.category) },
 };
 
 const SIZE_ORDER = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
