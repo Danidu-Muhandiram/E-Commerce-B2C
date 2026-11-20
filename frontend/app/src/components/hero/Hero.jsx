@@ -47,6 +47,9 @@ const pad = (n) => String(n).padStart(2, '0');
 
 const Hero = () => {
   const [active, setActive] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const next = () => setActive((a) => (a + 1) % looks.length);
+  const pause = { onMouseEnter: () => setPaused(true), onMouseLeave: () => setPaused(false) };
   const look = looks[active];
   const items = look.items.map(getProductBySlug).filter(Boolean);
   const total = items.reduce((sum, item) => sum + finalPrice(item), 0);
@@ -90,6 +93,7 @@ const Hero = () => {
           className="flex gap-2 h-[62svh] min-h-[420px] max-h-[640px] lg:max-h-none lg:h-auto lg:min-h-0 lg:col-start-2 lg:row-start-1 lg:row-span-2"
           role="group"
           aria-label="Resort 2027 looks"
+          {...pause}
         >
           {looks.map((item, i) => {
             const isActive = i === active;
@@ -123,13 +127,23 @@ const Hero = () => {
                 >
                   <span className="font-playfair italic">{item.name}</span>
                 </span>
+
+                {/* autoplay progress, goes to the next look when full */}
+                {isActive && (
+                  <span
+                    key={active}
+                    onAnimationEnd={next}
+                    style={{ animationDuration: '3s', animationPlayState: paused ? 'paused' : 'running' }}
+                    className="absolute bottom-0 left-0 h-0.5 bg-fashion-eggshell animate-progress motion-reduce:hidden"
+                  />
+                )}
               </button>
             );
           })}
         </div>
 
         {/* What's in the open look */}
-        <div className="lg:col-start-1 lg:row-start-2 border-t border-fashion-black/15 pt-5">
+        <div className="lg:col-start-1 lg:row-start-2 border-t border-fashion-black/15 pt-5" {...pause}>
           <div className="flex items-baseline justify-between">
             <p className="font-playfair italic text-lg text-fashion-black">In this look</p>
             <span className="text-xs tabular-nums text-fashion-black/50">
